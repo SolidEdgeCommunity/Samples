@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE29190D-46FA-4859-AE2F-6A1ADEEBA81D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>AddInDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files\Solid Edge ST6\Program\Edge.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SharpGL">
+      <HintPath>..\packages\SharpGLCore.2.3.0.1\lib\net40\SharpGL.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL.SceneGraph">
+      <HintPath>..\packages\SharpGLCore.2.3.0.1\lib\net40\SharpGL.SceneGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidEdgeContrib">
+      <HintPath>..\packages\SolidEdgeContrib.106.0.0\lib\net40\SolidEdgeContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomDialog.Designer.vb">
+      <DependentUpon>CustomDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MyAddIn.vb" />
+    <Compile Include="MyEdgeBarControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyEdgeBarControl.Designer.vb">
+      <DependentUpon>MyEdgeBarControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MyViewOverlay.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Structures.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="addin.manifest" />
+    <EmbeddedResource Include="CustomDialog.resx">
+      <DependentUpon>CustomDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyEdgeBarControl.resx">
+      <DependentUpon>MyEdgeBarControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\EdgeBar\EdgeBar.png" />
+    <Content Include="Resources\Ribbon\BoundingBox_32.png" />
+    <Content Include="Resources\Ribbon\Boxes_32.png" />
+    <Content Include="Resources\Ribbon\Box_32.png" />
+    <Content Include="Resources\Ribbon\Camera_32.png" />
+    <Content Include="Resources\Ribbon\CommandPrompt_32.png" />
+    <Content Include="Resources\Ribbon\Favorites_32.png" />
+    <Content Include="Resources\Ribbon\Folder_16.png" />
+    <Content Include="Resources\Ribbon\GdiPlus_32.png" />
+    <Content Include="Resources\Ribbon\Help_32.png" />
+    <Content Include="Resources\Ribbon\Monitor_16.png" />
+    <Content Include="Resources\Ribbon\Notepad_32.png" />
+    <Content Include="Resources\Ribbon\Photograph_32.png" />
+    <Content Include="Resources\Ribbon\Printer_32.png" />
+    <Content Include="Resources\Ribbon\Question_32.png" />
+    <Content Include="Resources\Ribbon\Save_16.png" />
+    <Content Include="Resources\Ribbon\Search_32.png" />
+    <Content Include="Resources\Ribbon\Tools_32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

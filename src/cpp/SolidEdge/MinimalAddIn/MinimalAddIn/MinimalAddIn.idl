@@ -1,0 +1,34 @@
+// MinimalAddIn.idl : IDL source for MinimalAddIn
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (MinimalAddIn.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//[
+//	object,
+//	uuid(150BAF2D-525F-4B5F-B4FE-507C7DCCF65A),
+//	dual,
+//	nonextensible,
+//	pointer_default(unique)
+//]
+//interface IMySolidEdgeAddIn : IDispatch{
+//};
+[
+	uuid(9B1AB88B-1A13-4866-94AC-681EC74F9829),
+	version(1.0),
+	helpstring("MinimalAddin 1.0 Type Library")
+]
+library MinimalAddInLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(14127432-889C-4DBF-8606-BA7AC63F3741)		
+	]
+	coclass MySolidEdgeAddIn
+	{
+		[default] interface IUnknown;//IMySolidEdgeAddIn;
+	};
+};

@@ -1,0 +1,75 @@
+﻿Imports ApiSamples.Samples.SolidEdge
+Imports System
+Imports System.Collections.Generic
+Imports System.Linq
+Imports System.Text
+
+Namespace ApiSamples.Samples.SolidEdge.Draft
+	''' <summary>
+	''' Creates a new draft and adds balloons.
+	''' </summary>
+	Friend Class CreateBalloon
+		Private Shared Sub RunSample(ByVal breakOnStart As Boolean)
+			If breakOnStart Then
+				System.Diagnostics.Debugger.Break()
+			End If
+
+			Dim application As SolidEdgeFramework.Application = Nothing
+			Dim documents As SolidEdgeFramework.Documents = Nothing
+			Dim draftDocument As SolidEdgeDraft.DraftDocument = Nothing
+			Dim sheet As SolidEdgeDraft.Sheet = Nothing
+			Dim balloons As SolidEdgeFrameworkSupport.Balloons = Nothing
+			Dim balloon As SolidEdgeFrameworkSupport.Balloon = Nothing
+			Dim dimStype As SolidEdgeFrameworkSupport.DimStyle = Nothing
+
+			Try
+				' Register with OLE to handle concurrency issues on the current thread.
+				OleMessageFilter.Register()
+
+				' Connect to or start Solid Edge.
+				application = ApplicationHelper.Connect(True, True)
+
+				' Get a reference to the documents collection.
+				documents = application.Documents
+
+				' Create a new draft document.
+				draftDocument = documents.AddDraftDocument()
+
+				' Get a reference to the active sheet.
+				sheet = draftDocument.ActiveSheet
+
+				' Get a reference to the balloons collection.
+				balloons = DirectCast(sheet.Balloons, SolidEdgeFrameworkSupport.Balloons)
+
+				balloon = balloons.Add(0.05, 0.05, 0)
+				balloon.TextScale = 1.0
+				balloon.BalloonText = "B"
+				balloon.Leader = True
+				balloon.BreakLine = True
+				balloon.BalloonSize = 3
+				balloon.SetTerminator(balloon, 0, 0, 0, False)
+				balloon.BalloonType = SolidEdgeFrameworkSupport.DimBalloonTypeConstants.igDimBalloonCircle
+
+				dimStype = balloon.Style
+				dimStype.TerminatorType = SolidEdgeFrameworkSupport.DimTermTypeConstants.igDimStyleTermFilled
+
+				balloon = balloons.Add(0.1, 0.1, 0)
+				balloon.Callout = 1
+				balloon.TextScale = 1.0
+				balloon.BalloonText = "This is a callout"
+				balloon.Leader = True
+				balloon.BreakLine = True
+				balloon.BalloonSize = 3
+				balloon.SetTerminator(balloon, 0, 0, 0, False)
+				balloon.BalloonType = SolidEdgeFrameworkSupport.DimBalloonTypeConstants.igDimBalloonCircle
+
+				dimStype = balloon.Style
+				dimStype.TerminatorType = SolidEdgeFrameworkSupport.DimTermTypeConstants.igDimStyleTermFilled
+			Catch ex As System.Exception
+				Console.WriteLine(ex.Message)
+			Finally
+				OleMessageFilter.Unregister()
+			End Try
+		End Sub
+	End Class
+End Namespace
