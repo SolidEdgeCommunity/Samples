@@ -37,13 +37,12 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="PowerToys.SolidEdge.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\PowerToys.SolidEdge.Core.1.0.1\lib\net40\PowerToys.SolidEdge.Core.dll</HintPath>
-    </Reference>
     <Reference Include="SolidEdgeContrib">
       <HintPath>..\packages\SolidEdgeContrib.106.0.0\lib\net40\SolidEdgeContrib.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="SolidEdgeContrib.Reader">
+      <HintPath>..\packages\SolidEdgeContrib.Reader.1.0.0\lib\net40\SolidEdgeContrib.Reader.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

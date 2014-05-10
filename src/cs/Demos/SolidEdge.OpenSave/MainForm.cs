@@ -143,7 +143,7 @@ namespace SolidEdge.OpenSave
 
                 try
                 {
-                    Version lastSavedVersion = PowerToys.SolidEdge.SolidEdgeDocument.GetLastSavedVersion(file);
+                    Version lastSavedVersion = SolidEdgeContrib.Reader.SolidEdgeDocument.GetLastSavedVersion(file);
 
                     if (currentVersion.CompareTo(lastSavedVersion) > 0)
                     {

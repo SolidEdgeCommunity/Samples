@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Sun Feb 02 22:40:38 2014
+/* at Sat May 10 05:22:53 2014
  */
 /* Compiler settings for MinimalAddIn.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
