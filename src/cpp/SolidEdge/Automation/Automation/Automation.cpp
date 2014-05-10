@@ -12,28 +12,6 @@ VOID DemoCreateNewDocuments(SolidEdgeFramework::ApplicationPtr pApplication);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	float fSize = 0.025f;
-	float *p;
-	float *n;
-	float *n2;
-
-	float p0[12] = {0.0f,0.0f, 0.0f, 0.0f,fSize, 0.0f, fSize,0.0f, 0.0f, fSize,fSize, 0.0f};
-	float p1[12] = {0.0f,0.0f,fSize, 0.0f,fSize,fSize, fSize,0.0f,fSize, fSize,fSize,fSize};
-
-	float p2[12] = { 0.0f,0.0f,0.0f,  0.0f,0.0f,fSize,  0.0f,fSize,0.0f,  0.0f,fSize,fSize};
-	float p3[12] = {fSize,0.0f,0.0f, fSize,0.0f,fSize, fSize,fSize,0.0f, fSize,fSize,fSize};
-
-	float p4[12] = {0.0f, 0.0f,0.0f, 0.0f, 0.0f,fSize, fSize, 0.0f,0.0f, fSize, 0.0f,fSize};
-	float p5[12] = {0.0f,fSize,0.0f, 0.0f,fSize,fSize, fSize,fSize,0.0f, fSize,fSize,fSize};
-
-	float n0[21] = { 1.0f, 2.0f, 3.0f, 1.1f, 2.0f, 2.1f, 2.2f, 3.1f, 3.2f, 0.0f, 1.0f,0.0f,
-	                0.0f,0.0f, 1.0f, 0.0f,1.0f, 0.0f,  0.0f,-1.0f,0.0f};
-
-	n = n0;
-	n2 = n0;
-	p = p0;
-	 n+=3;
-
     HRESULT hr = S_OK;
     SolidEdgeFramework::ApplicationPtr pApplication = NULL;
 
