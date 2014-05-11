@@ -39,8 +39,9 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SolidEdgeContrib">
-      <HintPath>..\packages\SolidEdgeContrib.106.0.0\lib\net40\SolidEdgeContrib.dll</HintPath>
+    <Reference Include="SolidEdgeContrib, Version=106.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SolidEdgeContrib.106.0.2\lib\net40\SolidEdgeContrib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -102,12 +103,12 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" />
+  <Import Project="..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets'))" />
+    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -86,6 +86,9 @@ namespace SolidEdge.ApplicationEvents
             sb.AppendFormat("{0}({1})", MethodBase.GetCurrentMethod().Name, theDocument);
             sb.AppendLine();
 
+            //MyLabel.Invoke((Action)(() => MyLabel.Text = text));
+            //MyLabel.Invoke((Action)(() => MyLabel.Update()));
+
             eventLogTextBox.Do(ctl =>
             {
                 ctl.AppendText(sb.ToString());

@@ -7,7 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A8AE8C5C-A055-478C-8211-70E0CEC9FDFE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>SolidEdge.GlobalParameters</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
@@ -44,7 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SolidEdgeContrib">
-      <HintPath>..\packages\SolidEdgeContrib.106.0.0\lib\net40\SolidEdgeContrib.dll</HintPath>
+      <HintPath>..\packages\SolidEdgeContrib.106.0.2\lib\net40\SolidEdgeContrib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -103,7 +104,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -115,6 +115,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Refresh_16x16.png" />
   </ItemGroup>
   <ItemGroup>
@@ -130,12 +131,12 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <Import Project="..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" />
+  <Import Project="..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets'))" />
+    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

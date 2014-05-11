@@ -6,7 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9C3429B7-774A-4FA0-9BE6-06A0FF2E6C95}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>SolidEdge.OpenSave</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -45,8 +46,7 @@
       <HintPath>..\packages\PowerToys.SolidEdge.Core.1.0.1\lib\net40\PowerToys.SolidEdge.Core.dll</HintPath>
     </Reference>
     <Reference Include="SolidEdgeContrib">
-      <HintPath>..\packages\SolidEdgeContrib.106.0.0\lib\net40\SolidEdgeContrib.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\SolidEdgeContrib.106.0.2\lib\net40\SolidEdgeContrib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -140,13 +140,13 @@
     <None Include="Media\Stop_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets'))" />
+    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets'))" />
   </Target>
-  <Import Project="..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.0\build\net40\SolidEdgeContrib.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
