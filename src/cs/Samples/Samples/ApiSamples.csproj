@@ -48,9 +48,9 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="SolidEdgeContrib, Version=106.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SolidEdgeContrib, Version=106.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SolidEdgeContrib.106.0.2\lib\net40\SolidEdgeContrib.dll</HintPath>
+      <HintPath>..\packages\SolidEdgeContrib.106.0.3\lib\net40\SolidEdgeContrib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -252,12 +252,12 @@
     <None Include="Media\Run_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" />
+  <Import Project="..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.2\build\net40\SolidEdgeContrib.targets'))" />
+    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
