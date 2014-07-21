@@ -45,8 +45,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SolidEdge.Community.106.0.0\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
-    <Reference Include="SolidEdgeContrib.Reader">
-      <HintPath>..\packages\SolidEdgeContrib.Reader.1.0.0\lib\net40\SolidEdgeContrib.Reader.dll</HintPath>
+    <Reference Include="SolidEdge.Community.Reader">
+      <HintPath>..\packages\SolidEdge.Community.Reader.1.0.0\lib\net40\SolidEdge.Community.Reader.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

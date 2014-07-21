@@ -142,7 +142,7 @@ namespace SolidEdge.OpenSave
 
                 try
                 {
-                    Version lastSavedVersion = SolidEdgeContrib.Reader.SolidEdgeDocument.GetLastSavedVersion(file);
+                    Version lastSavedVersion = SolidEdge.Community.Reader.SolidEdgeDocument.GetLastSavedVersion(file);
 
                     if (currentVersion.CompareTo(lastSavedVersion) > 0)
                     {
