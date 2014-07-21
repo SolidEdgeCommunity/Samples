@@ -157,12 +157,12 @@ namespace SolidEdge.GlobalParameters
             try
             {
                 // Register with OLE to handle concurrency issues on the current thread.
-                SolidEdge.Common.OleMessageFilter.Register();
+                SolidEdge.Community.OleMessageFilter.Register();
 
                 if (_application == null)
                 {
                     // Connect to Solid Edge.
-                    _application = SolidEdge.Common.ApplicationHelper.Connect(true);
+                    _application = SolidEdge.Community.SolidEdgeInstall.Connect(true);
 
                     // Ensure Solid Edge GUI is visible.
                     _application.Visible = true;
@@ -210,7 +210,7 @@ namespace SolidEdge.GlobalParameters
             }
             finally
             {
-                SolidEdge.Common.OleMessageFilter.Unregister();
+                SolidEdge.Community.OleMessageFilter.Unregister();
             }
         }
 

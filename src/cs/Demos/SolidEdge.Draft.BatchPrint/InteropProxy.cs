@@ -19,10 +19,10 @@ namespace SolidEdge.Draft.BatchPrint
             try
             {
                 // Register with OLE to handle concurrency issues on the current thread.
-                SolidEdge.Common.OleMessageFilter.Register();
+                SolidEdge.Community.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdge.Common.ApplicationHelper.Connect(true);
+                application = SolidEdge.Community.SolidEdgeInstall.Connect(true);
 
                 // Make sure Solid Edge is visible.
                 application.Visible = true;
@@ -63,7 +63,7 @@ namespace SolidEdge.Draft.BatchPrint
                     draftDocument.Close();
                 }
 
-                SolidEdge.Common.OleMessageFilter.Register();
+                SolidEdge.Community.OleMessageFilter.Register();
             }
         }
 

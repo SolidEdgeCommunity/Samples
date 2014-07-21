@@ -1,6 +1,26 @@
-﻿using System.Reflection;
+﻿using SolidEdge.Community.AddIn;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+
+[assembly: NativeResource(1, @"res\EdgeBar_20x20.png")]
+[assembly: NativeResource(100, @"res\BoundingBox_32.png")]
+[assembly: NativeResource(101, @"res\Box_32x32.png")]
+[assembly: NativeResource(102, @"res\Boxes_32.png")]
+[assembly: NativeResource(103, @"res\Camera_32x32.png")]
+[assembly: NativeResource(104, @"res\CommandPrompt_32x32.png")]
+[assembly: NativeResource(105, @"res\Favorites_32x32.png")]
+[assembly: NativeResource(106, @"res\Folder_16x16.png")]
+[assembly: NativeResource(107, @"res\GdiPlus_32.png")]
+[assembly: NativeResource(108, @"res\Help_32x32.png")]
+[assembly: NativeResource(109, @"res\Monitor_16x16.png")]
+[assembly: NativeResource(110, @"res\Notepad_32x32.png")]
+[assembly: NativeResource(111, @"res\Photograph_32x32.png")]
+[assembly: NativeResource(112, @"res\Printer_32x32.png")]
+[assembly: NativeResource(113, @"res\Question_32x32.png")]
+[assembly: NativeResource(114, @"res\Save_16x16.png")]
+[assembly: NativeResource(115, @"res\Search_32x32.png")]
+[assembly: NativeResource(116, @"res\Tools_32x32.png")]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -10,7 +30,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AddInDemo")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +40,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("aea94ab4-6de6-4c20-9bf9-8b29aaec92e4")]
+[assembly: Guid("cae0c4a9-d46d-42b4-bfd8-867d75c92689")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,6 +1,5 @@
 ﻿using log4net;
 using log4net.Config;
-using SolidEdge.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,11 +19,11 @@ namespace SolidEdge.OpenSave
             _openSaveSettings = openSaveSettings;
 
             // Register with OLE to handle concurrency issues on the current thread.
-            OleMessageFilter.Register();
+            SolidEdge.Community.OleMessageFilter.Register();
 
             try
             {
-                SolidEdgeFramework.Application application = ApplicationHelper.Connect(true);
+                SolidEdgeFramework.Application application = SolidEdge.Community.SolidEdgeInstall.Connect(true);
                 SolidEdgeFramework.Documents documents = null;
                 SolidEdgeFramework.SolidEdgeDocument document = null;
 
@@ -84,7 +83,7 @@ namespace SolidEdge.OpenSave
             }
             finally
             {
-                OleMessageFilter.Unregister();
+                SolidEdge.Community.OleMessageFilter.Unregister();
             }
         }
 

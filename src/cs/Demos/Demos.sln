@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidEdge.ApplicationEvents", "SolidEdge.ApplicationEvents\SolidEdge.ApplicationEvents.csproj", "{37F1FAB6-DE28-4EA1-A223-768251DD17BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidEdge.Assembly.BOM", "SolidEdge.Assembly.BOM\SolidEdge.Assembly.BOM.csproj", "{38150385-B439-4CAB-AB23-7D856B042456}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidEdge.Common", "SolidEdge.Common\SolidEdge.Common.csproj", "{8A8E17B9-22BD-4A03-9B59-E41B687FEBA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidEdge.Draft.BatchPrint", "SolidEdge.Draft.BatchPrint\SolidEdge.Draft.BatchPrint.csproj", "{048CB2DE-3885-4F96-90F3-7A93E8975660}"
 EndProject
@@ -31,10 +31,6 @@ Global
 		{38150385-B439-4CAB-AB23-7D856B042456}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38150385-B439-4CAB-AB23-7D856B042456}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38150385-B439-4CAB-AB23-7D856B042456}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A8E17B9-22BD-4A03-9B59-E41B687FEBA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A8E17B9-22BD-4A03-9B59-E41B687FEBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A8E17B9-22BD-4A03-9B59-E41B687FEBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A8E17B9-22BD-4A03-9B59-E41B687FEBA3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{048CB2DE-3885-4F96-90F3-7A93E8975660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{048CB2DE-3885-4F96-90F3-7A93E8975660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{048CB2DE-3885-4F96-90F3-7A93E8975660}.Release|Any CPU.ActiveCfg = Release|Any CPU

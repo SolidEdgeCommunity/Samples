@@ -1,6 +1,5 @@
 ﻿using log4net;
 using log4net.Config;
-using SolidEdge.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +38,7 @@ namespace SolidEdge.OpenSave
                 textBoxAppender.TextBox = outputTextBox;
             }
 
-            _currentVersion = InstallDataHelper.GetVersion();
+            _currentVersion = SolidEdge.Community.SolidEdgeInstall.GetVersion();
             propertyGrid.SelectedObject = _openSaveSettings;
         }
 

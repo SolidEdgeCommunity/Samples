@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace AddInDemo
 {
-    public partial class CustomDialog : Form
+    public partial class MyCustomDialog : Form
     {
-        public CustomDialog()
+        public MyCustomDialog()
         {
             InitializeComponent();
         }

@@ -8,14 +8,13 @@ using System.Windows.Forms;
 
 namespace AddInDemo
 {
-    class MyViewOverlay : SolidEdgeContrib.AddIn.ViewOverlay
+    class MyViewOverlay : SolidEdge.Community.AddIn.ViewOverlay
     {
         private BoundingBoxInfo _boundingBoxInfo = default(BoundingBoxInfo);
         private bool _showOpenGlBoxes = false;
         private bool _showGdiPlus = false;
 
-        public MyViewOverlay(SolidEdgeFramework.View view)
-            : base(view)
+        public MyViewOverlay()
         {
             // Set the defaults.
             _boundingBoxInfo.LineColor = Color.Yellow;
@@ -384,19 +383,37 @@ namespace AddInDemo
         public bool ShowBoundingBox
         {
             get { return _boundingBoxInfo.Visible; }
-            set { _boundingBoxInfo.Visible = value; }
+            set
+            {
+                _boundingBoxInfo.Visible = value;
+
+                // Force the view to update.
+                this.View.Update();
+            }
         }
 
         public bool ShowOpenGlBoxes
         {
             get { return _showOpenGlBoxes; }
-            set { _showOpenGlBoxes = value; }
+            set
+            {
+                _showOpenGlBoxes = value;
+
+                // Force the view to update.
+                this.View.Update();
+            }
         }
 
         public bool ShowGDIPlus
         {
             get { return _showGdiPlus; }
-            set { _showGdiPlus = value; }
+            set
+            {
+                _showGdiPlus = value;
+
+                // Force the view to update.
+                this.View.Update();
+            }
         }
     }
 }

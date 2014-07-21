@@ -1,4 +1,4 @@
-﻿using SolidEdgeContrib.Extensions;
+﻿using SolidEdgeFramework.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AddInDemo
 {
-    public partial class MyEdgeBarControl : SolidEdgeContrib.AddIn.EdgeBarControl
+    public partial class MyEdgeBarControl : SolidEdge.Community.AddIn.EdgeBarControl
     {
         public MyEdgeBarControl()
         {
@@ -31,8 +31,9 @@ namespace AddInDemo
             // These properties are not initialized until AfterInitialize is called.
             var edgeBarPage = this.EdgeBarPage;
             var document = this.Document;
-
             var application = document.Application;
+
+            // Populate the richtextbox with some text.
             this.richTextBox1.Text = application.GetGlobalParameter<string>(SolidEdgeFramework.ApplicationGlobalConstants.seApplicationGlobalSystemInfo);
         }
     }

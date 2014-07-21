@@ -36,11 +36,9 @@
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(275, 364);
-            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Size = new System.Drawing.Size(183, 205);
+            this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
-            this.richTextBox1.WordWrap = false;
             // 
             // MyEdgeBarControl
             // 
@@ -48,7 +46,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.richTextBox1);
             this.Name = "MyEdgeBarControl";
-            this.Size = new System.Drawing.Size(275, 364);
+            this.Size = new System.Drawing.Size(183, 205);
             this.ToolTip = "My EdgeBar Control";
             this.AfterInitialize += new System.EventHandler(this.MyEdgeBarControl_AfterInitialize);
             this.Load += new System.EventHandler(this.MyEdgeBarControl_Load);

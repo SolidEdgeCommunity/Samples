@@ -1,6 +1,4 @@
-﻿using SolidEdgeContrib.AddIn;
-using SolidEdgeContrib.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -10,201 +8,112 @@ using System.Windows.Forms;
 namespace AddInDemo
 {
     [ComVisible(true)]
-    [Guid("00000000-0000-0000-0000-50FC26B3C501")]
-    [ProgId("SolidEdge.Samples.AddInDemo")]
-    public class MyAddIn : SolidEdgeContrib.AddIn.SolidEdgeAddIn
+    [Guid("BF1C1BB8-75EE-444A-8DCE-0F1521D0764B")] // Must be unique!
+    [ProgId("SolidEdge.Community.AddInDemo.MyAddIn")] // Must be unique!
+    public class MyAddIn : SolidEdge.Community.AddIn.SolidEdgeAddIn
     {
+        /// <summary>
+        /// Called when the addin is first loaded by Solid Edge.
+        /// </summary>
         public override void OnConnection(SolidEdgeFramework.Application application, SolidEdgeFramework.SeConnectMode ConnectMode, SolidEdgeFramework.AddIn AddInInstance)
         {
-            base.OnConnection(application, ConnectMode, AddInInstance);
-
-            // Put your custom OnConnection code here.
-            var applicationEvents = application.GetApplicationEvents();
-            applicationEvents.AfterWindowActivate += applicationEvents_AfterWindowActivate;
+            // If you makes changes to your ribbon, be sure to increment the GuiVersion or your ribbon
+            // will not initialize properly.
+            AddInEx.GuiVersion = 1;
         }
 
+        /// <summary>
+        /// Called when the addin first connects to a new Solid Edge environment.
+        /// </summary>
         public override void OnConnectToEnvironment(SolidEdgeFramework.Environment environment, bool firstTime)
         {
-            base.OnConnectToEnvironment(environment, firstTime);
-
-            // Put your custom OnConnectToEnvironment code here.
         }
 
+        /// <summary>
+        /// Called when the addin is about to be unloaded by Solid Edge.
+        /// </summary>
         public override void OnDisconnection(SolidEdgeFramework.SeDisconnectMode DisconnectMode)
         {
-            base.OnDisconnection(DisconnectMode);
-
-            // Put your custom OnDisconnection code here.
         }
 
-        public override void OnInitializeRibbon(Ribbon ribbon, bool firstTime)
+        /// <summary>
+        /// Called when Solid Edge raises the SolidEdgeFramework.ISEAddInEdgeBarEvents[Ex].AddPage() event.
+        /// </summary>
+        public override void OnCreateEdgeBarPage(SolidEdge.Community.AddIn.EdgeBarController controller, SolidEdgeFramework.SolidEdgeDocument document)
         {
-            // Let the base class handle initializing the ribbon via addin.manifest.
-            base.OnInitializeRibbon(ribbon, firstTime);
+            // Note: Due to a bug in the API, OnCreateEdgeBarPage does not get called when Solid Edge is first open and the first document is open.
+            // i.e. Under the hood, SolidEdgeFramework.ISEAddInEdgeBarEvents[Ex].AddPage() is not getting called. I am currently verifying the bug with development.
+            // As an alternative, you can call MyAddIn.Instance.EdgeBarController.Add() in some other event if you need.
+            
+            // Get the document type of the passed in document.
+            var documentType = document.Type;
 
-            // Now we can customize the ribbon.
-            var boxButton = ribbon.LookupControl("Box");
-
-            if (boxButton != null)
+            // Depending on the document type, you may have different edgebar controls.
+            switch (documentType)
             {
-                boxButton.Enabled = false;
+                case SolidEdgeFramework.DocumentTypeConstants.igAssemblyDocument:
+                case SolidEdgeFramework.DocumentTypeConstants.igPartDocument:
+                    controller.Add<MyEdgeBarControl>(document, 1);
+                    break;
             }
         }
 
-        public override void OnRibbonControl(RibbonControl ribbonControl)
+        /// <summary>
+        /// Called directly after OnConnectToEnvironment() to give you an opportunity to configure a ribbon for a specific environment.
+        /// </summary>
+        public override void OnCreateRibbon(SolidEdge.Community.AddIn.RibbonController controller, Guid environmentCategory, bool firstTime)
         {
-            // Base class doesn't do anything special when a ribbon control is invoked unless a macro is assigned.
-            //base.OnRibbonControl(ribbonControl);
-
-            if (ribbonControl.Name.Equals("Save"))
+            // Depending on environment, you may or may not want to load different ribbons.
+            if (environmentCategory.Equals(SolidEdge.CATID.SEDraftGuid))
             {
-                using (SaveFileDialog dialog = new SaveFileDialog())
-                {
-                    // The ShowDialog() extension method is exposed by: using SolidEdgeContrib.Extensions
-                    if (this.Application.ShowDialog(dialog) == DialogResult.OK)
-                    {
-                    }
-                }
+                // Draft Environment
+                controller.Add<DraftRibbon>(environmentCategory, firstTime);
             }
-            else if (ribbonControl.Name.Equals("Folder"))
+            else if (environmentCategory.Equals(SolidEdge.CATID.SEPartGuid))
             {
-                using (FolderBrowserDialog dialog = new FolderBrowserDialog())
-                {
-                    // The ShowDialog() extension method is exposed by: using SolidEdgeContrib.Extensions
-                    if (this.Application.ShowDialog(dialog) == DialogResult.OK)
-                    {
-                    }
-                }
+                // Traditional Part Environment
+                controller.Add<PartRibbon>(environmentCategory, firstTime);
             }
-            else if (ribbonControl.Name.Equals("Monitor"))
+            else if (environmentCategory.Equals(SolidEdge.CATID.SEDMPartGuid))
             {
-                using (CustomDialog dialog = new CustomDialog())
-                {
-                    // The ShowDialog() extension method is exposed by: using SolidEdgeContrib.Extensions
-                    if (this.Application.ShowDialog(dialog) == DialogResult.OK)
-                    {
-                    }
-                }
-            }
-            else if (ribbonControl.Name.Equals("Tools"))
-            {
-                this.Application.StartCommand(SolidEdgeConstants.PartCommandConstants.PartToolsOptions);
-            }
-            else if (ribbonControl.Name.Equals("Help"))
-            {
-                this.Application.StartCommand(SolidEdgeConstants.PartCommandConstants.PartHelpSolidEdgeontheWeb);
-            }
-            else if (ribbonControl.Name.Equals("BoundingBox"))
-            {
-                // Toggle the check state.
-                ribbonControl.Checked = !ribbonControl.Checked;
-
-                var window = this.Application.ActiveWindow as SolidEdgeFramework.Window;
-
-                if (window != null)
-                {
-                    // Find the relevant overlay(s).
-                    var overlays = this.ViewOverlays.OfType<MyViewOverlay>().Where(x => x.Window.Equals(window));
-
-                    foreach (var overlay in overlays)
-                    {
-                        overlay.ShowBoundingBox = ribbonControl.Checked;
-
-                        // For the view to update.
-                        window.View.Update();
-                    }
-                }
-            }
-            else if (ribbonControl.Name.Equals("OpenGLBoxes"))
-            {
-                // Toggle the check state.
-                ribbonControl.Checked = !ribbonControl.Checked;
-
-                var window = this.Application.ActiveWindow as SolidEdgeFramework.Window;
-
-                if (window != null)
-                {
-                    // Find the relevant overlay(s).
-                    var overlays = this.ViewOverlays.OfType<MyViewOverlay>().Where(x => x.Window.Equals(window));
-
-                    foreach (var overlay in overlays)
-                    {
-                        overlay.ShowOpenGlBoxes = ribbonControl.Checked;
-
-                        // For the view to update.
-                        window.View.Update();
-                    }
-                }
-            }
-            else if (ribbonControl.Name.Equals("GDIPlus"))
-            {
-                // Toggle the check state.
-                ribbonControl.Checked = !ribbonControl.Checked;
-
-                var window = this.Application.ActiveWindow as SolidEdgeFramework.Window;
-
-                if (window != null)
-                {
-                    // Find the relevant overlay(s).
-                    var overlays = this.ViewOverlays.OfType<MyViewOverlay>().Where(x => x.Window.Equals(window));
-
-                    foreach (var overlay in overlays)
-                    {
-                        overlay.ShowGDIPlus = ribbonControl.Checked;
-
-                        // For the view to update.
-                        window.View.Update();
-                    }
-                }
-            }
-            else
-            {
-                // Demonstrate toggling the check state.
-                ribbonControl.Checked = !ribbonControl.Checked;
+                // Synchronous Part Environment
+                controller.Add<PartRibbon>(environmentCategory, firstTime);
             }
         }
 
-        public override string NativeResourcesDllPath
-        {
-            get
-            {
-                // You can override the path to your native images if you need.
-                return base.NativeResourcesDllPath;
-            }
-        }
-
-        void applicationEvents_AfterWindowActivate(object theWindow)
-        {
-            var window = theWindow as SolidEdgeFramework.Window;
-
-            if (window != null)
-            {
-                // Add the overlay.
-                this.ViewOverlays.Add<MyViewOverlay>(window);
-            }
-        }
-
+        /// <summary>
+        /// Called when regasm.exe is executed against the assembly.
+        /// </summary>
         [ComRegisterFunction]
         public static void OnRegister(Type t)
         {
+            string title = "SolidEdge.Community.AddInDemo.MyAddIn";
+            string summary = "Solid Edge Addin in .NET 4.0.";
+            var enabled = true; // You have the option to register the addin in a disabled state.
+
+            // List of environments that your addin supports.
+            Guid[] environments = {
+                                        SolidEdge.CATID.SEApplicationGuid,
+                                        SolidEdge.CATID.SEAllDocumentEnvrionmentsGuid
+                                    };
+
             try
             {
-                // SolidEdgeAddIn.Register() will throw an exception if it cannot locate an embedded resource named [DEFAULT_NAMESPACE].addin.manifest.
-                // If you want to take control of the registration process, simply don't call SolidEdgeAddIn.Register().
-                SolidEdgeContrib.AddIn.SolidEdgeAddIn.Register(t);
+                MyAddIn.Register(t, title, summary, enabled, environments);
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.StackTrace, ex.Message);
             }
-
-            // Perform any additional registration procedures if needed.
         }
 
+        /// <summary>
+        /// Called when regasm.exe /u is executed against the assembly.
+        /// </summary>
         [ComUnregisterFunction]
         public static void OnUnregister(Type t)
         {
-            SolidEdgeContrib.AddIn.SolidEdgeAddIn.Unregister(t);
+            MyAddIn.Unregister(t);
         }
     }
 }

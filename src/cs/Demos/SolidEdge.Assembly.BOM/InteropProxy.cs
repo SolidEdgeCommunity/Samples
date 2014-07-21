@@ -21,10 +21,10 @@ namespace SolidEdge.Assembly.BOM
             try
             {
                 // Register with OLE to handle concurrency issues on the current thread.
-                SolidEdge.Common.OleMessageFilter.Register();
-
+                SolidEdge.Community.OleMessageFilter.Register();
+                
                 // Attempt to connect to a running instance of Solid Edge.
-                application = SolidEdge.Common.ApplicationHelper.Connect();
+                application = SolidEdge.Community.SolidEdgeInstall.Connect();
                 
                 // Get a reference to the Documents collection.
                 documents = application.Documents;
