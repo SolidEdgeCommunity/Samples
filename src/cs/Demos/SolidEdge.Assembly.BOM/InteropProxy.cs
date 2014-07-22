@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidEdgeCommunity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -21,10 +22,10 @@ namespace SolidEdge.Assembly.BOM
             try
             {
                 // Register with OLE to handle concurrency issues on the current thread.
-                SolidEdge.Community.OleMessageFilter.Register();
+                OleMessageFilter.Register();
                 
                 // Attempt to connect to a running instance of Solid Edge.
-                application = SolidEdge.Community.SolidEdgeInstall.Connect();
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect();
                 
                 // Get a reference to the Documents collection.
                 documents = application.Documents;

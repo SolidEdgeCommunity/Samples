@@ -9,8 +9,8 @@ namespace AddInDemo
 {
     [ComVisible(true)]
     [Guid("BF1C1BB8-75EE-444A-8DCE-0F1521D0764B")] // Must be unique!
-    [ProgId("SolidEdge.Community.AddInDemo.MyAddIn")] // Must be unique!
-    public class MyAddIn : SolidEdge.Community.AddIn.SolidEdgeAddIn
+    [ProgId("SolidEdgeCommunity.AddInDemo.MyAddIn")] // Must be unique!
+    public class MyAddIn : SolidEdgeCommunity.AddIn.SolidEdgeAddIn
     {
         /// <summary>
         /// Called when the addin is first loaded by Solid Edge.
@@ -39,10 +39,10 @@ namespace AddInDemo
         /// <summary>
         /// Called when Solid Edge raises the SolidEdgeFramework.ISEAddInEdgeBarEvents[Ex].AddPage() event.
         /// </summary>
-        public override void OnCreateEdgeBarPage(SolidEdge.Community.AddIn.EdgeBarController controller, SolidEdgeFramework.SolidEdgeDocument document)
+        public override void OnCreateEdgeBarPage(SolidEdgeCommunity.AddIn.EdgeBarController controller, SolidEdgeFramework.SolidEdgeDocument document)
         {
-            // Note: Due to a bug in the API, OnCreateEdgeBarPage does not get called when Solid Edge is first open and the first document is open.
-            // i.e. Under the hood, SolidEdgeFramework.ISEAddInEdgeBarEvents[Ex].AddPage() is not getting called. I am currently verifying the bug with development.
+            // Note: Confirmed with Solid Edge development, OnCreateEdgeBarPage does not get called when Solid Edge is first open and the first document is open.
+            // i.e. Under the hood, SolidEdgeFramework.ISEAddInEdgeBarEvents[Ex].AddPage() is not getting called.
             // As an alternative, you can call MyAddIn.Instance.EdgeBarController.Add() in some other event if you need.
             
             // Get the document type of the passed in document.
@@ -61,7 +61,7 @@ namespace AddInDemo
         /// <summary>
         /// Called directly after OnConnectToEnvironment() to give you an opportunity to configure a ribbon for a specific environment.
         /// </summary>
-        public override void OnCreateRibbon(SolidEdge.Community.AddIn.RibbonController controller, Guid environmentCategory, bool firstTime)
+        public override void OnCreateRibbon(SolidEdgeCommunity.AddIn.RibbonController controller, Guid environmentCategory, bool firstTime)
         {
             // Depending on environment, you may or may not want to load different ribbons.
             if (environmentCategory.Equals(SolidEdge.CATID.SEDraftGuid))

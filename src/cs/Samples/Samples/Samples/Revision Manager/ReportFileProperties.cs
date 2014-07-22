@@ -1,4 +1,4 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,7 +30,7 @@ namespace ApiSamples.Samples.Revision_Manager
                 application = new RevisionManager.Application();
 
                 // Build path to file.
-                string fileName = Path.Combine(InstallDataHelper.GetTrainingFolderPath(), "Coffee Pot.par");
+                string fileName = Path.Combine(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath(), "Coffee Pot.par");
 
                 FileInfo fileInfo = new FileInfo(fileName);
 

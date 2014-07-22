@@ -1,5 +1,5 @@
-﻿using SolidEdgeFramework.Extensions; // SolidEdge.Community.dll
-using SolidEdge.Community.AddIn;
+﻿using SolidEdgeCommunity.AddIn;
+using SolidEdgeFramework.Extensions; // SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace AddInDemo
 {
-    class PartRibbon : SolidEdge.Community.AddIn.Ribbon
+    class PartRibbon : SolidEdgeCommunity.AddIn.Ribbon
     {
         const string _embeddedResourceName = "AddInDemo.PartRibbon.xml";
         private RibbonButton _buttonBoundingBox;

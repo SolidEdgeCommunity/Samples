@@ -38,7 +38,7 @@ namespace SolidEdge.OpenSave
                 textBoxAppender.TextBox = outputTextBox;
             }
 
-            _currentVersion = SolidEdge.Community.SolidEdgeInstall.GetVersion();
+            _currentVersion = SolidEdgeCommunity.SolidEdgeInstall.GetVersion();
             propertyGrid.SelectedObject = _openSaveSettings;
         }
 

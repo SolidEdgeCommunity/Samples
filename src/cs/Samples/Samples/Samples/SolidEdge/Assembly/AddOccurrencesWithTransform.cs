@@ -1,4 +1,5 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
+using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,7 +40,7 @@ namespace ApiSamples.Samples.SolidEdge.Assembly
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
@@ -54,7 +55,7 @@ namespace ApiSamples.Samples.SolidEdge.Assembly
                 occurrences = assemblyDocument.Occurrences;
 
                 // Get path to Solid Edge training directory.  Typically, 'C:\Program Files\Solid Edge XXX\Training'.
-                DirectoryInfo trainingDirectory = new DirectoryInfo(InstallDataHelper.GetTrainingFolderPath());
+                DirectoryInfo trainingDirectory = new DirectoryInfo(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath());
 
                 // Add each occurrence in array.
                 for (int i = 0; i < transforms.Length; i++)

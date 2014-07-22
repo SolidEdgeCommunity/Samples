@@ -1,4 +1,4 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +26,7 @@ namespace ApiSamples.Samples.SolidEdge
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
 
                 // Get a reference to the material table.
                 matTable = application.GetMaterialTable();

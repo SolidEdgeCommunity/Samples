@@ -1,4 +1,6 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
+using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+using SolidEdgePart.Extensions; // SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +42,7 @@ namespace ApiSamples.Samples.SolidEdge.Part
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;

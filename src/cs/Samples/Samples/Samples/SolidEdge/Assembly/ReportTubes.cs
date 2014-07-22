@@ -1,4 +1,5 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
+using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,12 +33,12 @@ namespace ApiSamples.Samples.SolidEdge.Assembly
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
 
                 try
                 {
                     // Get the active document.
-                    assemblyDocument = application.TryActiveDocumentAs<SolidEdgeAssembly.AssemblyDocument>();
+                    assemblyDocument = application.GetActiveDocument<SolidEdgeAssembly.AssemblyDocument>(false);
                 }
                 catch
                 {
@@ -49,7 +50,7 @@ namespace ApiSamples.Samples.SolidEdge.Assembly
                     documents = application.Documents;
 
                     // Build path to part file.
-                    string filename = System.IO.Path.Combine(InstallDataHelper.GetTrainingFolderPath(), @"Try It\zone_try_it.asm");
+                    string filename = System.IO.Path.Combine(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath(), @"Try It\zone_try_it.asm");
                     assemblyDocument = (SolidEdgeAssembly.AssemblyDocument)documents.Open(filename);
                 }
 

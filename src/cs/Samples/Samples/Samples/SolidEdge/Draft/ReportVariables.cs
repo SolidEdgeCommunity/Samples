@@ -1,4 +1,5 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
+using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +25,10 @@ namespace ApiSamples.Samples.SolidEdge.Draft
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect();
+                application = SolidEdgeCommunity.SolidEdgeInstall.Start();
 
                 // Get a reference to the active document.
-                draftDocument = application.TryActiveDocumentAs<SolidEdgeDraft.DraftDocument>();
+                draftDocument = application.GetActiveDocument<SolidEdgeDraft.DraftDocument>(false);
 
                 // Make sure we have a document.
                 if (draftDocument != null)

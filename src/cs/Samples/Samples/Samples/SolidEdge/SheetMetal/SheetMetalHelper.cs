@@ -1,4 +1,4 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgePart.Extensions; // SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;

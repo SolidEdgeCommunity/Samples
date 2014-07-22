@@ -31,7 +31,7 @@ namespace SolidEdge.UnitsOfMeasure
             SolidEdgeFramework.Documents documents = null;
 
             // Connect to or start Solid Edge.
-            application = SolidEdge.Community.SolidEdgeInstall.Connect(true);
+            application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true);
 
             // Ensure Solid Edge is visible.
             application.Visible = true;

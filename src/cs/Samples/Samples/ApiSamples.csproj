@@ -45,15 +45,15 @@
     <Reference Include="ClariusLabs.NuDoc">
       <HintPath>..\packages\NuDoc.0.4.1308.1316\lib\net35\ClariusLabs.NuDoc.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.SolidEdge, Version=106.8.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interop.SolidEdge.106.8.1\lib\net40\Interop.SolidEdge.dll</HintPath>
+    <Reference Include="Interop.SolidEdge">
+      <HintPath>..\packages\Interop.SolidEdge.106.8.3\lib\net40\Interop.SolidEdge.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="SolidEdge.Community">
-      <HintPath>..\packages\SolidEdge.Community.106.8.1\lib\net40\SolidEdge.Community.dll</HintPath>
+    <Reference Include="SolidEdge.Community, Version=106.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SolidEdge.Community.106.1.0\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -115,10 +115,6 @@
     <Compile Include="Samples\SolidEdge\Assembly\CreateStructuralFrame.cs" />
     <Compile Include="Samples\SolidEdge\Assembly\ReportVariables.cs" />
     <Compile Include="Samples\SolidEdge\Assembly\SaveWindowAsImage.cs" />
-    <Compile Include="Samples\Constants.cs" />
-    <Compile Include="Samples\OleMessageFilter.cs" />
-    <Compile Include="Samples\SolidEdge\Constants.cs" />
-    <Compile Include="Samples\SolidEdge\Extensions.cs" />
     <Compile Include="Samples\SolidEdge\Helpers.cs" />
     <Compile Include="Samples\SolidEdge\Part\PartHelper.cs" />
     <Compile Include="Samples\SolidEdge\SheetMetal\SheetMetalHelper.cs" />

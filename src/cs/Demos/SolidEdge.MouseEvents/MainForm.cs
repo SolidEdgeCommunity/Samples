@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidEdgeCommunity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,7 @@ namespace SolidEdge.MouseEvents
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            SolidEdge.Community.OleMessageFilter.Register();
+            OleMessageFilter.Register();
 
             comboBoxEnableMouseMoveEvent.Items.AddRange(new object[] { true, false });
             comboBoxEnableMouseMoveEvent.SelectedIndex = 1;
@@ -41,7 +42,7 @@ namespace SolidEdge.MouseEvents
         {
             try
             {
-                _application = SolidEdge.Community.SolidEdgeInstall.Connect();
+                _application = SolidEdgeCommunity.SolidEdgeInstall.Connect();
                 _command = _application.CreateCommand((int)SolidEdgeConstants.seCmdFlag.seNoDeactivate);
                 _command.Terminate += command_Terminate;
                 _command.Start();

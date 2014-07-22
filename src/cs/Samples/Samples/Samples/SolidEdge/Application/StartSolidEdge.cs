@@ -1,4 +1,4 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +23,8 @@ namespace ApiSamples.Samples.SolidEdge
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Start();
-
+                application = SolidEdgeCommunity.SolidEdgeInstall.Start();
+                
                 // Make sure Solid Edge is visible to user.
                 application.Visible = true;
             }

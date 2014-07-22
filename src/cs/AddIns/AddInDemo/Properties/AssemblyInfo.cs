@@ -1,4 +1,4 @@
-﻿using SolidEdge.Community.AddIn;
+﻿using SolidEdgeCommunity.AddIn;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;

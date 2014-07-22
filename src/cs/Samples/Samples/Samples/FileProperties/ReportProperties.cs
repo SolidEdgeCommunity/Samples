@@ -1,5 +1,4 @@
-﻿using ApiSamples.Samples.SolidEdge;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +20,7 @@ namespace ApiSamples.Samples.FileProperties
             SolidEdgeFileProperties.Property property = null;
 
             // Build path to file.
-            string fileName = Path.Combine(InstallDataHelper.GetTrainingFolderPath(), "Coffee Pot.par");
+            string fileName = Path.Combine(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath(), "Coffee Pot.par");
 
             FileInfo fileInfo = new FileInfo(fileName);
 

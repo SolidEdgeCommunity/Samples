@@ -1,4 +1,5 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
+using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace ApiSamples.Samples.SolidEdge.Assembly
             if (breakOnStart) System.Diagnostics.Debugger.Break();
 
             SolidEdgeFramework.Application application = null;
-            SolidEdgeAssembly.AssemblyDocument assemblyDocument = null;
+            SolidEdgeAssembly.AssemblyDocument document = null;
             SolidEdgeAssembly.Configurations configurations = null;
             SolidEdgeAssembly.Configuration configuration = null;
 
@@ -27,15 +28,15 @@ namespace ApiSamples.Samples.SolidEdge.Assembly
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
 
                 // Get a reference to the active assembly document.
-                assemblyDocument = application.TryActiveDocumentAs<SolidEdgeAssembly.AssemblyDocument>();
+                document = application.GetActiveDocument<SolidEdgeAssembly.AssemblyDocument>(false);
 
-                if (assemblyDocument != null)
+                if (document != null)
                 {
                     // Get a reference tot he Configurations collection.
-                    configurations = assemblyDocument.Configurations;
+                    configurations = document.Configurations;
 
                     // Configuration name has to be unique so for demonstration
                     // purposes, use a random number.

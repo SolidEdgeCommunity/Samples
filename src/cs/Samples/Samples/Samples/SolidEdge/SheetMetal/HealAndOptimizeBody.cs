@@ -1,4 +1,5 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
+using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace ApiSamples.Samples.SolidEdge.SheetMetal
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true);
 
                 // Make sure user can see the GUI.
                 application.Visible = true;
@@ -35,7 +36,7 @@ namespace ApiSamples.Samples.SolidEdge.SheetMetal
                 application.Activate();
 
                 // Get a reference to the active document.
-                sheetMetalDocument = application.TryActiveDocumentAs<SolidEdgePart.SheetMetalDocument>();
+                sheetMetalDocument = application.GetActiveDocument<SolidEdgePart.SheetMetalDocument>(false);
 
                 if (sheetMetalDocument != null)
                 {

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AddInDemo
 {
-    public partial class MyEdgeBarControl : SolidEdge.Community.AddIn.EdgeBarControl
+    public partial class MyEdgeBarControl : SolidEdgeCommunity.AddIn.EdgeBarControl
     {
         public MyEdgeBarControl()
         {

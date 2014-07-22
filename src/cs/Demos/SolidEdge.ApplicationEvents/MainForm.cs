@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidEdgeCommunity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +27,7 @@ namespace SolidEdge.ApplicationEvents
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Register with OLE to handle concurrency issues on the current thread.
-            SolidEdge.Community.OleMessageFilter.Register();
+            OleMessageFilter.Register();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,7 +50,7 @@ namespace SolidEdge.ApplicationEvents
                 {
                     if (_application == null)
                     {
-                        _application = SolidEdge.Community.SolidEdgeInstall.Connect(true);
+                        _application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true);
                         _application.Visible = true;
                     }
 

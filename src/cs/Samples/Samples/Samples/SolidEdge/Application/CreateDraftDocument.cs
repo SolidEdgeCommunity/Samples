@@ -1,4 +1,4 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +25,13 @@ namespace ApiSamples.Samples.SolidEdge
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
 
                 // Create a new draft document.
-                draftDocument = (SolidEdgeDraft.DraftDocument)documents.Add(ProgId.DraftDocument);
+                draftDocument = (SolidEdgeDraft.DraftDocument)documents.Add(global::SolidEdge.PROGID.DraftDocument);
             }
             catch (System.Exception ex)
             {

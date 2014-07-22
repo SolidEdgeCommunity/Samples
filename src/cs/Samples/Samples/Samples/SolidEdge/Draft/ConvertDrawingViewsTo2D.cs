@@ -1,4 +1,5 @@
-﻿using ApiSamples.Samples.SolidEdge;
+﻿using SolidEdgeCommunity; //SolidEdge.Community.dll
+using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,40 +31,47 @@ namespace ApiSamples.Samples.SolidEdge.Draft
                 OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = ApplicationHelper.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
 
                 // Get a reference to the active draft document.
-                application.TryActiveDocumentAs<SolidEdgeDraft.DraftDocument>();
+                draftDocument = application.GetActiveDocument<SolidEdgeDraft.DraftDocument>(false);
 
-                // Get a reference to the Sections collection.
-                sections = draftDocument.Sections;
-
-                // Get a reference to the working section.
-                section = sections.WorkingSection;
-
-                // Get a reference to the working section sheets.
-                sectionSheets = section.Sheets;
-
-                for (int i = 1; i <= sectionSheets.Count; i++)
+                if (draftDocument != null)
                 {
-                    // Get a reference to the sheet.
-                    sheet = sectionSheets.Item(i);
+                    // Get a reference to the Sections collection.
+                    sections = draftDocument.Sections;
 
-                    // Get a reference to the DrawingViews collection.
-                    drawingViews = sheet.DrawingViews;
+                    // Get a reference to the working section.
+                    section = sections.WorkingSection;
 
-                    for (int j = 1; j < drawingViews.Count; j++)
+                    // Get a reference to the working section sheets.
+                    sectionSheets = section.Sheets;
+
+                    for (int i = 1; i <= sectionSheets.Count; i++)
                     {
-                        drawingView = drawingViews.Item(j);
+                        // Get a reference to the sheet.
+                        sheet = sectionSheets.Item(i);
 
-                        // DrawingView's of type igUserView cannot be converted.
-                        if (drawingView.DrawingViewType != SolidEdgeDraft.DrawingViewTypeConstants.igUserView)
+                        // Get a reference to the DrawingViews collection.
+                        drawingViews = sheet.DrawingViews;
+
+                        for (int j = 1; j < drawingViews.Count; j++)
                         {
-                            // Converts the current DrawingView to an igUserView type containing simple geometry
-                            // and disassociates the drawing view from the source 3d Model.
-                            drawingView.Drop();
+                            drawingView = drawingViews.Item(j);
+
+                            // DrawingView's of type igUserView cannot be converted.
+                            if (drawingView.DrawingViewType != SolidEdgeDraft.DrawingViewTypeConstants.igUserView)
+                            {
+                                // Converts the current DrawingView to an igUserView type containing simple geometry
+                                // and disassociates the drawing view from the source 3d Model.
+                                drawingView.Drop();
+                            }
                         }
                     }
+                }
+                else
+                {
+                    throw new System.Exception(Resources.NoActiveDraftDocument);
                 }
             }
             catch (System.Exception ex)

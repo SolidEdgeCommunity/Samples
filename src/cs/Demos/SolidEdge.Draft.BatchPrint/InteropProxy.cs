@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidEdgeCommunity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -19,10 +20,10 @@ namespace SolidEdge.Draft.BatchPrint
             try
             {
                 // Register with OLE to handle concurrency issues on the current thread.
-                SolidEdge.Community.OleMessageFilter.Register();
+                OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdge.Community.SolidEdgeInstall.Connect(true);
+                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true);
 
                 // Make sure Solid Edge is visible.
                 application.Visible = true;
@@ -63,7 +64,7 @@ namespace SolidEdge.Draft.BatchPrint
                     draftDocument.Close();
                 }
 
-                SolidEdge.Community.OleMessageFilter.Register();
+                OleMessageFilter.Register();
             }
         }
 

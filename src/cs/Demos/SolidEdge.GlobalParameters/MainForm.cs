@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidEdgeCommunity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -157,12 +158,12 @@ namespace SolidEdge.GlobalParameters
             try
             {
                 // Register with OLE to handle concurrency issues on the current thread.
-                SolidEdge.Community.OleMessageFilter.Register();
+                OleMessageFilter.Register();
 
                 if (_application == null)
                 {
                     // Connect to Solid Edge.
-                    _application = SolidEdge.Community.SolidEdgeInstall.Connect(true);
+                    _application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true);
 
                     // Ensure Solid Edge GUI is visible.
                     _application.Visible = true;
@@ -210,7 +211,7 @@ namespace SolidEdge.GlobalParameters
             }
             finally
             {
-                SolidEdge.Community.OleMessageFilter.Unregister();
+                OleMessageFilter.Unregister();
             }
         }
 

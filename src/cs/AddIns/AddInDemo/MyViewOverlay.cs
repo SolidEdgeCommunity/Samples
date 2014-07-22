@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace AddInDemo
 {
-    class MyViewOverlay : SolidEdge.Community.AddIn.ViewOverlay
+    class MyViewOverlay : SolidEdgeCommunity.AddIn.ViewOverlay
     {
         private BoundingBoxInfo _boundingBoxInfo = default(BoundingBoxInfo);
         private bool _showOpenGlBoxes = false;
