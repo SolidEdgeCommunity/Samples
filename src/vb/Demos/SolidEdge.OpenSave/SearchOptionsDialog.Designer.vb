@@ -50,7 +50,8 @@
 			Me.buttonOK.TabIndex = 0
 			Me.buttonOK.Text = "&OK"
 			Me.buttonOK.UseVisualStyleBackColor = True
-'			Me.buttonOK.Click += New System.EventHandler(Me.buttonOK_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
 			' 
 			' buttonCancel
 			' 
@@ -62,7 +63,8 @@
 			Me.buttonCancel.TabIndex = 1
 			Me.buttonCancel.Text = "&Cancel"
 			Me.buttonCancel.UseVisualStyleBackColor = True
-'			Me.buttonCancel.Click += New System.EventHandler(Me.buttonCancel_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			' 
 			' listViewExtensions
 			' 
@@ -127,7 +129,8 @@
 			Me.buttonAdd.TabIndex = 7
 			Me.buttonAdd.Text = "Add"
 			Me.buttonAdd.UseVisualStyleBackColor = True
-'			Me.buttonAdd.Click += New System.EventHandler(Me.buttonAdd_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
 			' 
 			' buttonRemove
 			' 
@@ -137,7 +140,8 @@
 			Me.buttonRemove.TabIndex = 8
 			Me.buttonRemove.Text = "Remove"
 			Me.buttonRemove.UseVisualStyleBackColor = True
-'			Me.buttonRemove.Click += New System.EventHandler(Me.buttonRemove_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
 			' 
 			' SearchOptionsDialog
 			' 
@@ -160,7 +164,8 @@
 			Me.ShowInTaskbar = False
 			Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
 			Me.Text = "Search Options"
-'			Me.Load += New System.EventHandler(Me.SearchOptionsDialog_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.SearchOptionsDialog_Load);
 			Me.ResumeLayout(False)
 			Me.PerformLayout()
 

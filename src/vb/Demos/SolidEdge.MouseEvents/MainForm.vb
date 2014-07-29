@@ -1,4 +1,4 @@
-﻿Imports SolidEdge.Common
+﻿Imports SolidEdgeCommunity
 Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
@@ -37,7 +37,7 @@ Namespace SolidEdge.MouseEvents
 
 		Private Sub buttonStartCommand_Click(ByVal sender As Object, ByVal e As EventArgs) Handles buttonStartCommand.Click
 			Try
-				_application = ApplicationHelper.Connect()
+				_application = SolidEdgeCommunity.SolidEdgeInstall.Connect()
 				_command = _application.CreateCommand(CInt(SolidEdgeConstants.seCmdFlag.seNoDeactivate))
 				AddHandler _command.Terminate, AddressOf command_Terminate
 				_command.Start()
@@ -141,10 +141,10 @@ Namespace SolidEdge.MouseEvents
 			entries.Add(String.Format("lKeyPointType: '{0}'", lKeyPointType))
 			entries.Add(String.Format("pGraphicDispatch: '{0}'", graphicDispatchType))
 
-			Dim PointOnGraphicFlag As Integer
-			Dim PointOnGraphic_X As Double
-			Dim PointOnGraphic_Y As Double
-			Dim PointOnGraphic_Z As Double
+			Dim PointOnGraphicFlag As Integer = Nothing
+			Dim PointOnGraphic_X As Double = Nothing
+			Dim PointOnGraphic_Y As Double = Nothing
+			Dim PointOnGraphic_Z As Double = Nothing
 
 			' Get the actual point on the graphic element (in database coordinates). Note this is not
 			' the same as the input dX, dY, dZ coordinates. Those are either in window coordinates

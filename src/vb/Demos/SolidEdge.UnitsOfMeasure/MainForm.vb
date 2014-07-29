@@ -28,7 +28,7 @@ Namespace SolidEdge.UnitsOfMeasure
 			Dim documents As SolidEdgeFramework.Documents = Nothing
 
 			' Connect to or start Solid Edge.
-			application = SolidEdge.Common.ApplicationHelper.Connect(True)
+			application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True)
 
 			' Ensure Solid Edge is visible.
 			application.Visible = True

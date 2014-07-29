@@ -69,7 +69,8 @@
 			Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
 			Me.exitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
 			Me.exitToolStripMenuItem.Text = "&Exit"
-'			Me.exitToolStripMenuItem.Click += New System.EventHandler(Me.exitToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			' 
 			' toolStrip
 			' 
@@ -88,7 +89,8 @@
 			Me.buttonOpen.Name = "buttonOpen"
 			Me.buttonOpen.Size = New System.Drawing.Size(23, 22)
 			Me.buttonOpen.Text = "Select from folder"
-'			Me.buttonOpen.Click += New System.EventHandler(Me.buttonOpen_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
 			' 
 			' toolStripSeparator1
 			' 
@@ -103,7 +105,8 @@
 			Me.buttonPrint.Name = "buttonPrint"
 			Me.buttonPrint.Size = New System.Drawing.Size(23, 22)
 			Me.buttonPrint.Text = "Print"
-'			Me.buttonPrint.Click += New System.EventHandler(Me.buttonPrint_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
 			' 
 			' statusStrip
 			' 
@@ -176,7 +179,8 @@
 			Me.customListView.UseCompatibleStateImageBehavior = False
 			Me.customListView.UseExplorerTheme = True
 			Me.customListView.View = System.Windows.Forms.View.Details
-'			Me.customListView.SelectedIndexChanged += New System.EventHandler(Me.customListView_SelectedIndexChanged)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.customListView.SelectedIndexChanged += new System.EventHandler(this.customListView_SelectedIndexChanged);
 			' 
 			' columnHeader1
 			' 
@@ -197,7 +201,8 @@
 			Me.MainMenuStrip = Me.menuStrip
 			Me.Name = "MainForm"
 			Me.Text = "Batch Print"
-'			Me.Load += New System.EventHandler(Me.MainForm_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MainForm_Load);
 			Me.menuStrip.ResumeLayout(False)
 			Me.menuStrip.PerformLayout()
 			Me.toolStrip.ResumeLayout(False)

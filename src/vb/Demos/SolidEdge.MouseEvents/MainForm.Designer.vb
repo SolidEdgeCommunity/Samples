@@ -68,7 +68,8 @@
 			Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
 			Me.exitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
 			Me.exitToolStripMenuItem.Text = "&Exit"
-'			Me.exitToolStripMenuItem.Click += New System.EventHandler(Me.exitToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			' 
 			' toolStrip1
 			' 
@@ -145,7 +146,8 @@
 			Me.buttonStartCommand.Name = "buttonStartCommand"
 			Me.buttonStartCommand.Size = New System.Drawing.Size(23, 22)
 			Me.buttonStartCommand.Text = "Start Command"
-'			Me.buttonStartCommand.Click += New System.EventHandler(Me.buttonStartCommand_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonStartCommand.Click += new System.EventHandler(this.buttonStartCommand_Click);
 			' 
 			' buttonStopCommand
 			' 
@@ -156,7 +158,8 @@
 			Me.buttonStopCommand.Name = "buttonStopCommand"
 			Me.buttonStopCommand.Size = New System.Drawing.Size(23, 22)
 			Me.buttonStopCommand.Text = "Stop Command"
-'			Me.buttonStopCommand.Click += New System.EventHandler(Me.buttonStopCommand_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonStopCommand.Click += new System.EventHandler(this.buttonStopCommand_Click);
 			' 
 			' toolStripLabel2
 			' 
@@ -202,7 +205,8 @@
 			Me.MainMenuStrip = Me.menuStrip1
 			Me.Name = "MainForm"
 			Me.Text = "Solid Edge Mouse Events"
-'			Me.Load += New System.EventHandler(Me.MainForm_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MainForm_Load);
 			Me.menuStrip1.ResumeLayout(False)
 			Me.menuStrip1.PerformLayout()
 			Me.toolStrip1.ResumeLayout(False)

@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports SolidEdgeCommunity
+Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Data
@@ -130,11 +131,11 @@ Namespace SolidEdge.GlobalParameters
 
 			Try
 				' Register with OLE to handle concurrency issues on the current thread.
-				SolidEdge.Common.OleMessageFilter.Register()
+				OleMessageFilter.Register()
 
 				If _application Is Nothing Then
 					' Connect to Solid Edge.
-					_application = SolidEdge.Common.ApplicationHelper.Connect(True)
+					_application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True)
 
 					' Ensure Solid Edge GUI is visible.
 					_application.Visible = True
@@ -172,7 +173,7 @@ Namespace SolidEdge.GlobalParameters
 #End If
 				Throw
 			Finally
-				SolidEdge.Common.OleMessageFilter.Unregister()
+				OleMessageFilter.Unregister()
 			End Try
 		End Sub
 

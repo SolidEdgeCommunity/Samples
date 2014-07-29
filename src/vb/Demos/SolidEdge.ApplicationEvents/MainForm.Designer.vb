@@ -58,7 +58,8 @@
 			Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
 			Me.exitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
 			Me.exitToolStripMenuItem.Text = "&Exit"
-'			Me.exitToolStripMenuItem.Click += New System.EventHandler(Me.exitToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			' 
 			' toolStrip1
 			' 
@@ -79,7 +80,8 @@
 			Me.eventButton.Size = New System.Drawing.Size(23, 22)
 			Me.eventButton.Text = "Events"
 			Me.eventButton.ToolTipText = "Toggles event connections"
-'			Me.eventButton.Click += New System.EventHandler(Me.eventButton_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.eventButton.Click += new System.EventHandler(this.eventButton_Click);
 			' 
 			' toolStripSeparator1
 			' 
@@ -94,7 +96,8 @@
 			Me.clearButton.Name = "clearButton"
 			Me.clearButton.Size = New System.Drawing.Size(23, 22)
 			Me.clearButton.Text = "toolStripButton1"
-'			Me.clearButton.Click += New System.EventHandler(Me.clearButton_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
 			' 
 			' statusStrip1
 			' 
@@ -135,8 +138,10 @@
 			Me.MainMenuStrip = Me.menuStrip1
 			Me.Name = "MainForm"
 			Me.Text = "Solid Edge Events Demo"
-'			Me.FormClosing += New System.Windows.Forms.FormClosingEventHandler(Me.MainForm_FormClosing)
-'			Me.Load += New System.EventHandler(Me.MainForm_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MainForm_Load);
 			Me.menuStrip1.ResumeLayout(False)
 			Me.menuStrip1.PerformLayout()
 			Me.toolStrip1.ResumeLayout(False)

@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports SolidEdgeCommunity
+Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Runtime.InteropServices
@@ -19,10 +20,10 @@ Namespace SolidEdge.Assembly.BOM
 
 			Try
 				' Register with OLE to handle concurrency issues on the current thread.
-				SolidEdge.Common.OleMessageFilter.Register()
+				OleMessageFilter.Register()
 
 				' Attempt to connect to a running instance of Solid Edge.
-				application = SolidEdge.Common.ApplicationHelper.Connect()
+				application = SolidEdgeCommunity.SolidEdgeInstall.Connect()
 
 				' Get a reference to the Documents collection.
 				documents = application.Documents

@@ -38,9 +38,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SolidEdgeContrib, Version=106.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SolidEdge.Community, Version=106.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SolidEdgeContrib.106.0.3\lib\net40\SolidEdgeContrib.dll</HintPath>
+      <HintPath>..\packages\SolidEdge.Community.106.9.0\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.vb" />
+    <Compile Include="IDispatchHelper.vb" />
+    <Compile Include="Interfaces.vb" />
     <Compile Include="ListViewEx.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -104,23 +106,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SolidEdge.Common\SolidEdge.Common.vbproj">
-      <Project>{8a8e17b9-22bd-4a03-9b59-e41b687feba3}</Project>
-      <Name>SolidEdge.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Media\Run_16x16.png" />
     <None Include="Media\Stop_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <Import Project="..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets" Condition="Exists('..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdgeContrib.106.0.3\build\net40\SolidEdgeContrib.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

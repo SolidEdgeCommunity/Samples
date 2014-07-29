@@ -47,13 +47,14 @@ namespace AddInDemo
             
             // Get the document type of the passed in document.
             var documentType = document.Type;
+            var imageId = 1;
 
             // Depending on the document type, you may have different edgebar controls.
             switch (documentType)
             {
                 case SolidEdgeFramework.DocumentTypeConstants.igAssemblyDocument:
                 case SolidEdgeFramework.DocumentTypeConstants.igPartDocument:
-                    controller.Add<MyEdgeBarControl>(document, 1);
+                    controller.Add<MyEdgeBarControl>(document, imageId);
                     break;
             }
         }

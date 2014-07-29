@@ -1,6 +1,5 @@
 ﻿Imports log4net
 Imports log4net.Config
-Imports SolidEdge.Common
 Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
@@ -35,7 +34,7 @@ Namespace SolidEdge.OpenSave
 				textBoxAppender.TextBox = outputTextBox
 			End If
 
-			_currentVersion = InstallDataHelper.GetVersion()
+			_currentVersion = SolidEdgeCommunity.SolidEdgeInstall.GetVersion()
 			propertyGrid.SelectedObject = _openSaveSettings
 		End Sub
 
@@ -127,7 +126,7 @@ Namespace SolidEdge.OpenSave
 				End If
 
 				Try
-					Dim lastSavedVersion As Version = PowerToys.SolidEdge.SolidEdgeDocument.GetLastSavedVersion(file)
+                    Dim lastSavedVersion As Version = SolidEdgeCommunity.Reader.SolidEdgeDocument.GetLastSavedVersion(file)
 
 					If currentVersion.CompareTo(lastSavedVersion) > 0 Then
 						results.Add(New SearchResultItem(file, lastSavedVersion))

@@ -71,7 +71,8 @@
 			Me.exitToolStripMenuItem.ShortcutKeys = (CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys))
 			Me.exitToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
 			Me.exitToolStripMenuItem.Text = "&Exit"
-'			Me.exitToolStripMenuItem.Click += New System.EventHandler(Me.exitToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			' 
 			' editToolStripMenuItem
 			' 
@@ -86,7 +87,8 @@
 			Me.copyToolStripMenuItem.ShortcutKeys = (CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys))
 			Me.copyToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
 			Me.copyToolStripMenuItem.Text = "&Copy"
-'			Me.copyToolStripMenuItem.Click += New System.EventHandler(Me.copyToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
 			' 
 			' toolStripMenuItem1
 			' 
@@ -99,7 +101,8 @@
 			Me.selectAllToolStripMenuItem.ShortcutKeys = (CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys))
 			Me.selectAllToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
 			Me.selectAllToolStripMenuItem.Text = "Select &All"
-'			Me.selectAllToolStripMenuItem.Click += New System.EventHandler(Me.selectAllToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
 			' 
 			' viewToolStripMenuItem
 			' 
@@ -114,7 +117,8 @@
 			Me.refreshToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5
 			Me.refreshToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
 			Me.refreshToolStripMenuItem.Text = "&Refresh"
-'			Me.refreshToolStripMenuItem.Click += New System.EventHandler(Me.refreshToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
 			' 
 			' toolStrip1
 			' 
@@ -133,7 +137,8 @@
 			Me.buttonRefresh.Name = "buttonRefresh"
 			Me.buttonRefresh.Size = New System.Drawing.Size(23, 22)
 			Me.buttonRefresh.Text = "Refresh"
-'			Me.buttonRefresh.Click += New System.EventHandler(Me.buttonRefresh_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
 			' 
 			' statusStrip1
 			' 
@@ -201,7 +206,8 @@
 			Me.MainMenuStrip = Me.menuStrip1
 			Me.Name = "MainForm"
 			Me.Text = "Assembly BOM"
-'			Me.Load += New System.EventHandler(Me.MainForm_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MainForm_Load);
 			Me.menuStrip1.ResumeLayout(False)
 			Me.menuStrip1.PerformLayout()
 			Me.toolStrip1.ResumeLayout(False)

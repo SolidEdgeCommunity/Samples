@@ -8,14 +8,13 @@ Imports System.Windows.Forms
 
 Namespace AddInDemo
 	Friend Class MyViewOverlay
-		Inherits SolidEdgeContrib.AddIn.ViewOverlay
+		Inherits SolidEdgeCommunity.AddIn.ViewOverlay
 
 		Private _boundingBoxInfo As BoundingBoxInfo = Nothing
 		Private _showOpenGlBoxes As Boolean = False
 		Private _showGdiPlus As Boolean = False
 
-		Public Sub New(ByVal view As SolidEdgeFramework.View)
-			MyBase.New(view)
+		Public Sub New()
 			' Set the defaults.
 			_boundingBoxInfo.LineColor = Color.Yellow
 			_boundingBoxInfo.LineWidth = 2F
@@ -350,6 +349,9 @@ Namespace AddInDemo
 			End Get
 			Set(ByVal value As Boolean)
 				_boundingBoxInfo.Visible = value
+
+				' Force the view to update.
+				Me.View.Update()
 			End Set
 		End Property
 
@@ -359,6 +361,9 @@ Namespace AddInDemo
 			End Get
 			Set(ByVal value As Boolean)
 				_showOpenGlBoxes = value
+
+				' Force the view to update.
+				Me.View.Update()
 			End Set
 		End Property
 
@@ -368,6 +373,9 @@ Namespace AddInDemo
 			End Get
 			Set(ByVal value As Boolean)
 				_showGdiPlus = value
+
+				' Force the view to update.
+				Me.View.Update()
 			End Set
 		End Property
 	End Class

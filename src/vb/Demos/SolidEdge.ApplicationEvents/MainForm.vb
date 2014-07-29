@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports SolidEdgeCommunity
+Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Data
@@ -25,7 +26,7 @@ Namespace SolidEdge.ApplicationEvents
 
 		Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 			' Register with OLE to handle concurrency issues on the current thread.
-			SolidEdge.Common.OleMessageFilter.Register()
+			OleMessageFilter.Register()
 		End Sub
 
 		Private Sub MainForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -42,7 +43,7 @@ Namespace SolidEdge.ApplicationEvents
 			Try
 				If eventButton.Checked Then
 					If _application Is Nothing Then
-						_application = SolidEdge.Common.ApplicationHelper.Connect(True)
+						_application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True)
 						_application.Visible = True
 					End If
 
@@ -72,6 +73,9 @@ Namespace SolidEdge.ApplicationEvents
 			Dim sb As New StringBuilder()
 			sb.AppendFormat("{0}({1})", MethodBase.GetCurrentMethod().Name, theDocument)
 			sb.AppendLine()
+
+			'MyLabel.Invoke((Action)(() => MyLabel.Text = text));
+			'MyLabel.Invoke((Action)(() => MyLabel.Update()));
 
 			eventLogTextBox.Do(Sub(ctl) ctl.AppendText(sb.ToString()))
 		End Sub

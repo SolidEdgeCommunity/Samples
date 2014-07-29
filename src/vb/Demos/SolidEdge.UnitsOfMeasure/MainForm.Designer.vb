@@ -72,7 +72,8 @@
 			Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
 			Me.exitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
 			Me.exitToolStripMenuItem.Text = "&Exit"
-'			Me.exitToolStripMenuItem.Click += New System.EventHandler(Me.exitToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			' 
 			' externalPropertyGrid
 			' 
@@ -83,7 +84,8 @@
 			Me.externalPropertyGrid.Size = New System.Drawing.Size(388, 305)
 			Me.externalPropertyGrid.TabIndex = 5
 			Me.externalPropertyGrid.ToolbarVisible = False
-'			Me.externalPropertyGrid.PropertyValueChanged += New System.Windows.Forms.PropertyValueChangedEventHandler(Me.externalPropertyGrid_PropertyValueChanged)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.externalPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.externalPropertyGrid_PropertyValueChanged);
 			' 
 			' internalPropertyGrid
 			' 
@@ -94,7 +96,8 @@
 			Me.internalPropertyGrid.Size = New System.Drawing.Size(392, 305)
 			Me.internalPropertyGrid.TabIndex = 7
 			Me.internalPropertyGrid.ToolbarVisible = False
-'			Me.internalPropertyGrid.PropertyValueChanged += New System.Windows.Forms.PropertyValueChangedEventHandler(Me.internalPropertyGrid_PropertyValueChanged)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.internalPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.internalPropertyGrid_PropertyValueChanged);
 			' 
 			' splitContainer1
 			' 
@@ -191,7 +194,8 @@
 			Me.MainMenuStrip = Me.menuStrip1
 			Me.Name = "MainForm"
 			Me.Text = "Units of Measure"
-'			Me.Load += New System.EventHandler(Me.MainForm_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MainForm_Load);
 			Me.menuStrip1.ResumeLayout(False)
 			Me.menuStrip1.PerformLayout()
 			Me.splitContainer1.Panel1.ResumeLayout(False)

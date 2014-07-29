@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports SolidEdgeCommunity
+Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Reflection
@@ -17,10 +18,10 @@ Namespace SolidEdge.Draft.BatchPrint
 
 			Try
 				' Register with OLE to handle concurrency issues on the current thread.
-				SolidEdge.Common.OleMessageFilter.Register()
+				OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdge.Common.ApplicationHelper.Connect(True)
+				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True)
 
 				' Make sure Solid Edge is visible.
 				application.Visible = True
@@ -56,7 +57,7 @@ Namespace SolidEdge.Draft.BatchPrint
 					draftDocument.Close()
 				End If
 
-				SolidEdge.Common.OleMessageFilter.Register()
+				OleMessageFilter.Register()
 			End Try
 		End Sub
 

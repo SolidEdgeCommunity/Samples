@@ -31,11 +31,9 @@
 			Me.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
 			Me.richTextBox1.Location = New System.Drawing.Point(0, 0)
 			Me.richTextBox1.Name = "richTextBox1"
-			Me.richTextBox1.ReadOnly = True
-			Me.richTextBox1.Size = New System.Drawing.Size(275, 364)
-			Me.richTextBox1.TabIndex = 0
+			Me.richTextBox1.Size = New System.Drawing.Size(183, 205)
+			Me.richTextBox1.TabIndex = 1
 			Me.richTextBox1.Text = ""
-			Me.richTextBox1.WordWrap = False
 			' 
 			' MyEdgeBarControl
 			' 
@@ -43,10 +41,12 @@
 			Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 			Me.Controls.Add(Me.richTextBox1)
 			Me.Name = "MyEdgeBarControl"
-			Me.Size = New System.Drawing.Size(275, 364)
+			Me.Size = New System.Drawing.Size(183, 205)
 			Me.ToolTip = "My EdgeBar Control"
-'			Me.AfterInitialize += New System.EventHandler(Me.MyEdgeBarControl_AfterInitialize)
-'			Me.Load += New System.EventHandler(Me.MyEdgeBarControl_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.AfterInitialize += new System.EventHandler(this.MyEdgeBarControl_AfterInitialize);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MyEdgeBarControl_Load);
 			Me.ResumeLayout(False)
 
 		End Sub

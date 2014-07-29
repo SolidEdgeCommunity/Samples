@@ -37,13 +37,9 @@
     <ApplicationIcon>BatchPrint.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SolidEdge, Version=106.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SolidEdge.Community, Version=106.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interop.SolidEdge.106.8.3\lib\net40\Interop.SolidEdge.dll</HintPath>
-    </Reference>
-    <Reference Include="SolidEdge.Community, Version=106.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SolidEdge.Community.106.1.0\lib\net40\SolidEdge.Community.dll</HintPath>
+      <HintPath>..\packages\SolidEdge.Community.106.9.0\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

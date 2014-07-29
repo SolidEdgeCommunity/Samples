@@ -72,7 +72,8 @@
 			Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
 			Me.exitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
 			Me.exitToolStripMenuItem.Text = "&Exit"
-'			Me.exitToolStripMenuItem.Click += New System.EventHandler(Me.exitToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			' 
 			' statusStrip1
 			' 
@@ -90,7 +91,8 @@
 			Me.refreshButton.Name = "refreshButton"
 			Me.refreshButton.Size = New System.Drawing.Size(23, 22)
 			Me.refreshButton.Text = "Refresh"
-'			Me.refreshButton.Click += New System.EventHandler(Me.refreshButton_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
 			' 
 			' toolStripSeparator1
 			' 
@@ -119,7 +121,8 @@
 			Me.editButton.Name = "editButton"
 			Me.editButton.Size = New System.Drawing.Size(23, 22)
 			Me.editButton.Text = "Edit"
-'			Me.editButton.Click += New System.EventHandler(Me.editButton_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.editButton.Click += new System.EventHandler(this.editButton_Click);
 			' 
 			' toolStrip1
 			' 
@@ -145,7 +148,8 @@
 			Me.lvGlobalParameters.TabIndex = 0
 			Me.lvGlobalParameters.UseCompatibleStateImageBehavior = False
 			Me.lvGlobalParameters.View = System.Windows.Forms.View.Details
-'			Me.lvGlobalParameters.SelectedIndexChanged += New System.EventHandler(Me.lvGlobalParameters_SelectedIndexChanged)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.lvGlobalParameters.SelectedIndexChanged += new System.EventHandler(this.lvGlobalParameters_SelectedIndexChanged);
 			' 
 			' columnHeader1
 			' 
@@ -178,7 +182,8 @@
 			Me.MainMenuStrip = Me.menuStrip1
 			Me.Name = "MainForm"
 			Me.Text = "Solid Edge Global Parameters"
-'			Me.Load += New System.EventHandler(Me.MainForm_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MainForm_Load);
 			Me.menuStrip1.ResumeLayout(False)
 			Me.menuStrip1.PerformLayout()
 			Me.toolStrip1.ResumeLayout(False)

@@ -77,7 +77,8 @@
 			Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
 			Me.exitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
 			Me.exitToolStripMenuItem.Text = "&Exit"
-'			Me.exitToolStripMenuItem.Click += New System.EventHandler(Me.exitToolStripMenuItem_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			' 
 			' statusStrip
 			' 
@@ -145,16 +146,21 @@
 			' searchBackgroundWorker
 			' 
 			Me.searchBackgroundWorker.WorkerSupportsCancellation = True
-'			Me.searchBackgroundWorker.DoWork += New System.ComponentModel.DoWorkEventHandler(Me.searchBackgroundWorker_DoWork)
-'			Me.searchBackgroundWorker.RunWorkerCompleted += New System.ComponentModel.RunWorkerCompletedEventHandler(Me.searchBackgroundWorker_RunWorkerCompleted)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.searchBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.searchBackgroundWorker_DoWork);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.searchBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBackgroundWorker_RunWorkerCompleted);
 			' 
 			' openSaveBackgroundWorker
 			' 
 			Me.openSaveBackgroundWorker.WorkerReportsProgress = True
 			Me.openSaveBackgroundWorker.WorkerSupportsCancellation = True
-'			Me.openSaveBackgroundWorker.DoWork += New System.ComponentModel.DoWorkEventHandler(Me.openSaveBackgroundWorker_DoWork)
-'			Me.openSaveBackgroundWorker.ProgressChanged += New System.ComponentModel.ProgressChangedEventHandler(Me.openSaveBackgroundWorker_ProgressChanged)
-'			Me.openSaveBackgroundWorker.RunWorkerCompleted += New System.ComponentModel.RunWorkerCompletedEventHandler(Me.openSaveBackgroundWorker_RunWorkerCompleted)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.openSaveBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.openSaveBackgroundWorker_DoWork);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.openSaveBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.openSaveBackgroundWorker_ProgressChanged);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.openSaveBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.openSaveBackgroundWorker_RunWorkerCompleted);
 			' 
 			' propertyGrid
 			' 
@@ -189,7 +195,8 @@
 			Me.buttonSelectFolder.Name = "buttonSelectFolder"
 			Me.buttonSelectFolder.Size = New System.Drawing.Size(23, 22)
 			Me.buttonSelectFolder.Text = "Select files"
-'			Me.buttonSelectFolder.Click += New System.EventHandler(Me.buttonSelectFolder_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonSelectFolder.Click += new System.EventHandler(this.buttonSelectFolder_Click);
 			' 
 			' buttonStart
 			' 
@@ -199,7 +206,8 @@
 			Me.buttonStart.Name = "buttonStart"
 			Me.buttonStart.Size = New System.Drawing.Size(23, 22)
 			Me.buttonStart.Text = "Start"
-'			Me.buttonStart.Click += New System.EventHandler(Me.buttonStart_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
 			' 
 			' buttonStop
 			' 
@@ -209,7 +217,8 @@
 			Me.buttonStop.Name = "buttonStop"
 			Me.buttonStop.Size = New System.Drawing.Size(23, 22)
 			Me.buttonStop.Text = "Stop"
-'			Me.buttonStop.Click += New System.EventHandler(Me.buttonStop_Click)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
 			' 
 			' listViewFiles
 			' 
@@ -254,8 +263,10 @@
 			Me.MainMenuStrip = Me.menuStrip
 			Me.Name = "MainForm"
 			Me.Text = "Solid Edge Open\Save"
-'			Me.FormClosing += New System.Windows.Forms.FormClosingEventHandler(Me.MainForm_FormClosing)
-'			Me.Load += New System.EventHandler(Me.MainForm_Load)
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.MainForm_Load);
 			Me.menuStrip.ResumeLayout(False)
 			Me.menuStrip.PerformLayout()
 			Me.toolStrip.ResumeLayout(False)

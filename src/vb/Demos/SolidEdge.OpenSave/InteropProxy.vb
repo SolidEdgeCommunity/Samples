@@ -1,6 +1,6 @@
-﻿Imports log4net
+﻿Imports SolidEdgeCommunity
+Imports log4net
 Imports log4net.Config
-Imports SolidEdge.Common
 Imports System
 Imports System.Collections.Generic
 Imports System.IO
@@ -22,7 +22,7 @@ Namespace SolidEdge.OpenSave
 			OleMessageFilter.Register()
 
 			Try
-				Dim application As SolidEdgeFramework.Application = ApplicationHelper.Connect(True)
+				Dim application As SolidEdgeFramework.Application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True)
 				Dim documents As SolidEdgeFramework.Documents = Nothing
 				Dim document As SolidEdgeFramework.SolidEdgeDocument = Nothing
 
