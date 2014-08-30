@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Assembly
+Namespace Assembly
 	''' <summary>
 	''' Saves the active 3D window as an image.
 	''' </summary>
@@ -23,7 +23,7 @@ Namespace ApiSamples.Assembly
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Start()
+				application = SolidEdgeCommunity.SolidEdgeUtils.Start()
 
 				' Get a reference to the active document.
 				document = application.GetActiveDocument(Of SolidEdgeAssembly.AssemblyDocument)(False)

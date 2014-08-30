@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Gets the physical properties of the active sheetmetal and reports the information.
 	''' </summary>
@@ -37,7 +37,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the active document.
 				sheetMetalDocument = application.GetActiveDocument(Of SolidEdgePart.SheetMetalDocument)(False)

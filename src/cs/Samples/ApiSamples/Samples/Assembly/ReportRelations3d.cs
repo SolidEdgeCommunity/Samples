@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,6 @@ namespace ApiSamples.Assembly
             SolidEdgeAssembly.PlanarRelation3d planarRelation3d = null;
             SolidEdgeAssembly.Occurrence occurrence1 = null;
             SolidEdgeAssembly.Occurrence occurrence2 = null;
-            SolidEdgeFramework.ObjectType relationObjectType;
             SolidEdgeAssembly.Relation3dDetailedStatusConstants detailedStatus;
             SolidEdgeAssembly.Relation3dStatusConstants status;
 
@@ -33,7 +32,7 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the active document.
                 assemblyDocument = application.GetActiveDocument<SolidEdgeAssembly.AssemblyDocument>(false);
@@ -41,14 +40,15 @@ namespace ApiSamples.Assembly
                 // Get a reference to the Relations3d collection.
                 relations3d = assemblyDocument.Relations3d;
 
-                for (int i = 1; i <= relations3d.Count; i++)
+                foreach (var relation3d in relations3d.OfType<object>())
                 {
-                    object relation3d = relations3d.Item(i);
-
                     try
                     {
-                        // Use ReflectionHelper class to get the object type.
-                        relationObjectType = ReflectionHelper.GetObjectType(relation3d);
+                        // Not used in this sample but a good example of how to get the runtime type.
+                        var relationType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(relation3d);
+
+                        // Use helper class to get the object type.
+                        var relationObjectType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgeFramework.ObjectType>(relation3d, "Type", (SolidEdgeFramework.ObjectType)0);
 
                         // Reset statuses.
                         detailedStatus = (SolidEdgeAssembly.Relation3dDetailedStatusConstants)0;

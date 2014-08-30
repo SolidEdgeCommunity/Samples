@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions;
+﻿using SolidEdgeCommunity.Extensions; // https://github.com/SolidEdgeCommunity/SolidEdge.Community/wiki/Using-Extension-Methods
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,9 +19,6 @@ namespace AddInDemo
 
         private void MyEdgeBarControl_Load(object sender, EventArgs e)
         {
-            // You can set the tooltip in the designer or at runtime.
-            this.ToolTip = "My EdgeBar Control";
-
             // Trick to use the default system font.
             this.Font = SystemFonts.MessageBoxFont;
         }

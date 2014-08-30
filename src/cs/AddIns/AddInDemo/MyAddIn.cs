@@ -1,4 +1,12 @@
-﻿using System;
+﻿// See https://github.com/SolidEdgeCommunity/SolidEdge.Community for documentation.
+// Useful Package Manager Console Commands: https://github.com/SolidEdgeCommunity/SolidEdge.Community/wiki/Package-Manager-Console-Powershell-Reference
+// Register-SolidEdgeAddIn
+// Unregister-SolidEdgeAddIn
+// Set-DebugSolidEdge
+// Install-SolidEdgeAddInRibbonSchema
+
+using SolidEdgeCommunity.Extensions; // https://github.com/SolidEdgeCommunity/SolidEdge.Community/wiki/Using-Extension-Methods
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -53,7 +61,9 @@ namespace AddInDemo
             switch (documentType)
             {
                 case SolidEdgeFramework.DocumentTypeConstants.igAssemblyDocument:
+                case SolidEdgeFramework.DocumentTypeConstants.igDraftDocument:
                 case SolidEdgeFramework.DocumentTypeConstants.igPartDocument:
+                case SolidEdgeFramework.DocumentTypeConstants.igSheetMetalDocument:
                     controller.Add<MyEdgeBarControl>(document, imageId);
                     break;
             }
@@ -65,20 +75,35 @@ namespace AddInDemo
         public override void OnCreateRibbon(SolidEdgeCommunity.AddIn.RibbonController controller, Guid environmentCategory, bool firstTime)
         {
             // Depending on environment, you may or may not want to load different ribbons.
-            if (environmentCategory.Equals(SolidEdge.CATID.SEDraftGuid))
+            if (environmentCategory.Equals(SolidEdgeSDK.EnvironmentCategories.Assembly))
+            {
+                // Assembly Environment
+                controller.Add<Ribbon3d>(environmentCategory, firstTime);
+            }
+            else if (environmentCategory.Equals(SolidEdgeSDK.EnvironmentCategories.Draft))
             {
                 // Draft Environment
-                controller.Add<DraftRibbon>(environmentCategory, firstTime);
+                controller.Add<Ribbon2d>(environmentCategory, firstTime);
             }
-            else if (environmentCategory.Equals(SolidEdge.CATID.SEPartGuid))
+            else if (environmentCategory.Equals(SolidEdgeSDK.EnvironmentCategories.Part))
             {
                 // Traditional Part Environment
-                controller.Add<PartRibbon>(environmentCategory, firstTime);
+                controller.Add<Ribbon3d>(environmentCategory, firstTime);
             }
-            else if (environmentCategory.Equals(SolidEdge.CATID.SEDMPartGuid))
+            else if (environmentCategory.Equals(SolidEdgeSDK.EnvironmentCategories.DMPart))
             {
                 // Synchronous Part Environment
-                controller.Add<PartRibbon>(environmentCategory, firstTime);
+                controller.Add<Ribbon3d>(environmentCategory, firstTime);
+            }
+            else if (environmentCategory.Equals(SolidEdgeSDK.EnvironmentCategories.SheetMetal))
+            {
+                // Traditional SheetMetal Environment
+                controller.Add<Ribbon3d>(environmentCategory, firstTime);
+            }
+            else if (environmentCategory.Equals(SolidEdgeSDK.EnvironmentCategories.DMSheetMetal))
+            {
+                // Synchronous SheetMetal Environment
+                controller.Add<Ribbon3d>(environmentCategory, firstTime);
             }
         }
 
@@ -94,8 +119,8 @@ namespace AddInDemo
 
             // List of environments that your addin supports.
             Guid[] environments = {
-                                        SolidEdge.CATID.SEApplicationGuid,
-                                        SolidEdge.CATID.SEAllDocumentEnvrionmentsGuid
+                                      SolidEdgeSDK.EnvironmentCategories.Application,
+                                      SolidEdgeSDK.EnvironmentCategories.AllDocumentEnvrionments
                                     };
 
             try

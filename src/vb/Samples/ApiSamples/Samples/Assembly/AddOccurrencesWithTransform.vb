@@ -1,11 +1,11 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Assembly
+Namespace Assembly
 	''' <summary>
 	''' Creates a new assembly and adds multiple occurrences by filename with a transform.
 	''' </summary>
@@ -36,7 +36,7 @@ Namespace ApiSamples.Assembly
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the documents collection.
 				documents = application.Documents
@@ -51,7 +51,7 @@ Namespace ApiSamples.Assembly
 				occurrences = assemblyDocument.Occurrences
 
 				' Get path to Solid Edge training directory.  Typically, 'C:\Program Files\Solid Edge XXX\Training'.
-				Dim trainingDirectory As New DirectoryInfo(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath())
+				Dim trainingDirectory As New DirectoryInfo(SolidEdgeCommunity.SolidEdgeUtils.GetTrainingFolderPath())
 
 				' Add each occurrence in array.
 				For i As Integer = 0 To transforms.Length - 1

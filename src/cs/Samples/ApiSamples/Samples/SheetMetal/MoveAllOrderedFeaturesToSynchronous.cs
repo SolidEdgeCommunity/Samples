@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace ApiSamples.SheetMetal
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Bring Solid Edge to the foreground.
                 application.Activate();
@@ -49,12 +49,15 @@ namespace ApiSamples.SheetMetal
                     features = model.Features;
 
                     // Iterate through the features.
-                    foreach (object feature in features)
+                    foreach (var feature in features.OfType<object>())
                     {
-                        string featureEdgeBarName = ReflectionHelper.GetPropertyValueAsString(feature, "EdgeBarName");
+                        var featureEdgeBarName = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<string>(feature, "EdgeBarName", "Unknown");
+                        var featureModelingMode = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgePart.ModelingModeConstants>(feature, "ModelingModeType", (SolidEdgePart.ModelingModeConstants)0);
 
                         // Check to see if the feature is ordered.
-                        if (ReflectionHelper.GetPartFeatureModelingMode(feature) == SolidEdgePart.ModelingModeConstants.seModelingModeOrdered)
+                        // NOTE: I've found that not all features have a ModelingModeType property. SolidEdgePart.FaceRotate is one of them.
+                        // This is a bit of a problem because I see no way to know if the FaceRotate is Ordered or Synchronous...
+                        if (featureModelingMode == SolidEdgePart.ModelingModeConstants.seModelingModeOrdered)
                         {
                             int NumberOfFeaturesCausingError = 0;
                             Array ErrorMessageArray = Array.CreateInstance(typeof(string), 0);

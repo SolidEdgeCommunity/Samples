@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +15,7 @@ namespace ApiSamples.Draft
             SolidEdgeFramework.Application application = null;
             SolidEdgeDraft.DraftDocument draftDocument = null;
             SolidEdgeDraft.Sections sections = null;
-            SolidEdgeDraft.Section section = null;
             SolidEdgeDraft.SectionSheets sectionSheets = null;
-            SolidEdgeDraft.Sheet sheet = null;
 
             try
             {
@@ -25,7 +23,7 @@ namespace ApiSamples.Draft
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the active document.
                 draftDocument = application.GetActiveDocument<SolidEdgeDraft.DraftDocument>(false);
@@ -36,10 +34,8 @@ namespace ApiSamples.Draft
                     // Get a reference to the sections collection.
                     sections = draftDocument.Sections;
 
-                    for (int i = 1; i <= sections.Count; i++)
+                    foreach (var section in sections.OfType<SolidEdgeDraft.Section>())
                     {
-                        section = sections.Item(i);
-
                         Console.WriteLine("Name: {0}", section.Name);
 
                         try
@@ -53,11 +49,9 @@ namespace ApiSamples.Draft
 
                         sectionSheets = section.Sheets;
 
-                        for (int j = 1; j <= sectionSheets.Count; j++)
+                        foreach (var sheet in sectionSheets.OfType<SolidEdgeDraft.Sheet>())
                         {
-                            sheet = sectionSheets.Item(j);
-
-                            Console.WriteLine("SectionSheets[{0}]: {1}", j, sheet.Name);
+                            Console.WriteLine("SectionSheets[{0}]: {1}", sheet.Index, sheet.Name);
                         }
 
                         Console.WriteLine();

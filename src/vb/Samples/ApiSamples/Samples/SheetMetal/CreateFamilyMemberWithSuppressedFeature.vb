@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Creates a new sheetmetal with a family member containing suppressed features.
 	''' </summary>
@@ -26,7 +26,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the documents collection.
 				documents = application.Documents
@@ -51,8 +51,8 @@ Namespace ApiSamples.SheetMetal
 					' Get the EdgebarFeature at the current index.
 					Dim edgebarFeature As Object = edgebarFeatures.Item(i)
 
-					' Use ReflectionHelper class to get the feature type.
-					Dim featureType As SolidEdgePart.FeatureTypeConstants = ReflectionHelper.GetPartFeatureType(edgebarFeature)
+					' Use helper class to get the feature type.
+					Dim featureType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgePart.FeatureTypeConstants)(edgebarFeature, "Type", CType(0, SolidEdgePart.FeatureTypeConstants))
 
 					' Looking for a Hole pattern to suppress.
 					If featureType = SolidEdgePart.FeatureTypeConstants.igUserDefinedPatternFeatureObject Then

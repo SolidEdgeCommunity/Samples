@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,6 @@ namespace ApiSamples.Assembly
             SolidEdgeFramework.Application application = null;
             SolidEdgeAssembly.AssemblyDocument assemblyDocument = null;
             SolidEdgeAssembly.Occurrences occurrences = null;
-            SolidEdgeAssembly.Occurrence occurrence = null;
             SolidEdgeAssembly.InterferenceStatusConstants interferenceStatus;
             SolidEdgeConstants.InterferenceComparisonConstants compare = SolidEdgeConstants.InterferenceComparisonConstants.seInterferenceComparisonSet1vsAllOther;
             SolidEdgeConstants.InterferenceReportConstants reportType = SolidEdgeConstants.InterferenceReportConstants.seInterferenceReportPartNames;
@@ -30,7 +29,7 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the active assembly document.
                 assemblyDocument = application.GetActiveDocument<SolidEdgeAssembly.AssemblyDocument>(false);
@@ -40,11 +39,8 @@ namespace ApiSamples.Assembly
                     // Get a reference to the Occurrences collection.
                     occurrences = assemblyDocument.Occurrences;
 
-                    for (int i = 1; i <= occurrences.Count; i++)
+                    foreach (var occurrence in occurrences.OfType<SolidEdgeAssembly.Occurrence>())
                     {
-                        // Get a reference to the occurrence.
-                        occurrence = occurrences.Item(i);
-
                         Array set1 = Array.CreateInstance(occurrence.GetType(), 1);
                         object numInterferences = 0;
                         object retSet1 = Array.CreateInstance(typeof(SolidEdgeAssembly.Occurrence), 0);
@@ -89,9 +85,9 @@ namespace ApiSamples.Assembly
                                         object obj1 = ((Array)retSet1).GetValue(j);
                                         object obj2 = ((Array)retSet2).GetValue(j);
 
-                                        // Use ReflectionHelper class to get the object type.
-                                        SolidEdgeFramework.ObjectType objectType1 = ReflectionHelper.GetObjectType(obj1);
-                                        SolidEdgeFramework.ObjectType objectType2 = ReflectionHelper.GetObjectType(obj2);
+                                        // Use helper class to get the object type.
+                                        var objectType1 = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgeFramework.ObjectType>(obj1, "Type", (SolidEdgeFramework.ObjectType)0);
+                                        var objectType2 = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgeFramework.ObjectType>(obj2, "Type", (SolidEdgeFramework.ObjectType)0);
 
                                         SolidEdgeFramework.Reference reference1 = null;
                                         SolidEdgeFramework.Reference reference2 = null;

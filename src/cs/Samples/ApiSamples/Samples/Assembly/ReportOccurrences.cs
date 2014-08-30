@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,6 @@ namespace ApiSamples.Assembly
             SolidEdgeFramework.Application application = null;
             SolidEdgeAssembly.AssemblyDocument assemblyDocument = null;
             SolidEdgeAssembly.Occurrences occurrences = null;
-            SolidEdgeAssembly.Occurrence occurrence = null;
 
             try
             {
@@ -26,7 +25,7 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get the active document.
                 assemblyDocument = application.GetActiveDocument<SolidEdgeAssembly.AssemblyDocument>(false);
@@ -36,11 +35,8 @@ namespace ApiSamples.Assembly
                     // Get a reference to the Occurrences collection.
                     occurrences = assemblyDocument.Occurrences;
 
-                    for (int i = 1; i <= occurrences.Count; i++)
+                    foreach (var occurrence in occurrences.OfType<SolidEdgeAssembly.Occurrence>())
                     {
-                        // Get a reference to the occurrence.
-                        occurrence = occurrences.Item(i);
-
                         // Allocate a new array to hold transform.
                         double[] transform = new double[6];
 

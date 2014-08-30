@@ -4,7 +4,7 @@ Imports System.IO
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Reports information about the Material.mtl XML file.
 	''' </summary>
@@ -23,7 +23,7 @@ Namespace ApiSamples.Application
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the material table.
 				matTable = application.GetMaterialTable()

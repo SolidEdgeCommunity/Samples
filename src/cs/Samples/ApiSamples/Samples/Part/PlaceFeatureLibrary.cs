@@ -1,5 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
-using SolidEdgePart.Extensions; // SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,7 +32,7 @@ namespace ApiSamples.Part
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
@@ -51,7 +50,7 @@ namespace ApiSamples.Part
                 refPlane = refPlanes.GetTopPlane();
 
                 // Get path to Solid Edge training directory.  Typically, 'C:\Program Files\Solid Edge XXX\Training'.
-                DirectoryInfo trainingDirectory = new DirectoryInfo(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath());
+                DirectoryInfo trainingDirectory = new DirectoryInfo(SolidEdgeCommunity.SolidEdgeUtils.GetTrainingFolderPath());
 
                 // Build path to source part document.
                 string LibName = Path.Combine(trainingDirectory.FullName, "block.par");
@@ -62,8 +61,8 @@ namespace ApiSamples.Part
                 // Optionally, iterate through all of the added features.
                 foreach (object feature in features)
                 {
-                    // Use ReflectionHelper class to get the feature type.
-                    SolidEdgePart.FeatureTypeConstants featureType = ReflectionHelper.GetPartFeatureType(feature);
+                    // Use helper class to get the feature type.
+                    var featureType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgePart.FeatureTypeConstants>(feature, "Type", (SolidEdgePart.FeatureTypeConstants)0);
 
                     // Depending on the feature type, we can cast the weakly typed feature to a strongly typed feature.
                     switch (featureType)

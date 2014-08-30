@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -60,7 +60,7 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
@@ -72,7 +72,7 @@ namespace ApiSamples.Assembly
                 application.DoIdle();
 
                 // Get path to Solid Edge training directory.  Typically, 'C:\Program Files\Solid Edge XXX\Training'.
-                DirectoryInfo trainingDirectory = new DirectoryInfo(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath());
+                DirectoryInfo trainingDirectory = new DirectoryInfo(SolidEdgeCommunity.SolidEdgeUtils.GetTrainingFolderPath());
                 
                 // Build path to file.
                 string filename = System.IO.Path.Combine(trainingDirectory.FullName, "Coffee Pot.par");

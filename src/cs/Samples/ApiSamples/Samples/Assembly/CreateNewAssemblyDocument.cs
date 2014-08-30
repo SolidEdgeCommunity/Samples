@@ -24,13 +24,13 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
 
                 // Create a new assembly document.
-                assemblyDocument = (SolidEdgeAssembly.AssemblyDocument)documents.Add(global::SolidEdge.PROGID.AssemblyDocument);
+                assemblyDocument = (SolidEdgeAssembly.AssemblyDocument)documents.Add(SolidEdgeSDK.PROGID.SolidEdge_AssemblyDocument);
             }
             catch (System.Exception ex)
             {

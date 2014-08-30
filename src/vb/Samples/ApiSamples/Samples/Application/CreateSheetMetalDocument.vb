@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Creates a new sheetmetal document.
 	''' </summary>
@@ -22,13 +22,13 @@ Namespace ApiSamples.Application
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the documents collection.
 				documents = application.Documents
 
 				' Create a new sheetmetal document.
-				sheetMetalDocument = DirectCast(documents.Add(Global.SolidEdge.PROGID.SheetMetalDocument), SolidEdgePart.SheetMetalDocument)
+				sheetMetalDocument = DirectCast(documents.Add(SolidEdgeSDK.PROGID.SolidEdge_SheetMetalDocument), SolidEdgePart.SheetMetalDocument)
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)
 			Finally

@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Draft
+Namespace Draft
 	''' <summary>
 	''' Saves the active 2D window as an image.
 	''' </summary>
@@ -28,7 +28,7 @@ Namespace ApiSamples.Draft
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Bring Solid Edge to the foreground.
 				application.Activate()

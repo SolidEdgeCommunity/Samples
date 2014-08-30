@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace ApiSamples.Part
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Bring Solid Edge to the foreground.
                 application.Activate();
@@ -44,7 +44,8 @@ namespace ApiSamples.Part
                         // Get the EdgebarFeature at current index.
                         object edgebarFeature = edgebarFeatures.Item(i);
 
-                        Type type = IDispatchHelper.GetManagedType(edgebarFeature);
+                        // Get the managed type.
+                        var type = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(edgebarFeature);
 
                         Console.WriteLine("Item({0}) is of type '{1}'", i, type);
 

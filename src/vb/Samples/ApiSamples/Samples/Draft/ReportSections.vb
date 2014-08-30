@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Draft
+Namespace Draft
 	Friend Class ReportSections
 		Friend Shared Sub RunSample(ByVal breakOnStart As Boolean)
 			If breakOnStart Then
@@ -14,16 +14,14 @@ Namespace ApiSamples.Draft
 			Dim application As SolidEdgeFramework.Application = Nothing
 			Dim draftDocument As SolidEdgeDraft.DraftDocument = Nothing
 			Dim sections As SolidEdgeDraft.Sections = Nothing
-			Dim section As SolidEdgeDraft.Section = Nothing
 			Dim sectionSheets As SolidEdgeDraft.SectionSheets = Nothing
-			Dim sheet As SolidEdgeDraft.Sheet = Nothing
 
 			Try
 				' Register with OLE to handle concurrency issues on the current thread.
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the active document.
 				draftDocument = application.GetActiveDocument(Of SolidEdgeDraft.DraftDocument)(False)
@@ -33,9 +31,7 @@ Namespace ApiSamples.Draft
 					' Get a reference to the sections collection.
 					sections = draftDocument.Sections
 
-					For i As Integer = 1 To sections.Count
-						section = sections.Item(i)
-
+					For Each section In sections.OfType(Of SolidEdgeDraft.Section)()
 						Console.WriteLine("Name: {0}", section.Name)
 
 						Try
@@ -46,14 +42,12 @@ Namespace ApiSamples.Draft
 
 						sectionSheets = section.Sheets
 
-						For j As Integer = 1 To sectionSheets.Count
-							sheet = sectionSheets.Item(j)
-
-							Console.WriteLine("SectionSheets[{0}]: {1}", j, sheet.Name)
-						Next j
+						For Each sheet In sectionSheets.OfType(Of SolidEdgeDraft.Sheet)()
+							Console.WriteLine("SectionSheets[{0}]: {1}", sheet.Index, sheet.Name)
+						Next sheet
 
 						Console.WriteLine()
-					Next i
+					Next section
 				Else
 					Throw New System.Exception(Resources.NoActiveDraftDocument)
 				End If

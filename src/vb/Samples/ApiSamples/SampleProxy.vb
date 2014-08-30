@@ -6,16 +6,14 @@ Imports System.Reflection
 Imports System.Text
 Imports System.Threading
 
-Namespace ApiSamples
-	Friend Class SampleProxy
-		Inherits MarshalByRefObject
+Friend Class SampleProxy
+	Inherits MarshalByRefObject
 
-		Public Sub RunSample(ByVal method As MethodInfo, ByVal parameters() As Object, ByVal consoleOut As TextWriter)
-			If consoleOut IsNot Nothing Then
-				Console.SetOut(consoleOut)
-			End If
+	Public Sub RunSample(ByVal method As MethodInfo, ByVal parameters() As Object, ByVal consoleOut As TextWriter)
+		If consoleOut IsNot Nothing Then
+			Console.SetOut(consoleOut)
+		End If
 
-			method.Invoke(Nothing, parameters)
-		End Sub
-	End Class
-End Namespace
+		method.Invoke(Nothing, parameters)
+	End Sub
+End Class

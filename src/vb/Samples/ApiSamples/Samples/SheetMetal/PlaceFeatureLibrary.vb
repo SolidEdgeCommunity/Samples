@@ -1,12 +1,11 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
-Imports SolidEdgePart.Extensions ' SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Creates a new sheetmetal and places features from an existing document.
 	''' </summary>
@@ -32,7 +31,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the documents collection.
 				documents = application.Documents
@@ -50,7 +49,7 @@ Namespace ApiSamples.SheetMetal
 				refPlane = refPlanes.GetTopPlane()
 
 				' Get path to Solid Edge training directory.  Typically, 'C:\Program Files\Solid Edge XXX\Training'.
-				Dim trainingDirectory As New DirectoryInfo(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath())
+				Dim trainingDirectory As New DirectoryInfo(SolidEdgeCommunity.SolidEdgeUtils.GetTrainingFolderPath())
 
 				' Build path to source part document.
 				'string LibName = System.IO.Path.Combine(trainingDirectory.FullName, "Foot1.psm");
@@ -60,9 +59,9 @@ Namespace ApiSamples.SheetMetal
 				sheetMetalDocument.PlaceFeatureLibrary(LibName, refPlane, 0.0, 0.0, 0.0, features)
 
 				' Optionally, iterate through all of the added features.
-				For Each feature As Object In features
-					' Use ReflectionHelper class to get the feature type.
-					Dim featureType As SolidEdgePart.FeatureTypeConstants = ReflectionHelper.GetPartFeatureType(feature)
+				For Each feature In features.OfType(Of Object)()
+					' Use helper class to get the feature type.
+					Dim featureType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgePart.FeatureTypeConstants)(feature, "Type", CType(0, SolidEdgePart.FeatureTypeConstants))
 
 					' Depending on the feature type, we can cast the weakly typed feature to a strongly typed feature.
 					Select Case featureType

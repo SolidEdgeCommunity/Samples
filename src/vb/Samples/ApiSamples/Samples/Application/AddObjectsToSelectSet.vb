@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Adds objects from the active document to the document select set.
 	''' </summary>
@@ -31,7 +31,7 @@ Namespace ApiSamples.Application
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Start()
+				application = SolidEdgeCommunity.SolidEdgeUtils.Start()
 
 				' Get a reference to the active document.
 				document = application.GetActiveDocument(Of SolidEdgeFramework.SolidEdgeDocument)(False)

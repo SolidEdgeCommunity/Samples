@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Draft
+Namespace Draft
 	''' <summary>
 	''' Creates a new draft and draws a polygon.
 	''' </summary>
@@ -27,7 +27,7 @@ Namespace ApiSamples.Draft
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the documents collection.
 				documents = application.Documents
@@ -90,9 +90,9 @@ Namespace ApiSamples.Draft
 				selectSet.RemoveAll()
 
 				' Add all lines to ActiveSelectSet.
-				For i As Integer = 1 To lines2d.Count
-					selectSet.Add(lines2d.Item(i))
-				Next i
+				For Each line2d In lines2d.OfType(Of SolidEdgeFrameworkSupport.Line2d)()
+					selectSet.Add(line2d)
+				Next line2d
 
 				' Switch to ISO view.
 				application.StartCommand(SolidEdgeConstants.PartCommandConstants.PartViewISOView)

@@ -8,19 +8,17 @@
 ' </auto-generated>
 '------------------------------------------------------------------------------
 
-Namespace ApiSamples
 
 
-	<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(), Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")> _
-	Friend NotInheritable Partial Class Settings
-		Inherits System.Configuration.ApplicationSettingsBase
+<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(), Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")> _
+Friend NotInheritable Partial Class Settings
+	Inherits System.Configuration.ApplicationSettingsBase
 
-		Private Shared defaultInstance As Settings = (CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New Settings()), Settings))
+	Private Shared defaultInstance As Settings = (CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New Settings()), Settings))
 
-		Public Shared ReadOnly Property [Default]() As Settings
-			Get
-				Return defaultInstance
-			End Get
-		End Property
-	End Class
-End Namespace
+	Public Shared ReadOnly Property [Default]() As Settings
+		Get
+			Return defaultInstance
+		End Get
+	End Property
+End Class

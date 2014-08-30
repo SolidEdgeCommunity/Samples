@@ -22,8 +22,8 @@ namespace ApiSamples.Application
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Start();
-                
+                application = SolidEdgeCommunity.SolidEdgeUtils.Start();
+
                 // Make sure Solid Edge is visible to user.
                 application.Visible = true;
             }

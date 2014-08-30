@@ -1,11 +1,11 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Reflection
 Imports System.Text
 
-Namespace ApiSamples.Assembly
+Namespace Assembly
 	''' <summary>
 	''' Reports all occurrences of the active assembly that are tubes.
 	''' </summary>
@@ -22,7 +22,6 @@ Namespace ApiSamples.Assembly
 			Dim documents As SolidEdgeFramework.Documents = Nothing
 			Dim assemblyDocument As SolidEdgeAssembly.AssemblyDocument = Nothing
 			Dim occurrences As SolidEdgeAssembly.Occurrences = Nothing
-			Dim occurrence As SolidEdgeAssembly.Occurrence = Nothing
 			Dim tube As SolidEdgeAssembly.Tube = Nothing
 
 			Try
@@ -30,7 +29,7 @@ Namespace ApiSamples.Assembly
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				Try
 					' Get the active document.
@@ -43,7 +42,7 @@ Namespace ApiSamples.Assembly
 					documents = application.Documents
 
 					' Build path to part file.
-					Dim filename As String = System.IO.Path.Combine(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath(), "Try It\zone_try_it.asm")
+					Dim filename As String = System.IO.Path.Combine(SolidEdgeCommunity.SolidEdgeUtils.GetTrainingFolderPath(), "Try It\zone_try_it.asm")
 					assemblyDocument = DirectCast(documents.Open(filename), SolidEdgeAssembly.AssemblyDocument)
 				End If
 
@@ -51,14 +50,11 @@ Namespace ApiSamples.Assembly
 					' Get a reference to the Occurrences collection.
 					occurrences = assemblyDocument.Occurrences
 
-					For i As Integer = 1 To occurrences.Count
-						' Get a reference to the occurrence.
-						occurrence = occurrences.Item(i)
-
+					For Each occurrence In occurrences.OfType(Of SolidEdgeAssembly.Occurrence)()
 						If occurrence.IsTube() Then
 							tube = occurrence.GetTube()
 
-							Console.WriteLine("Occurrences[{0}] is a tube.", i)
+							Console.WriteLine("Occurrences[{0}] is a tube.", occurrence.Index)
 							Console.WriteLine("PartFileName: {0}", tube.PartFileName)
 
 							Dim CutLength As Object = 0.0
@@ -101,7 +97,7 @@ Namespace ApiSamples.Assembly
 							Console.WriteLine("BendAngle: {0}", BendAngle.ToString().Trim().TrimEnd(","c))
 							Console.WriteLine()
 						End If
-					Next i
+					Next occurrence
 				Else
 					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
 				End If

@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Saves the active sheetmetal as a flat DXF.
 	''' </summary>
@@ -36,7 +36,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to Solid Edge,
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(False)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(False)
 
 				' Get a reference to the Documents collection.
 				documents = application.Documents

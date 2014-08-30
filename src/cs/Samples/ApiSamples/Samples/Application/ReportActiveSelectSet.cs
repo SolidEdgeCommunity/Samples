@@ -23,7 +23,7 @@ namespace ApiSamples.Application
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Start();
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect();
 
                 // Get a reference to the active select set.
                 selectSet = application.ActiveSelectSet;
@@ -37,7 +37,7 @@ namespace ApiSamples.Application
                         object item = selectSet.Item(i);
 
                         // Get the managed type.
-                        Type type = IDispatchHelper.GetManagedType(item);
+                        var type = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(item);
 
                         Console.WriteLine("Item({0}) is of type '{1}'", i, type);
 

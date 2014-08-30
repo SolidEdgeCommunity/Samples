@@ -1,11 +1,11 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Reflection
 Imports System.Text
 
-Namespace ApiSamples.Assembly
+Namespace Assembly
 	''' <summary>
 	''' Reports interference between all occurrences of the active assembly.
 	''' </summary>
@@ -18,7 +18,6 @@ Namespace ApiSamples.Assembly
 			Dim application As SolidEdgeFramework.Application = Nothing
 			Dim assemblyDocument As SolidEdgeAssembly.AssemblyDocument = Nothing
 			Dim occurrences As SolidEdgeAssembly.Occurrences = Nothing
-			Dim occurrence As SolidEdgeAssembly.Occurrence = Nothing
 			Dim interferenceStatus As SolidEdgeAssembly.InterferenceStatusConstants = Nothing
 			Dim compare As SolidEdgeConstants.InterferenceComparisonConstants = SolidEdgeConstants.InterferenceComparisonConstants.seInterferenceComparisonSet1vsAllOther
 			Dim reportType As SolidEdgeConstants.InterferenceReportConstants = SolidEdgeConstants.InterferenceReportConstants.seInterferenceReportPartNames
@@ -28,7 +27,7 @@ Namespace ApiSamples.Assembly
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the active assembly document.
 				assemblyDocument = application.GetActiveDocument(Of SolidEdgeAssembly.AssemblyDocument)(False)
@@ -37,11 +36,8 @@ Namespace ApiSamples.Assembly
 					' Get a reference to the Occurrences collection.
 					occurrences = assemblyDocument.Occurrences
 
-					For i As Integer = 1 To occurrences.Count
-						' Get a reference to the occurrence.
-						occurrence = occurrences.Item(i)
-
-						Dim set1 As Array = Array.CreateInstance(DirectCast(occurrence, Object).GetType(), 1)
+					For Each occurrence In occurrences.OfType(Of SolidEdgeAssembly.Occurrence)()
+						Dim set1 As Array = Array.CreateInstance(occurrence.GetType(), 1)
 						Dim numInterferences As Object = 0
 						Dim retSet1 As Object = Array.CreateInstance(GetType(SolidEdgeAssembly.Occurrence), 0)
 						Dim retSet2 As Object = Array.CreateInstance(GetType(SolidEdgeAssembly.Occurrence), 0)
@@ -62,9 +58,9 @@ Namespace ApiSamples.Assembly
 										Dim obj1 As Object = DirectCast(retSet1, Array).GetValue(j)
 										Dim obj2 As Object = DirectCast(retSet2, Array).GetValue(j)
 
-										' Use ReflectionHelper class to get the object type.
-										Dim objectType1 As SolidEdgeFramework.ObjectType = ReflectionHelper.GetObjectType(obj1)
-										Dim objectType2 As SolidEdgeFramework.ObjectType = ReflectionHelper.GetObjectType(obj2)
+										' Use helper class to get the object type.
+										Dim objectType1 = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgeFramework.ObjectType)(obj1, "Type", CType(0, SolidEdgeFramework.ObjectType))
+										Dim objectType2 = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgeFramework.ObjectType)(obj2, "Type", CType(0, SolidEdgeFramework.ObjectType))
 
 										Dim reference1 As SolidEdgeFramework.Reference = Nothing
 										Dim reference2 As SolidEdgeFramework.Reference = Nothing
@@ -87,7 +83,7 @@ Namespace ApiSamples.Assembly
 									Next j
 								End If
 						End Select
-					Next i
+					Next occurrence
 				Else
 					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
 				End If

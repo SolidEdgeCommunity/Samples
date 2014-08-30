@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Part
+Namespace Part
 	''' <summary>
 	''' Saves the active part as a JT file.
 	''' </summary>
@@ -22,7 +22,7 @@ Namespace ApiSamples.Part
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the active document.
 				document = application.GetActiveDocument(Of SolidEdgePart.PartDocument)(False)

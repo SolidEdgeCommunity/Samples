@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Assembly
+Namespace Assembly
 	''' <summary>
 	''' Reports all 3D relationships of the active assembly.
 	''' </summary>
@@ -22,7 +22,6 @@ Namespace ApiSamples.Assembly
 			Dim planarRelation3d As SolidEdgeAssembly.PlanarRelation3d = Nothing
 			Dim occurrence1 As SolidEdgeAssembly.Occurrence = Nothing
 			Dim occurrence2 As SolidEdgeAssembly.Occurrence = Nothing
-			Dim relationObjectType As SolidEdgeFramework.ObjectType
 			Dim detailedStatus As SolidEdgeAssembly.Relation3dDetailedStatusConstants
 			Dim status As SolidEdgeAssembly.Relation3dStatusConstants
 
@@ -31,7 +30,7 @@ Namespace ApiSamples.Assembly
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the active document.
 				assemblyDocument = application.GetActiveDocument(Of SolidEdgeAssembly.AssemblyDocument)(False)
@@ -39,12 +38,13 @@ Namespace ApiSamples.Assembly
 				' Get a reference to the Relations3d collection.
 				relations3d = assemblyDocument.Relations3d
 
-				For i As Integer = 1 To relations3d.Count
-					Dim relation3d As Object = relations3d.Item(i)
-
+				For Each relation3d In relations3d.OfType(Of Object)()
 					Try
-						' Use ReflectionHelper class to get the object type.
-						relationObjectType = ReflectionHelper.GetObjectType(relation3d)
+						' Not used in this sample but a good example of how to get the runtime type.
+						Dim relationType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(relation3d)
+
+						' Use helper class to get the object type.
+						Dim relationObjectType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgeFramework.ObjectType)(relation3d, "Type", CType(0, SolidEdgeFramework.ObjectType))
 
 						' Reset statuses.
 						detailedStatus = CType(0, SolidEdgeAssembly.Relation3dDetailedStatusConstants)
@@ -113,7 +113,7 @@ Namespace ApiSamples.Assembly
 						End Select
 					Catch
 					End Try
-				Next i
+				Next relation3d
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)
 			Finally

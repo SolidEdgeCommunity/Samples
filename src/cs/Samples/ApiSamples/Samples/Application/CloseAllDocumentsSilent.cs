@@ -23,7 +23,7 @@ namespace ApiSamples.Application
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(false);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(false);
 
                 if (application != null)
                 {

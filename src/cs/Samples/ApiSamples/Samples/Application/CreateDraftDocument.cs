@@ -24,13 +24,13 @@ namespace ApiSamples.Application
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
 
                 // Create a new draft document.
-                draftDocument = (SolidEdgeDraft.DraftDocument)documents.Add(global::SolidEdge.PROGID.DraftDocument);
+                draftDocument = (SolidEdgeDraft.DraftDocument)documents.Add(SolidEdgeSDK.PROGID.SolidEdge_DraftDocument);
             }
             catch (System.Exception ex)
             {

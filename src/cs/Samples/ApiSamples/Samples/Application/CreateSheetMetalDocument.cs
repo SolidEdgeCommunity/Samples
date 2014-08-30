@@ -24,13 +24,13 @@ namespace ApiSamples.Application
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
 
                 // Create a new sheetmetal document.
-                sheetMetalDocument = (SolidEdgePart.SheetMetalDocument)documents.Add(global::SolidEdge.PROGID.SheetMetalDocument);
+                sheetMetalDocument = (SolidEdgePart.SheetMetalDocument)documents.Add(SolidEdgeSDK.PROGID.SolidEdge_SheetMetalDocument);
             }
             catch (System.Exception ex)
             {

@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,6 @@ namespace ApiSamples.Assembly
             SolidEdgeFramework.Documents documents = null;
             SolidEdgeAssembly.AssemblyDocument assemblyDocument = null;
             SolidEdgeAssembly.Occurrences occurrences = null;
-            SolidEdgeAssembly.Occurrence occurrence = null;
             SolidEdgeAssembly.Tube tube = null;
 
             try
@@ -32,7 +31,7 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 try
                 {
@@ -49,7 +48,7 @@ namespace ApiSamples.Assembly
                     documents = application.Documents;
 
                     // Build path to part file.
-                    string filename = System.IO.Path.Combine(SolidEdgeCommunity.SolidEdgeInstall.GetTrainingFolderPath(), @"Try It\zone_try_it.asm");
+                    string filename = System.IO.Path.Combine(SolidEdgeCommunity.SolidEdgeUtils.GetTrainingFolderPath(), @"Try It\zone_try_it.asm");
                     assemblyDocument = (SolidEdgeAssembly.AssemblyDocument)documents.Open(filename);
                 }
 
@@ -58,16 +57,13 @@ namespace ApiSamples.Assembly
                     // Get a reference to the Occurrences collection.
                     occurrences = assemblyDocument.Occurrences;
 
-                    for (int i = 1; i <= occurrences.Count; i++)
+                    foreach (var occurrence in occurrences.OfType<SolidEdgeAssembly.Occurrence>())
                     {
-                        // Get a reference to the occurrence.
-                        occurrence = occurrences.Item(i);
-
                         if (occurrence.IsTube())
                         {
                             tube = occurrence.GetTube();
 
-                            Console.WriteLine("Occurrences[{0}] is a tube.", i);
+                            Console.WriteLine("Occurrences[{0}] is a tube.", occurrence.Index);
                             Console.WriteLine("PartFileName: {0}", tube.PartFileName);
 
                             object CutLength = 0.0;

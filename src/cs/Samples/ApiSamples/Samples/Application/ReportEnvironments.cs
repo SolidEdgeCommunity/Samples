@@ -16,7 +16,6 @@ namespace ApiSamples.Application
 
             SolidEdgeFramework.Application application = null;
             SolidEdgeFramework.Environments environments = null;
-            SolidEdgeFramework.Environment environment = null;
 
             try
             {
@@ -24,16 +23,14 @@ namespace ApiSamples.Application
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the Environments collection.
                 environments = application.Environments;
 
                 // Loop through each addin.
-                for (int i = 1; i <= environments.Count; i++)
+                foreach (var environment in environments.OfType<SolidEdgeFramework.Environment>())
                 {
-                    environment = environments.Item(i);
-
                     Console.WriteLine("Caption: {0}", environment.Caption);
                     Console.WriteLine("CATID: {0}", environment.CATID);
                     Console.WriteLine("Index: {0}", environment.Index);

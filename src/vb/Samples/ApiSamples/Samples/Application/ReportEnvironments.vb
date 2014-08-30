@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Reports all of the Solid Edge environments.
 	''' </summary>
@@ -15,29 +15,26 @@ Namespace ApiSamples.Application
 
 			Dim application As SolidEdgeFramework.Application = Nothing
 			Dim environments As SolidEdgeFramework.Environments = Nothing
-			Dim environment As SolidEdgeFramework.Environment = Nothing
 
 			Try
 				' Register with OLE to handle concurrency issues on the current thread.
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the Environments collection.
 				environments = application.Environments
 
 				' Loop through each addin.
-				For i As Integer = 1 To environments.Count
-					environment = environments.Item(i)
-
+				For Each environment In environments.OfType(Of SolidEdgeFramework.Environment)()
 					Console.WriteLine("Caption: {0}", environment.Caption)
 					Console.WriteLine("CATID: {0}", environment.CATID)
 					Console.WriteLine("Index: {0}", environment.Index)
 					Console.WriteLine("Name: {0}", environment.Name)
 					Console.WriteLine("SubTypeName: {0}", environment.SubTypeName)
 					Console.WriteLine()
-				Next i
+				Next environment
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)
 			Finally

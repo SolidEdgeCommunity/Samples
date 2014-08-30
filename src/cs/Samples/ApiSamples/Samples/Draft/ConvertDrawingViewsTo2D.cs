@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +20,7 @@ namespace ApiSamples.Draft
             SolidEdgeDraft.Sections sections = null;
             SolidEdgeDraft.Section section = null;
             SolidEdgeDraft.SectionSheets sectionSheets = null;
-            SolidEdgeDraft.Sheet sheet = null;
             SolidEdgeDraft.DrawingViews drawingViews = null;
-            SolidEdgeDraft.DrawingView drawingView = null;
 
             try
             {
@@ -30,7 +28,7 @@ namespace ApiSamples.Draft
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the active draft document.
                 draftDocument = application.GetActiveDocument<SolidEdgeDraft.DraftDocument>(false);
@@ -46,18 +44,13 @@ namespace ApiSamples.Draft
                     // Get a reference to the working section sheets.
                     sectionSheets = section.Sheets;
 
-                    for (int i = 1; i <= sectionSheets.Count; i++)
+                    foreach (var sheet in sectionSheets.OfType<SolidEdgeDraft.Sheet>())
                     {
-                        // Get a reference to the sheet.
-                        sheet = sectionSheets.Item(i);
-
                         // Get a reference to the DrawingViews collection.
                         drawingViews = sheet.DrawingViews;
 
-                        for (int j = 1; j < drawingViews.Count; j++)
+                        foreach (var drawingView in drawingViews.OfType<SolidEdgeDraft.DrawingView>())
                         {
-                            drawingView = drawingViews.Item(j);
-
                             // DrawingView's of type igUserView cannot be converted.
                             if (drawingView.DrawingViewType != SolidEdgeDraft.DrawingViewTypeConstants.igUserView)
                             {

@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Moves all existing ordered features of the active sheetmetal to synchronous.
 	''' </summary>
@@ -27,7 +27,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Bring Solid Edge to the foreground.
 				application.Activate()
@@ -46,11 +46,14 @@ Namespace ApiSamples.SheetMetal
 					features = model.Features
 
 					' Iterate through the features.
-					For Each feature As Object In features
-						Dim featureEdgeBarName As String = ReflectionHelper.GetPropertyValueAsString(feature, "EdgeBarName")
+					For Each feature In features.OfType(Of Object)()
+						Dim featureEdgeBarName = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of String)(feature, "EdgeBarName", "Unknown")
+						Dim featureModelingMode = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgePart.ModelingModeConstants)(feature, "ModelingModeType", CType(0, SolidEdgePart.ModelingModeConstants))
 
 						' Check to see if the feature is ordered.
-						If ReflectionHelper.GetPartFeatureModelingMode(feature) = SolidEdgePart.ModelingModeConstants.seModelingModeOrdered Then
+						' NOTE: I've found that not all features have a ModelingModeType property. SolidEdgePart.FaceRotate is one of them.
+						' This is a bit of a problem because I see no way to know if the FaceRotate is Ordered or Synchronous...
+						If featureModelingMode = SolidEdgePart.ModelingModeConstants.seModelingModeOrdered Then
 							Dim NumberOfFeaturesCausingError As Integer = 0
 							Dim ErrorMessageArray As Array = Array.CreateInstance(GetType(String), 0)
 							Dim NumberOfFeaturesCausingWarning As Integer = 0

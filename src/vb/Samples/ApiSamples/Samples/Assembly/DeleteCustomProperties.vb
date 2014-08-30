@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Assembly
+Namespace Assembly
 	''' <summary>
 	''' 
 	''' </summary>
@@ -21,7 +21,7 @@ Namespace ApiSamples.Assembly
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the active assembly document.
 				Dim document = application.GetActiveDocument(Of SolidEdgeAssembly.AssemblyDocument)(False)
@@ -29,7 +29,7 @@ Namespace ApiSamples.Assembly
 				If document IsNot Nothing Then
 					Dim propertySets = DirectCast(document.Properties, SolidEdgeFramework.PropertySets)
 
-					ApiSamples.Common.FileProperties.DeleteCustomProperties(propertySets)
+                    ApiSamples.Common.FileProperties.DeleteCustomProperties(propertySets)
 				Else
 					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
 				End If

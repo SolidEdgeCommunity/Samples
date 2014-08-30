@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace ApiSamples.SheetMetal
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
@@ -54,8 +54,8 @@ namespace ApiSamples.SheetMetal
                     // Get the EdgebarFeature at the current index.
                     object edgebarFeature = edgebarFeatures.Item(i);
 
-                    // Use ReflectionHelper class to get the feature type.
-                    SolidEdgePart.FeatureTypeConstants featureType = ReflectionHelper.GetPartFeatureType(edgebarFeature);
+                    // Use helper class to get the feature type.
+                    var featureType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgePart.FeatureTypeConstants>(edgebarFeature, "Type", (SolidEdgePart.FeatureTypeConstants)0);
 
                     // Looking for a Hole pattern to suppress.
                     if (featureType == SolidEdgePart.FeatureTypeConstants.igUserDefinedPatternFeatureObject)

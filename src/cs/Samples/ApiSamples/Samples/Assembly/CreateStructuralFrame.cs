@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +33,7 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
@@ -59,7 +59,7 @@ namespace ApiSamples.Assembly
                 structuralFrames = assemblyDocument.StructuralFrames;
 
                 // Build path to part file.  In this case, it is a .par from standard install.
-                string filename = System.IO.Path.Combine(SolidEdgeCommunity.SolidEdgeInstall.GetInstalledPath(), @"Frames\DIN\I-Beam\I-Beam 80x46.par");
+                string filename = System.IO.Path.Combine(SolidEdgeCommunity.SolidEdgeUtils.GetInstalledPath(), @"Frames\DIN\I-Beam\I-Beam 80x46.par");
 
                 // Add new structural frame.
                 structuralFrame = structuralFrames.Add(

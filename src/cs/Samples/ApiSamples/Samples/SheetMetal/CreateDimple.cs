@@ -1,5 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
-using SolidEdgePart.Extensions; // SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +36,7 @@ namespace ApiSamples.SheetMetal
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the Documents collection.
                 documents = application.Documents;

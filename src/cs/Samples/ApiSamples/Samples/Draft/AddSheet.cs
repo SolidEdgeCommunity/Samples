@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace ApiSamples.Draft
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(false);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(false);
 
                 // Get a reference to the active draft document.
                 draftDocument = application.GetActiveDocument<SolidEdgeDraft.DraftDocument>(false);

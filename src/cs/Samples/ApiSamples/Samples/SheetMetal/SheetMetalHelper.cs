@@ -1,4 +1,4 @@
-﻿using SolidEdgePart.Extensions; // SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Reports the variables of the active sheetmal.
 	''' </summary>
@@ -22,7 +22,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Start()
+				application = SolidEdgeCommunity.SolidEdgeUtils.Start()
 
 				' Get a reference to the active document.
 				document = application.GetActiveDocument(Of SolidEdgePart.SheetMetalDocument)(False)

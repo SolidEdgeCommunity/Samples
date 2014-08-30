@@ -1,10 +1,10 @@
-﻿Imports SolidEdgePart.Extensions ' SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	Friend Class SheetMetalHelper
 		Public Shared Function CreateBaseTab(ByVal sheetMetalDocument As SolidEdgePart.SheetMetalDocument) As SolidEdgePart.Model
 			Dim profileSets As SolidEdgePart.ProfileSets = Nothing

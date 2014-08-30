@@ -52,11 +52,11 @@
             this.splitContainerInner = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainerListView = new System.Windows.Forms.SplitContainer();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.listView = new ApiSamples.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.sampleRichTextBox = new ApiSamples.Forms.RichTextBoxEx();
-            this.outputTextBox = new System.Windows.Forms.TextBox();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerOuter)).BeginInit();
@@ -255,7 +255,7 @@
             // 
             this.splitContainerInner.Panel2.Controls.Add(this.splitContainerListView);
             this.splitContainerInner.Size = new System.Drawing.Size(784, 366);
-            this.splitContainerInner.SplitterDistance = 251;
+            this.splitContainerInner.SplitterDistance = 175;
             this.splitContainerInner.TabIndex = 4;
             // 
             // treeView
@@ -267,7 +267,7 @@
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(251, 366);
+            this.treeView.Size = new System.Drawing.Size(175, 366);
             this.treeView.TabIndex = 0;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -286,43 +286,9 @@
             // splitContainerListView.Panel2
             // 
             this.splitContainerListView.Panel2.Controls.Add(this.sampleRichTextBox);
-            this.splitContainerListView.Size = new System.Drawing.Size(529, 366);
-            this.splitContainerListView.SplitterDistance = 229;
+            this.splitContainerListView.Size = new System.Drawing.Size(605, 366);
+            this.splitContainerListView.SplitterDistance = 267;
             this.splitContainerListView.TabIndex = 4;
-            // 
-            // listView
-            // 
-            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.FullRowSelect = true;
-            this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(0, 0);
-            this.listView.MultiSelect = false;
-            this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(529, 229);
-            this.listView.SmallImageList = this.imageList;
-            this.listView.TabIndex = 3;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Sample";
-            this.columnHeader1.Width = 207;
-            // 
-            // sampleRichTextBox
-            // 
-            this.sampleRichTextBox.BackColor = System.Drawing.Color.White;
-            this.sampleRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sampleRichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.sampleRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.sampleRichTextBox.Name = "sampleRichTextBox";
-            this.sampleRichTextBox.ReadOnly = true;
-            this.sampleRichTextBox.Size = new System.Drawing.Size(529, 133);
-            this.sampleRichTextBox.TabIndex = 0;
-            this.sampleRichTextBox.Text = "";
             // 
             // outputTextBox
             // 
@@ -347,6 +313,40 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
+            // listView
+            // 
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.FullRowSelect = true;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(0, 0);
+            this.listView.MultiSelect = false;
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(605, 267);
+            this.listView.SmallImageList = this.imageList;
+            this.listView.TabIndex = 3;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Sample";
+            this.columnHeader1.Width = 207;
+            // 
+            // sampleRichTextBox
+            // 
+            this.sampleRichTextBox.BackColor = System.Drawing.Color.White;
+            this.sampleRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sampleRichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.sampleRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.sampleRichTextBox.Name = "sampleRichTextBox";
+            this.sampleRichTextBox.ReadOnly = true;
+            this.sampleRichTextBox.Size = new System.Drawing.Size(605, 95);
+            this.sampleRichTextBox.TabIndex = 0;
+            this.sampleRichTextBox.Text = "";
             // 
             // MainForm
             // 

@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace ApiSamples.Part
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Start();
+                application = SolidEdgeCommunity.SolidEdgeUtils.Start();
 
                 // Get a reference to the active document.
                 partDocument = application.GetActiveDocument<SolidEdgePart.PartDocument>(false);

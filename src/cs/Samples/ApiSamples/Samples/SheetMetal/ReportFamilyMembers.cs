@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,6 @@ namespace ApiSamples.SheetMetal
             SolidEdgeFramework.Application application = null;
             SolidEdgePart.SheetMetalDocument sheetMetalDocument = null;
             SolidEdgePart.FamilyMembers familyMembers = null;
-            SolidEdgePart.FamilyMember familyMember = null;
             SolidEdgePart.Round round = null;
             SolidEdgePart.UserDefinedPattern userDefinedPattern = null;
             SolidEdgeFrameworkSupport.Dimension dimension = null;
@@ -29,7 +28,7 @@ namespace ApiSamples.SheetMetal
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Bring Solid Edge to the foreground.
                 application.Activate();
@@ -43,11 +42,8 @@ namespace ApiSamples.SheetMetal
                     familyMembers = sheetMetalDocument.FamilyMembers;
 
                     // Interate through the family members.
-                    for (int i = 1; i <= familyMembers.Count; i++)
+                    foreach (var familyMember in familyMembers.OfType<SolidEdgePart.FamilyMember>())
                     {
-                        // Get the FamilyMember at current index.
-                        familyMember = familyMembers.Item(i);
-
                         Console.WriteLine(familyMember.Name);
 
                         // Determine FamilyMember MovePrecedence.
@@ -83,8 +79,8 @@ namespace ApiSamples.SheetMetal
                         {
                             object suppressedFeature = familyMember.SuppressedFeature[j];
 
-                            // Use ReflectionHelper class to get the feature type.
-                            SolidEdgePart.FeatureTypeConstants featureType = ReflectionHelper.GetPartFeatureType(suppressedFeature);
+                            // Use helper class to get the feature type.
+                            var featureType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgePart.FeatureTypeConstants>(suppressedFeature, "Type", (SolidEdgePart.FeatureTypeConstants)0);
 
                             switch (featureType)
                             {
@@ -102,8 +98,8 @@ namespace ApiSamples.SheetMetal
                         {
                             object variable = familyMember.Variable[j];
 
-                            // Use ReflectionHelper class to get the object type.
-                            SolidEdgeFramework.ObjectType objectType = ReflectionHelper.GetObjectType(variable);
+                            // Use helper class to get the object type.
+                            var objectType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgeFramework.ObjectType>(variable, "Type", (SolidEdgeFramework.ObjectType)0);
 
                             switch (objectType)
                             {

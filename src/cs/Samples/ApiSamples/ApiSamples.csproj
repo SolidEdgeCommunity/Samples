@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>6772c5db</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,12 +46,16 @@
     <Reference Include="ClariusLabs.NuDoc">
       <HintPath>..\packages\NuDoc.0.4.1308.1316\lib\net35\ClariusLabs.NuDoc.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.SolidEdge, Version=107.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Interop.SolidEdge.107.0.1\lib\net40\Interop.SolidEdge.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="SolidEdge.Community, Version=106.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SolidEdge.Community, Version=107.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SolidEdge.Community.106.9.0\lib\net40\SolidEdge.Community.dll</HintPath>
+      <HintPath>..\packages\SolidEdge.Community.107.0.2\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,15 +76,17 @@
     <Compile Include="ListViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Samples\Assembly\ReportOccurrenceRelations.cs" />
+    <Compile Include="Samples\Assembly\DeleteOccurrenceGroundRelations.cs" />
     <Compile Include="Samples\Assembly\ReportFileProperties.cs" />
     <Compile Include="Samples\Assembly\DeleteCustomProperties.cs" />
     <Compile Include="Samples\Assembly\AddCustomProperties.cs" />
     <Compile Include="Samples\Common\FileProperties.cs" />
+    <Compile Include="Samples\Draft\ReportDrawingViews.cs" />
     <Compile Include="Samples\Draft\ReportFileProperties.cs" />
     <Compile Include="Samples\Draft\DeleteCustomProperties.cs" />
     <Compile Include="Samples\Draft\AddCustomProperties.cs" />
     <Compile Include="Samples\Helpers.cs" />
-    <Compile Include="Samples\Interfaces.cs" />
     <Compile Include="Samples\Application\ReportGlobalParameters.cs" />
     <Compile Include="Samples\Application\ReportMaterialLibraryFile.cs" />
     <Compile Include="Samples\Assembly\AddOccurrenceWithMatrix.cs" />
@@ -131,7 +138,7 @@
     <Compile Include="Samples\Draft\CreateAssemblyDrawingView.cs" />
     <Compile Include="Samples\Draft\CreatePartDrawingView.cs" />
     <Compile Include="Samples\Draft\ConvertDrawingViewsTo2D.cs" />
-    <Compile Include="Samples\Draft\UpdateAllDrawingViewsInWorkingSection.cs" />
+    <Compile Include="Samples\Draft\UpdateDrawingViewsInWorkingSection.cs" />
     <Compile Include="Samples\Draft\DrawPolygon.cs" />
     <Compile Include="Samples\Draft\CreateLeader.cs" />
     <Compile Include="Samples\Draft\CreateLinesIn45DegreeIncrements.cs" />
@@ -161,7 +168,7 @@
     <Compile Include="Samples\Part\CreateFaceRotateByPoints.cs" />
     <Compile Include="Samples\Part\CreateFamilyMemberSuppressedFeature.cs" />
     <Compile Include="Samples\Part\ReportFamilyMembers.cs" />
-    <Compile Include="Samples\Part\MoveAllOrderedFeaturesToSynchronous.cs" />
+    <Compile Include="Samples\Part\MoveOrderedFeaturesToSynchronous.cs" />
     <Compile Include="Samples\Part\CreateHoleWithUserDefinedPattern.cs" />
     <Compile Include="Samples\Part\CreateSimpleLoftedCutout.cs" />
     <Compile Include="Samples\Part\CreateThickenFeatures.cs" />
@@ -253,6 +260,13 @@
     <None Include="Media\Run_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SolidEdge.Community.107.0.2\build\net40\SolidEdge.Community.targets" Condition="Exists('..\packages\SolidEdge.Community.107.0.2\build\net40\SolidEdge.Community.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SolidEdge.Community.107.0.2\build\net40\SolidEdge.Community.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdge.Community.107.0.2\build\net40\SolidEdge.Community.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

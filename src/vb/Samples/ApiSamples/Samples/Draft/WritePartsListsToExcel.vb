@@ -1,11 +1,11 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Runtime.InteropServices
 Imports System.Text
 
-Namespace ApiSamples.Draft
+Namespace Draft
 	''' <summary>
 	''' Writes the 1st parts list of the active draft into Excel.
 	''' </summary>
@@ -26,9 +26,7 @@ Namespace ApiSamples.Draft
 			Dim excelCells As Microsoft.Office.Interop.Excel.Range = Nothing
 			Dim excelRange As Microsoft.Office.Interop.Excel.Range = Nothing
 			Dim tableColumns As SolidEdgeDraft.TableColumns = Nothing
-			Dim tableColumn As SolidEdgeDraft.TableColumn = Nothing
 			Dim tableRows As SolidEdgeDraft.TableRows = Nothing
-			Dim tableRow As SolidEdgeDraft.TableRow = Nothing
 			Dim tableCell As SolidEdgeDraft.TableCell = Nothing
 
 			Try
@@ -36,7 +34,7 @@ Namespace ApiSamples.Draft
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(False)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(False)
 
 				' Get a reference to the active draft document.
 				draftDocument = application.GetActiveDocument(Of SolidEdgeDraft.DraftDocument)(False)
@@ -75,32 +73,27 @@ Namespace ApiSamples.Draft
 							excelCells = excelWorksheet.Cells
 
 							' Write headers.
-							For i As Integer = 1 To tableColumns.Count
-								tableColumn = tableColumns.Item(i)
-
+							For Each tableColumn In tableColumns.OfType(Of SolidEdgeDraft.TableColumn)()
 								If tableColumn.Show Then
 									visibleColumnCount += 1
 									excelRange = DirectCast(excelCells.Item(1, visibleColumnCount), Microsoft.Office.Interop.Excel.Range)
 									excelRange.Value = tableColumn.HeaderRowValue
 								End If
-							Next i
+							Next tableColumn
 
 							' Write rows.
-							For i As Integer = 1 To tableRows.Count
-								tableRow = tableRows.Item(i)
-								For j As Integer = 1 To tableColumns.Count
-									tableColumn = tableColumns.Item(j)
-
+							For Each tableRow In tableRows.OfType(Of SolidEdgeDraft.TableRow)()
+								For Each tableColumn In tableColumns.OfType(Of SolidEdgeDraft.TableColumn)()
 									If tableColumn.Show Then
 										visibleRowCount += 1
-										tableCell = partsList.Cell(i, j)
-										excelRange = DirectCast(excelCells.Item(i + 1, j), Microsoft.Office.Interop.Excel.Range)
+										tableCell = partsList.Cell(tableRow.Index, tableColumn.Index)
+										excelRange = DirectCast(excelCells.Item(tableRow.Index + 1, tableColumn.Index), Microsoft.Office.Interop.Excel.Range)
 										excelRange.Value = tableCell.value
 									End If
-								Next j
+								Next tableColumn
 
 								visibleRowCount = 0
-							Next i
+							Next tableRow
 						End If
 					Else
 						Throw New System.Exception(Resources.NoPartsListsInDraftDocument)

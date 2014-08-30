@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,6 @@ namespace ApiSamples.SheetMetal
             SolidEdgeFramework.Application application = null;
             SolidEdgePart.SheetMetalDocument sheetMetalDocument = null;
             SolidEdgePart.Models models = null;
-            SolidEdgePart.Model model = null;
 
             try
             {
@@ -26,7 +25,7 @@ namespace ApiSamples.SheetMetal
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Bring Solid Edge to the foreground.
                 application.Activate();
@@ -38,9 +37,8 @@ namespace ApiSamples.SheetMetal
                 {
                     models = sheetMetalDocument.Models;
 
-                    for (int i = 1; i <= models.Count; i++)
+                    foreach (var model in models.OfType<SolidEdgePart.Model>())
                     {
-                        model = models.Item(i);
                         model.Recompute();
                     }
                 }

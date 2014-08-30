@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,6 @@ namespace ApiSamples.Assembly
             SolidEdgeFramework.Application application = null;
             SolidEdgeAssembly.AssemblyDocument assemblyDocument = null;
             SolidEdgeAssembly.Configurations configurations = null;
-            SolidEdgeAssembly.Configuration configuration = null;
 
             try
             {
@@ -26,7 +25,7 @@ namespace ApiSamples.Assembly
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to active assembly document.
                 assemblyDocument = application.GetActiveDocument<SolidEdgeAssembly.AssemblyDocument>(false);
@@ -37,11 +36,8 @@ namespace ApiSamples.Assembly
                     configurations = assemblyDocument.Configurations;
 
                     // Iterate through all of the configurations.
-                    for (int i = 1; i <= configurations.Count; i++)
+                    foreach (var configuration in configurations.OfType<SolidEdgeAssembly.Configuration>())
                     {
-                        // Get the configuration at the specified index.
-                        configuration = configurations.Item(i);
-
                         Console.WriteLine("Configuration Name: '{0}' | Configuration Type: {1}.", configuration.Name, configuration.ConfigurationType);
                     }
                 }

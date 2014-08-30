@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Reports information about objects in the active select set.
 	''' </summary>
@@ -21,7 +21,7 @@ Namespace ApiSamples.Application
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Start()
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect()
 
 				' Get a reference to the active select set.
 				selectSet = application.ActiveSelectSet
@@ -33,7 +33,7 @@ Namespace ApiSamples.Application
 						Dim item As Object = selectSet.Item(i)
 
 						' Get the managed type.
-						Dim type As Type = IDispatchHelper.GetManagedType(item)
+						Dim type = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(item)
 
 						Console.WriteLine("Item({0}) is of type '{1}'", i, type)
 

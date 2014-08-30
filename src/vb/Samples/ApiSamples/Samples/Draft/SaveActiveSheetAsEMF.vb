@@ -1,4 +1,4 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.IO
@@ -6,7 +6,7 @@ Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
 
-Namespace ApiSamples.Draft
+Namespace Draft
 	''' <summary>
 	''' Saves the active sheet of the active draft to a EMF file.
 	''' </summary>
@@ -25,7 +25,7 @@ Namespace ApiSamples.Draft
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(False)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(False)
 
 				' Get a reference to the active draft document.
 				draftDocument = application.GetActiveDocument(Of SolidEdgeDraft.DraftDocument)(False)
@@ -43,7 +43,8 @@ Namespace ApiSamples.Draft
 
 					If dialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
 						' Save the sheet as an EMF file.
-						sheet.SaveAsEMF(dialog.FileName)
+						sheet.SaveAsEnhancedMetafile(dialog.FileName)
+
 						Console.WriteLine("Created '{0}'", dialog.FileName)
 					End If
 				Else

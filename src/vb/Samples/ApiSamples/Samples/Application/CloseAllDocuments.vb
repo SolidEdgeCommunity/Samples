@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Closes all open documents.
 	''' </summary>
@@ -21,7 +21,7 @@ Namespace ApiSamples.Application
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(False)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(False)
 
 				If application IsNot Nothing Then
 					' Get a reference to the documents collection.

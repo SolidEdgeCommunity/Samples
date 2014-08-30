@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ApiSamples.Common
 {
-    class FileProperties
+    static class FileProperties
     {
         public static void AddCustomProperties(SolidEdgeFramework.PropertySets propertySets)
         {
@@ -40,20 +40,17 @@ namespace ApiSamples.Common
 
         public static void ReportAllProperties(SolidEdgeFramework.PropertySets propertySets)
         {
-            for (int i = 1; i <= propertySets.Count; i++)
+            foreach (var properties in propertySets.OfType<SolidEdgeFramework.Properties>())
             {
-                var properties = propertySets.Item(i);
-
                 Console.WriteLine("PropertSet '{0}'.", properties.Name);
 
-                for (int j = 1; j <= properties.Count; j++)
+                foreach (var property in properties.OfType<SolidEdgeFramework.Property>())
                 {
                     System.Runtime.InteropServices.VarEnum nativePropertyType = System.Runtime.InteropServices.VarEnum.VT_EMPTY;
                     Type runtimePropertyType = null;
 
                     object value = null;
 
-                    var property = properties.Item(j);
                     nativePropertyType = (System.Runtime.InteropServices.VarEnum)property.Type;
 
                     // Accessing Value property may throw an exception...

@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Part
+Namespace Part
 	''' <summary>
 	''' Creates a new part document.
 	''' </summary>
@@ -22,13 +22,13 @@ Namespace ApiSamples.Part
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get a reference to the documents collection.
 				documents = application.Documents
 
 				' Create a new part document.
-				partDocument = DirectCast(documents.Add(Global.SolidEdge.PROGID.PartDocument), SolidEdgePart.PartDocument)
+				partDocument = DirectCast(documents.Add(SolidEdgeSDK.PROGID.SolidEdge_PartDocument), SolidEdgePart.PartDocument)
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)
 			Finally

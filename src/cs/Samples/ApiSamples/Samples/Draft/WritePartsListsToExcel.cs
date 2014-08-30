@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +27,7 @@ namespace ApiSamples.Draft
             Microsoft.Office.Interop.Excel.Range excelCells = null;
             Microsoft.Office.Interop.Excel.Range excelRange = null;
             SolidEdgeDraft.TableColumns tableColumns = null;
-            SolidEdgeDraft.TableColumn tableColumn = null;
             SolidEdgeDraft.TableRows tableRows = null;
-            SolidEdgeDraft.TableRow tableRow = null;
             SolidEdgeDraft.TableCell tableCell = null;
 
             try
@@ -38,7 +36,7 @@ namespace ApiSamples.Draft
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(false);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(false);
 
                 // Get a reference to the active draft document.
                 draftDocument = application.GetActiveDocument<SolidEdgeDraft.DraftDocument>(false);
@@ -83,10 +81,8 @@ namespace ApiSamples.Draft
                             excelCells = excelWorksheet.Cells;
 
                             // Write headers.
-                            for (int i = 1; i <= tableColumns.Count; i++)
+                            foreach (var tableColumn in tableColumns.OfType<SolidEdgeDraft.TableColumn>())
                             {
-                                tableColumn = tableColumns.Item(i);
-
                                 if (tableColumn.Show)
                                 {
                                     visibleColumnCount++;
@@ -96,18 +92,15 @@ namespace ApiSamples.Draft
                             }
 
                             // Write rows.
-                            for (int i = 1; i <= tableRows.Count; i++)
+                            foreach (var tableRow in tableRows.OfType<SolidEdgeDraft.TableRow>())
                             {
-                                tableRow = tableRows.Item(i);
-                                for (int j = 1; j <= tableColumns.Count; j++)
+                                foreach (var tableColumn in tableColumns.OfType<SolidEdgeDraft.TableColumn>())
                                 {
-                                    tableColumn = tableColumns.Item(j);
-
                                     if (tableColumn.Show)
                                     {
                                         visibleRowCount++;
-                                        tableCell = partsList.Cell[i, j];
-                                        excelRange = (Microsoft.Office.Interop.Excel.Range)excelCells.Item[i + 1, j];
+                                        tableCell = partsList.Cell[tableRow.Index, tableColumn.Index];
+                                        excelRange = (Microsoft.Office.Interop.Excel.Range)excelCells.Item[tableRow.Index + 1, tableColumn.Index];
                                         excelRange.Value = tableCell.value;
                                     }
                                 }

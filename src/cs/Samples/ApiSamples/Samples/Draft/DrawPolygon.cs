@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace ApiSamples.Draft
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the documents collection.
                 documents = application.Documents;
@@ -97,9 +97,9 @@ namespace ApiSamples.Draft
                 selectSet.RemoveAll();
 
                 // Add all lines to ActiveSelectSet.
-                for (int i = 1; i <= lines2d.Count; i++)
+                foreach (var line2d in lines2d.OfType<SolidEdgeFrameworkSupport.Line2d>())
                 {
-                    selectSet.Add(lines2d.Item(i));
+                    selectSet.Add(line2d);
                 }
 
                 // Switch to ISO view.

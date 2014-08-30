@@ -16,7 +16,6 @@ namespace ApiSamples.Application
 
             SolidEdgeFramework.Application application = null;
             SolidEdgeFramework.AddIns addins = null;
-            SolidEdgeFramework.AddIn addin = null;
 
             try
             {
@@ -24,16 +23,14 @@ namespace ApiSamples.Application
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the addins collection.
                 addins = application.AddIns;
 
                 // Loop through each addin.
-                for (int i = 1; i <= addins.Count; i++)
+                foreach(var addin in addins.OfType<SolidEdgeFramework.AddIn>())
                 {
-                    addin = addins.Item(i);
-
                     Console.WriteLine("Description: {0}", addin.Description);
                     Console.WriteLine("GUID: {0}", addin.GUID);
                     Console.WriteLine("GuiVersion: {0}", addin.GuiVersion);

@@ -7,7 +7,7 @@ Imports System.Drawing
 Imports System.Windows.Forms
 Imports System.Runtime.InteropServices
 
-Namespace ApiSamples.Forms
+Namespace Forms
 	Friend Class RichTextBoxEx
 		Inherits RichTextBox
 

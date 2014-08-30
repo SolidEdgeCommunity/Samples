@@ -1,10 +1,10 @@
-﻿Imports SolidEdgePart.Extensions ' SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Part
+Namespace Part
 	Friend Class PartHelper
 		Public Shared Function CreateFiniteExtrudedProtrusion(ByVal partDocument As SolidEdgePart.PartDocument, ByVal refPlane As SolidEdgePart.RefPlane, ByVal linesArray()() As Double, ByVal profilePlaneSide As SolidEdgePart.FeaturePropertyConstants, ByVal extrusionDistance As Double) As SolidEdgePart.Model
 			Dim profileSets As SolidEdgePart.ProfileSets = Nothing

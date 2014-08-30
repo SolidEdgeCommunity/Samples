@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Reports family members of the active sheetmetal.
 	''' </summary>
@@ -17,7 +17,6 @@ Namespace ApiSamples.SheetMetal
 			Dim application As SolidEdgeFramework.Application = Nothing
 			Dim sheetMetalDocument As SolidEdgePart.SheetMetalDocument = Nothing
 			Dim familyMembers As SolidEdgePart.FamilyMembers = Nothing
-			Dim familyMember As SolidEdgePart.FamilyMember = Nothing
 			Dim round As SolidEdgePart.Round = Nothing
 			Dim userDefinedPattern As SolidEdgePart.UserDefinedPattern = Nothing
 			Dim dimension As SolidEdgeFrameworkSupport.Dimension = Nothing
@@ -27,7 +26,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Bring Solid Edge to the foreground.
 				application.Activate()
@@ -40,10 +39,7 @@ Namespace ApiSamples.SheetMetal
 					familyMembers = sheetMetalDocument.FamilyMembers
 
 					' Interate through the family members.
-					For i As Integer = 1 To familyMembers.Count
-						' Get the FamilyMember at current index.
-						familyMember = familyMembers.Item(i)
-
+					For Each familyMember In familyMembers.OfType(Of SolidEdgePart.FamilyMember)()
 						Console.WriteLine(familyMember.Name)
 
 						' Determine FamilyMember MovePrecedence.
@@ -75,8 +71,8 @@ Namespace ApiSamples.SheetMetal
 						For j As Integer = 1 To familyMember.SuppressedFeatureCount
 							Dim suppressedFeature As Object = familyMember.SuppressedFeature(j)
 
-							' Use ReflectionHelper class to get the feature type.
-							Dim featureType As SolidEdgePart.FeatureTypeConstants = ReflectionHelper.GetPartFeatureType(suppressedFeature)
+							' Use helper class to get the feature type.
+							Dim featureType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgePart.FeatureTypeConstants)(suppressedFeature, "Type", CType(0, SolidEdgePart.FeatureTypeConstants))
 
 							Select Case featureType
 								Case SolidEdgePart.FeatureTypeConstants.igRoundFeatureObject
@@ -90,15 +86,15 @@ Namespace ApiSamples.SheetMetal
 						For j As Integer = 1 To familyMember.VariableCount
 							Dim variable As Object = familyMember.Variable(j)
 
-							' Use ReflectionHelper class to get the object type.
-							Dim objectType As SolidEdgeFramework.ObjectType = ReflectionHelper.GetObjectType(variable)
+							' Use helper class to get the object type.
+							Dim objectType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue(Of SolidEdgeFramework.ObjectType)(variable, "Type", CType(0, SolidEdgeFramework.ObjectType))
 
 							Select Case objectType
 								Case SolidEdgeFramework.ObjectType.igDimension
 									dimension = DirectCast(variable, SolidEdgeFrameworkSupport.Dimension)
 							End Select
 						Next j
-					Next i
+					Next familyMember
 				Else
 					Throw New System.Exception(Resources.NoActiveSheetMetalDocument)
 				End If

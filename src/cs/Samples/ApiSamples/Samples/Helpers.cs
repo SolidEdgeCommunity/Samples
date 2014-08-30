@@ -11,130 +11,6 @@ using System.Text;
 
 namespace ApiSamples
 {
-    class IDispatchHelper
-    {
-        const int LOCALE_SYSTEM_DEFAULT = 2048;
-
-        /// <summary>
-        /// Using IDispatch, determine the managed type of the specified object.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns></returns>
-        public static Type GetManagedType(object o)
-        {
-            Type type = null;
-            IDispatch dispatch = o as IDispatch;
-            ITypeInfo typeInfo = null;
-            IntPtr pTypeAttr = IntPtr.Zero;
-            System.Runtime.InteropServices.ComTypes.TYPEATTR typeAttr = default(System.Runtime.InteropServices.ComTypes.TYPEATTR);
-
-            try
-            {
-                if (dispatch != null)
-                {
-                    typeInfo = dispatch.GetTypeInfo(0, LOCALE_SYSTEM_DEFAULT);
-                    typeInfo.GetTypeAttr(out pTypeAttr);
-                    typeAttr = (System.Runtime.InteropServices.ComTypes.TYPEATTR)Marshal.PtrToStructure(pTypeAttr, typeof(System.Runtime.InteropServices.ComTypes.TYPEATTR));
-
-                    // Type can technically be defined in any loaded assembly.
-                    var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-
-                    // Scan each assembly for a type with a matching GUID.
-                    foreach (var assembly in assemblies)
-                    {
-                        type = assembly.GetTypes().Where(x => x.GUID.Equals(typeAttr.guid)).FirstOrDefault();
-
-                        if (type != null)
-                        {
-                            // Found what we're looking for so break out of the loop.
-                            break;
-                        }
-                    }
-                }
-            }
-            catch
-            {
-            }
-            finally
-            {
-                if (typeInfo != null)
-                {
-                    typeInfo.ReleaseTypeAttr(pTypeAttr);
-                    Marshal.ReleaseComObject(typeInfo);
-                }
-            }
-
-            return type;
-        }
-    }
-
-    static class ReflectionHelper
-    {
-        /// <summary>
-        /// Returns the Solid Edge object type by invoking the 'Name' property.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        public static string GetPropertyValueAsString(object o, string propertyName)
-        {
-            // Using .NET reflection, attempt to obtain the Name value.
-            var val = o.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, o, null);
-
-            return val.ToString();
-        }
-
-        /// <summary>
-        /// Returns the Solid Edge object type by invoking the 'Type' property.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns>SolidEdgeFramework.ObjectType</returns>
-        public static SolidEdgeFramework.ObjectType GetObjectType(object o)
-        {
-            // Using .NET reflection, attempt to obtain the Type value.
-            var val = o.GetType().InvokeMember("Type", BindingFlags.GetProperty, null, o, null);
-
-            return (SolidEdgeFramework.ObjectType)val;
-        }
-
-        /// <summary>
-        /// Returns the Solid Edge Part feature modeling mode by invoking the 'ModelingModeType' property.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns>SolidEdgePart.ModelingModeConstants</returns>
-        public static SolidEdgePart.ModelingModeConstants GetPartFeatureModelingMode(object o)
-        {
-            // Using .NET reflection, attempt to obtain the ModelingModeType value.
-            var val = o.GetType().InvokeMember("ModelingModeType", BindingFlags.GetProperty, null, o, null);
-
-            return (SolidEdgePart.ModelingModeConstants)val;
-        }
-
-        /// <summary>
-        /// Returns the Solid Edge Part feature type by invoking the 'Type' property.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns>SolidEdgePart.FeatureTypeConstants</returns>
-        public static SolidEdgePart.FeatureTypeConstants GetPartFeatureType(object o)
-        {
-            // Using .NET reflection, attempt to obtain the Type value.
-            var val = o.GetType().InvokeMember("Type", BindingFlags.GetProperty, null, o, null);
-
-            return (SolidEdgePart.FeatureTypeConstants)val;
-        }
-
-        /// <summary>
-        /// Returns the Solid Edge value of the object by invoking the 'Value' property.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns></returns>
-        public static object GetObjectValue(object o)
-        {
-            // Using .NET reflection, attempt to obtain the Value value.
-            return o.GetType().InvokeMember("Value", BindingFlags.GetProperty, null, o, null);
-        }
-    }
-
     class SolidEdgeDocumentHelper
     {
         public static void SaveAsJT(SolidEdgeAssembly.AssemblyDocument document)
@@ -251,7 +127,6 @@ namespace ApiSamples
             SolidEdgeFramework.VariableList variableList = null;
             SolidEdgeFramework.variable variable = null;
             SolidEdgeFrameworkSupport.Dimension dimension = null;
-            object variableListItem = null;
 
             if (document == null) throw new ArgumentNullException("document");
 
@@ -265,13 +140,13 @@ namespace ApiSamples
                 VarType: SolidEdgeConstants.VariableVarType.SeVariableVarTypeBoth);
 
             // Process variables.
-            for (int i = 1; i <= variableList.Count; i++)
+            foreach (var variableListItem in variableList.OfType<object>())
             {
-                // Get a reference to variable item.
-                variableListItem = variableList.Item(i);
+                // Not used in this sample but a good example of how to get the runtime type.
+                var variableListItemType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(variableListItem);
 
-                // Use ReflectionHelper class to get the object type.
-                SolidEdgeFramework.ObjectType objectType = ReflectionHelper.GetObjectType(variableListItem);
+                // Use helper class to get the object type.
+                var objectType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue<SolidEdgeFramework.ObjectType>(variableListItem, "Type", (SolidEdgeFramework.ObjectType)0);
 
                 // Process the specific variable item type.
                 switch (objectType)

@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.SheetMetal
+Namespace SheetMetal
 	''' <summary>
 	''' Reports the edgebar features of the current part.
 	''' </summary>
@@ -23,7 +23,7 @@ Namespace ApiSamples.SheetMetal
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Bring Solid Edge to the foreground.
 				application.Activate()
@@ -38,9 +38,10 @@ Namespace ApiSamples.SheetMetal
 					' Interate through the features.
 					For i As Integer = 1 To edgebarFeatures.Count
 						' Get the EdgebarFeature at current index.
-						Dim edgebarFeature As Object = edgebarFeatures.Item(i)
+						Dim edgebarFeature = edgebarFeatures.Item(i)
 
-						Dim type As Type = IDispatchHelper.GetManagedType(edgebarFeature)
+						' Get the managed type.
+						Dim type = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(edgebarFeature)
 
 						Console.WriteLine("Item({0}) is of type '{1}'", i, type)
 

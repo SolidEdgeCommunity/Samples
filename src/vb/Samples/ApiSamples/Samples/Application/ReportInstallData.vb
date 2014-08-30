@@ -5,7 +5,7 @@ Imports System.IO
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Reports Solid Edge installation information.
 	''' </summary>

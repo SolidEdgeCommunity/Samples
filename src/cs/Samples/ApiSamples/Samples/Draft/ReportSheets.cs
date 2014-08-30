@@ -1,4 +1,4 @@
-﻿using SolidEdgeFramework.Extensions; //SolidEdge.Community.dll
+﻿using SolidEdgeCommunity.Extensions; // Enabled extension methods from SolidEdge.Community.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,6 @@ namespace ApiSamples.Draft
             SolidEdgeFramework.Application application = null;
             SolidEdgeDraft.DraftDocument draftDocument = null;
             SolidEdgeDraft.Sheets sheets = null;
-            SolidEdgeDraft.Sheet sheet = null;
 
             try
             {
@@ -26,7 +25,7 @@ namespace ApiSamples.Draft
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeInstall.Connect(true, true);
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect(true, true);
 
                 // Get a reference to the active document.
                 draftDocument = application.GetActiveDocument<SolidEdgeDraft.DraftDocument>(false);
@@ -37,10 +36,8 @@ namespace ApiSamples.Draft
                     // Get a reference to the sheets collection.
                     sheets = draftDocument.Sheets;
 
-                    for (int i = 1; i <= sheets.Count; i++)
+                    foreach (var sheet in sheets.OfType<SolidEdgeDraft.Sheet>())
                     {
-                        sheet = sheets.Item(i);
-
                         Console.WriteLine("Name: {0}", sheet.Name);
                         Console.WriteLine("Index: {0}", sheet.Index);
                         Console.WriteLine("Number: {0}", sheet.Number);

@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Assembly
+Namespace Assembly
 	''' <summary>
 	''' Reports all occurrences of the active assembly.
 	''' </summary>
@@ -17,14 +17,13 @@ Namespace ApiSamples.Assembly
 			Dim application As SolidEdgeFramework.Application = Nothing
 			Dim assemblyDocument As SolidEdgeAssembly.AssemblyDocument = Nothing
 			Dim occurrences As SolidEdgeAssembly.Occurrences = Nothing
-			Dim occurrence As SolidEdgeAssembly.Occurrence = Nothing
 
 			Try
 				' Register with OLE to handle concurrency issues on the current thread.
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(True, True)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(True, True)
 
 				' Get the active document.
 				assemblyDocument = application.GetActiveDocument(Of SolidEdgeAssembly.AssemblyDocument)(False)
@@ -33,10 +32,7 @@ Namespace ApiSamples.Assembly
 					' Get a reference to the Occurrences collection.
 					occurrences = assemblyDocument.Occurrences
 
-					For i As Integer = 1 To occurrences.Count
-						' Get a reference to the occurrence.
-						occurrence = occurrences.Item(i)
-
+					For Each occurrence In occurrences.OfType(Of SolidEdgeAssembly.Occurrence)()
 						' Allocate a new array to hold transform.
 						Dim transform(5) As Double
 
@@ -70,7 +66,7 @@ Namespace ApiSamples.Assembly
 						Console.WriteLine("|{0}, {1}, {2}, {3}|", m(12), m(13), m(14), m(15))
 
 						Console.WriteLine()
-					Next i
+					Next occurrence
 				Else
 					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
 				End If

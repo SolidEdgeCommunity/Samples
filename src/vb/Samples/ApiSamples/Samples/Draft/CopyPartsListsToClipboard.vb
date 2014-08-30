@@ -1,10 +1,10 @@
-﻿Imports SolidEdgeFramework.Extensions 'SolidEdge.Community.dll
+﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Draft
+Namespace Draft
 	''' <summary>
 	''' Copies the 1st parts list of the active draft to the clipboard.
 	''' </summary>
@@ -24,7 +24,7 @@ Namespace ApiSamples.Draft
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Connect(False)
+				application = SolidEdgeCommunity.SolidEdgeUtils.Connect(False)
 
 				' Get a reference to the active draft document.
 				draftDocument = application.GetActiveDocument(Of SolidEdgeDraft.DraftDocument)(False)

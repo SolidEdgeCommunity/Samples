@@ -3,8 +3,12 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Common
-	Friend Class FileProperties
+Namespace Common
+	Friend NotInheritable Class FileProperties
+
+		Private Sub New()
+		End Sub
+
 		Public Shared Sub AddCustomProperties(ByVal propertySets As SolidEdgeFramework.PropertySets)
 			Dim properties = DirectCast(propertySets.Item("Custom"), SolidEdgeFramework.Properties)
 			Dim propertyValues = New Object() { "My text", Integer.MaxValue, 1.23, True, Date.Now }
@@ -33,23 +37,20 @@ Namespace ApiSamples.Common
 		End Sub
 
 		Public Shared Sub ReportAllProperties(ByVal propertySets As SolidEdgeFramework.PropertySets)
-			For i As Integer = 1 To propertySets.Count
-				Dim properties = propertySets.Item(i)
-
+			For Each properties In propertySets.OfType(Of SolidEdgeFramework.Properties)()
 				Console.WriteLine("PropertSet '{0}'.", properties.Name)
 
-				For j As Integer = 1 To properties.Count
+				For Each [property] In properties.OfType(Of SolidEdgeFramework.Property)()
 					Dim nativePropertyType As System.Runtime.InteropServices.VarEnum = System.Runtime.InteropServices.VarEnum.VT_EMPTY
 					Dim runtimePropertyType As Type = Nothing
 
 					Dim value As Object = Nothing
 
-                    Dim objProperty = properties.Item(j)
-                    nativePropertyType = DirectCast(objProperty.Type, System.Runtime.InteropServices.VarEnum)
+					nativePropertyType = CType([property].Type, System.Runtime.InteropServices.VarEnum)
 
 					' Accessing Value property may throw an exception...
 					Try
-                        value = objProperty.Value
+                        value = [property].Value
 					Catch ex As System.Exception
 						value = ex.Message
 					End Try
@@ -58,11 +59,11 @@ Namespace ApiSamples.Common
 						runtimePropertyType = value.GetType()
 					End If
 
-                    Console.WriteLine(ControlChars.Tab & "{0} = '{1}' ({2} | {3}).", objProperty.Name, value, nativePropertyType, runtimePropertyType)
-				Next j
+					Console.WriteLine(ControlChars.Tab & "{0} = '{1}' ({2} | {3}).", [property].Name, value, nativePropertyType, runtimePropertyType)
+				Next [property]
 
 				Console.WriteLine()
-			Next i
+			Next properties
 		End Sub
 	End Class
 End Namespace

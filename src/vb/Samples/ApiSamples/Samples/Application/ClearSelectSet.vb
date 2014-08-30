@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace ApiSamples.Application
+Namespace Application
 	''' <summary>
 	''' Clears the application active select set.
 	''' </summary>
@@ -21,7 +21,7 @@ Namespace ApiSamples.Application
 				SolidEdgeCommunity.OleMessageFilter.Register()
 
 				' Connect to or start Solid Edge.
-				application = SolidEdgeCommunity.SolidEdgeInstall.Start()
+				application = SolidEdgeCommunity.SolidEdgeUtils.Start()
 
 				' Get a reference to the active select set.
 				selectSet = application.ActiveSelectSet
