@@ -53,7 +53,7 @@ namespace MyAddIn
             //_connectionPointController.AdviseSink<SolidEdgeFramework.ISEApplicationWindowEvents>(this.Application);
 
             // Uncomment the following line to attach to the Solid Edge Feature Library Events.
-            //_connectionPointController.AdviseSink<SolidEdgeFramework.ISEFeatureLibraryEvents>(this.Application);
+            _connectionPointController.AdviseSink<SolidEdgeFramework.ISEFeatureLibraryEvents>(this.Application);
 
             // Uncomment the following line to attach to the Solid Edge File UI Events.
             //_connectionPointController.AdviseSink<SolidEdgeFramework.ISEFileUIEvents>(this.Application);
