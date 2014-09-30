@@ -6,29 +6,32 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{87C48599-1B04-4210-93CF-3D9750A62667}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyAddIn</RootNamespace>
     <AssemblyName>MyAddIn</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>63b355d3</NuGetPackageImportStamp>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.SolidEdge, Version=107.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -56,24 +59,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ribbon2d.cs" />
-    <Compile Include="MyAddIn.cs" />
-    <Compile Include="MyCustomDialog.cs">
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ribbon2d.vb" />
+    <Compile Include="MyAddIn.vb" />
+    <Compile Include="MyCustomDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyCustomDialog.Designer.cs">
-      <DependentUpon>MyCustomDialog.cs</DependentUpon>
+    <Compile Include="MyCustomDialog.Designer.vb">
+      <DependentUpon>MyCustomDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="MyEdgeBarControl.cs">
+    <Compile Include="MyEdgeBarControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MyEdgeBarControl.Designer.cs">
-      <DependentUpon>MyEdgeBarControl.cs</DependentUpon>
+    <Compile Include="MyEdgeBarControl.Designer.vb">
+      <DependentUpon>MyEdgeBarControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="MyViewOverlay.cs" />
-    <Compile Include="Ribbon3d.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structures.cs" />
+    <Compile Include="MyViewOverlay.vb" />
+    <Compile Include="Ribbon3d.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Structures.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -84,10 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyCustomDialog.resx">
-      <DependentUpon>MyCustomDialog.cs</DependentUpon>
+      <DependentUpon>MyCustomDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyEdgeBarControl.resx">
-      <DependentUpon>MyEdgeBarControl.cs</DependentUpon>
+      <DependentUpon>MyEdgeBarControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon3d.xml">
       <SubType>Designer</SubType>
@@ -118,7 +133,7 @@
     <Content Include="res\Search_32x32.png" />
     <Content Include="res\Tools_32x32.png" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
@@ -130,7 +145,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\SolidEdge.Community.107.1.0\build\net40\SolidEdge.Community.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdge.Community.107.1.0\build\net40\SolidEdge.Community.targets'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

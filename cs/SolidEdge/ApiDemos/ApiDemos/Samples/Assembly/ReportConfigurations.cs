@@ -36,7 +36,7 @@ namespace ApiDemos.Assembly
                     configurations = assemblyDocument.Configurations;
 
                     // Iterate through all of the configurations.
-                    foreach (var configuration in configurations.OfType<SolidEdgeAssembly.Configuration>())
+                    foreach (SolidEdgeAssembly.Configuration configuration in configurations.OfType<SolidEdgeAssembly.Configuration>())
                     {
                         Console.WriteLine("Configuration Name: '{0}' | Configuration Type: {1}.", configuration.Name, configuration.ConfigurationType);
                     }
