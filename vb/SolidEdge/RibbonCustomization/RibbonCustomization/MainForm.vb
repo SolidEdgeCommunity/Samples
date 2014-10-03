@@ -95,7 +95,7 @@ Partial Public Class MainForm
 
 					Dim ribbonBarControls = ribbonBarGroup.RibbonBarControls
 
-					' Check to see if the group exists.
+                    ' Check to see if the control exists.
 					For Each control As SolidEdgeFramework.RibbonBarControl In ribbonBarControls
 						If control.Name.Equals(_macro, StringComparison.Ordinal) Then
 							ribbonBarControl = control

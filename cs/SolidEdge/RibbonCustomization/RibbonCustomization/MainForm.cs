@@ -111,7 +111,7 @@ namespace RibbonCustomization
 
                         var ribbonBarControls = ribbonBarGroup.RibbonBarControls;
 
-                        // Check to see if the group exists.
+                        // Check to see if the control exists.
                         foreach (SolidEdgeFramework.RibbonBarControl control in ribbonBarControls)
                         {
                             if (control.Name.Equals(_macro, StringComparison.Ordinal))
