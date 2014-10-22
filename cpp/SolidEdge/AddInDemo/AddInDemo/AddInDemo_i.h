@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Fri Oct 17 03:18:44 2014
+/* at Wed Oct 22 13:00:36 2014
  */
 /* Compiler settings for AddInDemo.idl:
     Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.00.0595 

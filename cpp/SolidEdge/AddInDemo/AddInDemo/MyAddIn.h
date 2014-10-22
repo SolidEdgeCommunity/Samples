@@ -21,7 +21,7 @@ class __declspec(uuid("{EE3C24E4-BB07-4C3F-909C-031C84EC3F07}")) CMyAddIn;
 class ATL_NO_VTABLE CMyAddIn :
 	public CComObjectRootEx<CComSingleThreadModel>,
 	public CComCoClass<CMyAddIn, &__uuidof(CMyAddIn)>,
-	public SolidEdgeFramework::ISolidEdgeAddIn,
+	public ISolidEdgeAddIn,
 	public ISEAddInEvents, public CEventSink<ISEAddInEvents>,
 	//public ISEAddInEventsEx, public CEventSink<ISEAddInEventsEx>, // Added in ST6
 	public ISEApplicationEvents, public CEventSink<ISEApplicationEvents>

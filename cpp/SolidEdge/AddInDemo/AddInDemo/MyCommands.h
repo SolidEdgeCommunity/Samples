@@ -33,11 +33,11 @@ enum MyCommandId
 
 typedef struct MY_COMMAND_INFO_
 {
-	long			lCategoryID;
-	long			lGroupID;
-	MyCommandId		lCommandID;
-	long			lStringID;
-	long			lImageID;
+	UINT			iCategory;
+	UINT			iGroup;
+	UINT			iCommand;
+	UINT			iString;
+	UINT			iImage;
 	SeButtonStyle	buttonStyle;
 } MY_COMMAND_INFO, *PMY_COMMAND_INFO;
 

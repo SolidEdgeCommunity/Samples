@@ -76,6 +76,56 @@ STDMETHODIMP CMyAddIn::raw_OnDisconnection(SolidEdgeFramework::SeDisconnectMode 
 
 HRESULT CMyAddIn::raw_OnCommand(long nCmdID)
 {
+	switch (nCmdID)
+	{
+	case idSave:
+		break;
+	case idFolder:
+		break;
+	case idMonitor:
+		break;
+	case idBox:
+		break;
+	case idCamera:
+		break;
+	case idPhotograph:
+		break;
+	case idFavorites:
+		break;
+	case idPrinter:
+		break;
+	case idTools:
+		break;
+	case idCommandPrompt:
+		break;
+	case idNotepad:
+		break;
+	case idHelp:
+		break;
+	case idSearch:
+		break;
+	case idQuestion:
+		break;
+	case idCheckbox1:
+		break;
+	case idCheckbox2:
+		break;
+	case idCheckbox3:
+		break;
+	case idRadiobutton1:
+		break;
+	case idRadiobutton2:
+		break;
+	case idRadiobutton3:
+		break;
+	case idBoundingBox:
+		break;
+	case idBoxes:
+		break;
+	case idGdiPlus:
+		break;
+	}
+
 	return S_OK;
 }
 
@@ -86,6 +136,60 @@ HRESULT CMyAddIn::raw_OnCommandHelp(long hFrameWnd, long uHelpCommand, long nCmd
 
 HRESULT CMyAddIn::raw_OnCommandUpdateUI(long nCmdID, long *lCmdFlags, BSTR *MenuItemText, long *nIDBitmap)
 {
+	switch (nCmdID)
+	{
+	case idSave:
+		break;
+	case idFolder:
+		break;
+	case idMonitor:
+		break;
+	case idBox:
+		break;
+	case idCamera:
+		break;
+	case idPhotograph:
+		break;
+	case idFavorites:
+		break;
+	case idPrinter:
+		break;
+	case idTools:
+		break;
+	case idCommandPrompt:
+		break;
+	case idNotepad:
+		break;
+	case idHelp:
+		break;
+	case idSearch:
+		break;
+	case idQuestion:
+		break;
+	case idCheckbox1:
+		// Demonstrate how to set the check state.
+		*lCmdFlags |= SolidEdgeConstants::seCmdActive_Checked;
+		break;
+	case idCheckbox2:
+		break;
+	case idCheckbox3:
+		break;
+	case idRadiobutton1:
+		break;
+	case idRadiobutton2:
+		// Demonstrate how to set the check state.
+		*lCmdFlags |= SolidEdgeConstants::seCmdActive_Checked;
+		break;
+	case idRadiobutton3:
+		break;
+	case idBoundingBox:
+		break;
+	case idBoxes:
+		break;
+	case idGdiPlus:
+		break;
+	}
+
 	return S_OK;
 }
 
@@ -334,31 +438,36 @@ void CMyAddIn::CreateEnvironmentRibbon(GUID environmentGuid, EnvironmentPtr pEnv
 			for (UINT j = 0; j < MyEnvironments[i].nCommands; j++)
 			{
 				MY_COMMAND_INFO pCommandInfo = MyEnvironments[i].pCommands[j];
-				long commandId = pCommandInfo.lCommandID;
+				long commandId = pCommandInfo.iCommand;
 
 				// Load category from string resource.
-				CComBSTR bstrCategory;
-				ATLVERIFY(bstrCategory.LoadString( pCommandInfo.lCategoryID));
+				CString szCategory;
+				ATLVERIFY(szCategory.LoadString(pCommandInfo.iCategory));
+
+				_bstr_t bstrCategory(szCategory);
 
 				// Load localized string resource.
-				CComBSTR bstrLocalized;
-				ATLVERIFY(bstrLocalized.LoadString( pCommandInfo.lStringID));
+				CString szLocalized;
+				ATLVERIFY(szLocalized.LoadString(pCommandInfo.iString));
 
 				// Prepend the non-localized prefix.
-                _bstr_t bstrCommandString = _bstr_t(csPrefix) + bstrLocalized.m_str;
+				CString szCommandString = csPrefix;// +szLocalized;
+				szCommandString.AppendFormat(L"_Command%d", pCommandInfo.iCommand);
+				szCommandString.Append(L"\n");
+				szCommandString.Append(szLocalized);
 
 				CComSafeArray<BSTR> saCmdStrings(1);
 				CComSafeArray<long> saCmdIDs(1);
 
 				// Populate arrays.
-				hr = saCmdStrings.SetAt((long)0, bstrCommandString.GetBSTR());
-				hr = saCmdIDs.SetAt( (long)0, pCommandInfo.lCommandID );
+				hr = saCmdStrings.SetAt((long)0, szCommandString.AllocSysString());
+				hr = saCmdIDs.SetAt( (long)0, pCommandInfo.iCommand );
 
 				hr = pAddInEx->SetAddInInfoEx(
 					ResourceFilename,				// ResourceFilename
 					pEnvironment->CATID,			// EnvironmentCatID
-					bstrCategory.m_str,				// CategoryName (Ribbon Tab Name)
-					pCommandInfo.lImageID,			// IDColorBitmapMedium
+					bstrCategory,					// CategoryName (Ribbon Tab Name)
+					pCommandInfo.iImage,			// IDColorBitmapMedium
 					-1,								// IDColorBitmapLarge
 					-1,								// IDMonochromeBitmapMedium
 					-1,								// IDMonochromeBitmapLarge
@@ -370,16 +479,16 @@ void CMyAddIn::CreateEnvironmentRibbon(GUID environmentGuid, EnvironmentPtr pEnv
 				{
 					CComBSTR bstrCommandBarName;
 
-					bstrCommandBarName.AppendBSTR(bstrCategory.m_str);
+					bstrCommandBarName.AppendBSTR(bstrCategory);
 					bstrCommandBarName.Append(L"\n");
 
 					// Load group from string resource.
 					CComBSTR bstrGroup;
-					ATLVERIFY(bstrGroup.LoadString( pCommandInfo.lGroupID));
-
+					ATLVERIFY(bstrGroup.LoadString( pCommandInfo.iGroup));
+					
 					bstrCommandBarName.Append(bstrGroup.m_str);
 
-					CommandBarButtonPtr pButton = pAddInEx->AddCommandBarButton(pEnvironment->CATID, bstrCommandBarName.m_str, pCommandInfo.lCommandID); 
+					CommandBarButtonPtr pButton = pAddInEx->AddCommandBarButton(pEnvironment->CATID, bstrCommandBarName.m_str, pCommandInfo.iCommand); 
 
 					if( pButton )
 					{
