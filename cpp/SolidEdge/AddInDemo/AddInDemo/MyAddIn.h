@@ -5,6 +5,7 @@
 #include "AddInDemo_i.h"
 //#include "commands.h"
 #include "SolidEdgeCommunity.h"
+#include "MyViewOverlay.h"
 
 #if defined(_WIN32_WCE) && !defined(_CE_DCOM) && !defined(_CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA)
 #error "Single-threaded COM objects are not properly supported on Windows CE platform, such as the Windows Mobile platforms that do not include full DCOM support. Define _CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA to force ATL to support creating single-thread COM object's and allow use of it's single-threaded COM object implementations. The threading model in your rgs file was set to 'Free' as that is the only threading model supported in non DCOM Windows CE platforms."
@@ -16,15 +17,17 @@ using namespace ATL;
 // CMyAddIn
 
 // AddIn GUID Must be unique!
-class __declspec(uuid("{EE3C24E4-BB07-4C3F-909C-031C84EC3F07}")) CMyAddIn;
+// {3CE1FCC9-6345-4367-94D4-31C701B06AEC}
+DEFINE_GUID(CLSID_MyAddIn, 0x3ce1fcc9, 0x6345, 0x4367, 0x94, 0xd4, 0x31, 0xc7, 0x1, 0xb0, 0x6a, 0xec);
 
 class ATL_NO_VTABLE CMyAddIn :
 	public CComObjectRootEx<CComSingleThreadModel>,
-	public CComCoClass<CMyAddIn, &__uuidof(CMyAddIn)>,
+	public CComCoClass<CMyAddIn, &CLSID_MyAddIn>,
+	public SolidEdgeCommunity::CSolidEdgeAddIn<CMyAddIn, &CLSID_MyAddIn>,
 	public ISolidEdgeAddIn,
-	public ISEAddInEvents, public CEventSink<ISEAddInEvents>,
+	public ISEAddInEvents, public SolidEdgeCommunity::CEventSink<ISEAddInEvents>,
 	//public ISEAddInEventsEx, public CEventSink<ISEAddInEventsEx>, // Added in ST6
-	public ISEApplicationEvents, public CEventSink<ISEApplicationEvents>
+	public ISEApplicationEvents, public SolidEdgeCommunity::CEventSink<ISEApplicationEvents>
 	//public ISEApplicationWindowEvents, public CEventSink<ISEApplicationWindowEvents>,
 	//public ISEFeatureLibraryEvents, public CEventSink<ISEFeatureLibraryEvents>,
 	//public ISEFileUIEvents, public CEventSink<ISEFileUIEvents>,
@@ -171,15 +174,13 @@ private:
 
 #pragma region CMyAddIn private methods
 
-	void CreateEnvironmentRibbon(GUID environmentGuid, EnvironmentPtr pEnvironment, VARIANT_BOOL bFirstTime);
+	void CreateRibbon(GUID environmentGuid, EnvironmentPtr pEnvironment, VARIANT_BOOL bFirstTime);
 
 #pragma endregion
 
-private:
-	SolidEdgeFramework::ApplicationPtr m_pApplication;
-	SolidEdgeFramework::AddInPtr m_pAddIn;
-	//LPCTSTR m_pResourceFilename;
+protected:
+	CMyViewOverlayObj* m_pMyViewOverlay;
 };
 
-OBJECT_ENTRY_AUTO(__uuidof(CMyAddIn), CMyAddIn)
+OBJECT_ENTRY_AUTO(CLSID_MyAddIn, CMyAddIn)
 

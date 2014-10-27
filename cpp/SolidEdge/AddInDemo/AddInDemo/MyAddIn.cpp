@@ -7,7 +7,6 @@
 // CMyAddIn
 #pragma region ISolidEdgeAddIn
 
-
 STDMETHODIMP CMyAddIn::raw_OnConnection(IDispatch *pAppDispatch, SolidEdgeFramework::SeConnectMode ConnectMode, SolidEdgeFramework::AddIn* pAddIn)
 {
 	AFX_MANAGE_STATE( AfxGetStaticModuleState() );
@@ -36,6 +35,9 @@ STDMETHODIMP CMyAddIn::raw_OnConnection(IDispatch *pAppDispatch, SolidEdgeFramew
 	//CEventSink<ISEECEvents>::Advise(m_pApplication);
 	//CEventSink<ISEShortCutMenuEvents>::Advise(m_pApplication);
 
+	CMyViewOverlayObj::CreateInstance(&m_pMyViewOverlay);
+	m_pMyViewOverlay->AddRef();
+
 	return S_OK;
 }
 
@@ -50,13 +52,22 @@ STDMETHODIMP CMyAddIn::raw_OnConnectToEnvironment(BSTR EnvironmentCatid, LPDISPA
 	// Get a strongly typed Environment smart pointer.
 	EnvironmentPtr environment = pEnvironment;
 
-	CreateEnvironmentRibbon(environmentGuid, environment, bFirstTime);
+	CreateRibbon(environmentGuid, environment, bFirstTime);
 
 	return S_OK;
 }
 
 STDMETHODIMP CMyAddIn::raw_OnDisconnection(SolidEdgeFramework::SeDisconnectMode DisconnectMode)
 {
+	SolidEdgeFramework::ViewPtr pView = NULL;
+
+	if (m_pMyViewOverlay != NULL)
+	{
+		m_pMyViewOverlay->SetView(pView);
+		m_pMyViewOverlay->Release();
+		m_pMyViewOverlay = NULL;
+	}
+
 	// Detach the event sinks
 	CEventSink<ISEAddInEvents>::Unadvise();
 	//CEventSink<ISEAddInEventsEx>::Unadvise(); // Added in ST6
@@ -261,6 +272,13 @@ HRESULT CMyAddIn::raw_AfterNewWindow( LPDISPATCH theWindow )
 
 HRESULT CMyAddIn::raw_AfterWindowActivate( LPDISPATCH theWindow )
 {
+	SolidEdgeFramework::WindowPtr pWindow = theWindow;
+
+	if (pWindow	!= NULL)
+	{
+		m_pMyViewOverlay->SetView(pWindow);
+	}
+
 	return S_OK;
 }
 
@@ -294,6 +312,9 @@ HRESULT CMyAddIn::raw_BeforeEnvironmentDeactivate( LPDISPATCH theEnvironment )
 
 HRESULT CMyAddIn::raw_BeforeWindowDeactivate( LPDISPATCH theWindow )
 {
+	SolidEdgeFramework::ViewPtr pView = NULL;
+	m_pMyViewOverlay->SetView(pView);
+
 	return S_OK;
 }
 
@@ -408,26 +429,17 @@ HRESULT CMyAddIn::raw_BuildMenu(BSTR EnvCatID, enum ShortCutMenuContextConstants
 
 #pragma endregion
 
-void CMyAddIn::CreateEnvironmentRibbon(GUID environmentGuid, EnvironmentPtr pEnvironment, VARIANT_BOOL bFirstTime)
+void CMyAddIn::CreateRibbon(GUID environmentGuid, EnvironmentPtr pEnvironment, VARIANT_BOOL bFirstTime)
 {
 	HRESULT hr = S_OK;
 
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	// Build path to .dll that contains the resources.
-	HINSTANCE hInstance = AfxGetResourceHandle();
-	TCHAR ResourceFilename[MAX_PATH];
-	GetModuleFileName(hInstance, ResourceFilename, sizeof(ResourceFilename));
-
-	// Build the command prefix for uniqueness.
-	const int GUID_STRING_LENGTH = 40;
-	OLECHAR szGuid[GUID_STRING_LENGTH] = {0};
-	::StringFromGUID2(__uuidof(CMyAddIn), szGuid, GUID_STRING_LENGTH );
-	CString csGuid(szGuid);
-	CString csPrefix = csGuid.Mid(1, 8);
-
 	ISEAddInExPtr pAddInEx = m_pAddIn;
 	//ISEAddInEx2Ptr pAddInEx2 = m_pAddIn;
+
+	// Path to resources .dll.
+	_bstr_t bstrResourceFilename(m_strResourceFilename);
 
 	// Loop through MyEnvironments checking to see if we have configured commands for this environment.
 	for (UINT i = 0; i < _countof(MyEnvironments); i++)
@@ -451,7 +463,7 @@ void CMyAddIn::CreateEnvironmentRibbon(GUID environmentGuid, EnvironmentPtr pEnv
 				ATLVERIFY(szLocalized.LoadString(pCommandInfo.iString));
 
 				// Prepend the non-localized prefix.
-				CString szCommandString = csPrefix;// +szLocalized;
+				CString szCommandString = m_strCommandPrefix;// csPrefix;// +szLocalized;
 				szCommandString.AppendFormat(L"_Command%d", pCommandInfo.iCommand);
 				szCommandString.Append(L"\n");
 				szCommandString.Append(szLocalized);
@@ -464,7 +476,7 @@ void CMyAddIn::CreateEnvironmentRibbon(GUID environmentGuid, EnvironmentPtr pEnv
 				hr = saCmdIDs.SetAt( (long)0, pCommandInfo.iCommand );
 
 				hr = pAddInEx->SetAddInInfoEx(
-					ResourceFilename,				// ResourceFilename
+					bstrResourceFilename,			// ResourceFilename
 					pEnvironment->CATID,			// EnvironmentCatID
 					bstrCategory,					// CategoryName (Ribbon Tab Name)
 					pCommandInfo.iImage,			// IDColorBitmapMedium

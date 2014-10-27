@@ -5,6 +5,7 @@
 #include "AddInDemo.h"
 #include <initguid.h>
 #include "AddInDemo_i.c"
+#include "MyAddIn.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -113,23 +114,39 @@ STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
 STDAPI DllRegisterServer(void)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
 	_AtlModule.UpdateRegistryAppId(TRUE);
 	HRESULT hRes2 = _AtlModule.RegisterServer(TRUE);
 	if (hRes2 != S_OK)
 		return hRes2;
 	if (!COleObjectFactory::UpdateRegistryAll(TRUE))
 		return ResultFromScode(SELFREG_E_CLASS);
+
+	// Solid Edge environment(s) that your addin supports. Defined in secatids.h.
+	CATID environments[] =
+	{
+		CATID_SEApplication,
+		CATID_SEAllDocumentEnvrionments
+	};
+
+	// Note that Register() is overloaded for additional options.
+	SolidEdgeCommunity::CAddInRegistrar::Register(CLSID_MyAddIn, L"SolidEdgeCommunity.AddInDemo", L"My description", _countof(environments), environments);
+
 	return S_OK;
 }
 
 STDAPI DllUnregisterServer(void)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
 	_AtlModule.UpdateRegistryAppId(FALSE);
 	HRESULT hRes2 = _AtlModule.UnregisterServer(TRUE);
 	if (hRes2 != S_OK)
 		return hRes2;
 	if (!COleObjectFactory::UpdateRegistryAll(FALSE))
 		return ResultFromScode(SELFREG_E_CLASS);
+
+	SolidEdgeCommunity::CAddInRegistrar::Unregister(CLSID_MyAddIn);
+
 	return S_OK;
 }

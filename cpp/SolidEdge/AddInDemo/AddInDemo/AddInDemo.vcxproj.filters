@@ -27,10 +27,10 @@
     <ClCompile Include="MyAddIn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Commands.cpp">
+    <ClCompile Include="SolidEdgeCommunity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SolidEdgeCommunity.cpp">
+    <ClCompile Include="MyViewOverlay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,13 +50,13 @@
     <ClInclude Include="MyAddIn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Commands.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SolidEdgeCommunity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyCommands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyViewOverlay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

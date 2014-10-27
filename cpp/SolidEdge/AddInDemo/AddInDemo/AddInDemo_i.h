@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Wed Oct 22 13:00:36 2014
+/* at Mon Oct 27 06:43:37 2014
  */
 /* Compiler settings for AddInDemo.idl:
     Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.00.0595 
@@ -41,18 +41,6 @@
 
 /* Forward Declarations */ 
 
-#ifndef __MyAddIn_FWD_DEFINED__
-#define __MyAddIn_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class MyAddIn MyAddIn;
-#else
-typedef struct MyAddIn MyAddIn;
-#endif /* __cplusplus */
-
-#endif 	/* __MyAddIn_FWD_DEFINED__ */
-
-
 /* header files for imported files */
 #include "oaidl.h"
 #include "ocidl.h"
@@ -71,14 +59,6 @@ extern "C"{
 
 
 EXTERN_C const IID LIBID_AddInDemoLib;
-
-EXTERN_C const CLSID CLSID_MyAddIn;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("EE3C24E4-BB07-4C3F-909C-031C84EC3F07")
-MyAddIn;
-#endif
 #endif /* __AddInDemoLib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */

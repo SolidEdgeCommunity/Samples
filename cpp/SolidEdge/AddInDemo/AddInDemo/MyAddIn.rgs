@@ -1,42 +1,23 @@
 HKCR
 {
-	AddInDemo.MyAddIn.1 = s 'MyAddIn Class'
-	{
-		CLSID = s '{EE3C24E4-BB07-4C3F-909C-031C84EC3F07}'
-	}
-	AddInDemo.MyAddIn = s 'MyAddIn Class'
+	SolidEdgeCommunity.AddInDemo.MyAddIn = s 'MyAddIn Class'
 	{		
-		CurVer = s 'AddInDemo.MyAddIn.1'
+		CLSID = s '{3CE1FCC9-6345-4367-94D4-31C701B06AEC}'
 	}
 	NoRemove CLSID
 	{
-		ForceRemove {EE3C24E4-BB07-4C3F-909C-031C84EC3F07} = s 'MyAddIn Class'
+		ForceRemove {3CE1FCC9-6345-4367-94D4-31C701B06AEC} = s ''
 		{
-			val 409 = s 'MyAddIn'
 			val AutoConnect = d 1
 
-			ProgID = s 'AddInDemo.MyAddIn.1'
-			VersionIndependentProgID = s 'AddInDemo.MyAddIn'
+			ProgID = s 'SolidEdgeCommunity.AddInDemo.MyAddIn'
 			
 			ForceRemove Programmable
-
-			ForceRemove 'Environment Categories'
-			{
-				ForceRemove '{BAD41B8D-18FF-42c9-9611-8A00E6921AE8}' = s 'CATID_SEAllDocumentEnvrionments'
-			}
-
-			ForceRemove 'Implemented Categories'
-            {
-                ForceRemove '{26B1D2D1-2B03-11D2-B589-080036E8B802}'
-            }
 
 			InprocServer32 = s '%MODULE%'
 			{
 				val ThreadingModel = s 'Apartment'
 			}
-
-			TypeLib = s '{9444609D-8C66-4659-89F5-14451BB5F65A}'
-			Version = s '1.0'
 		}
 	}
 }
