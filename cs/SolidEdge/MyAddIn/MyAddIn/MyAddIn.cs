@@ -8,6 +8,7 @@
 using SolidEdgeCommunity.Extensions; // https://github.com/SolidEdgeCommunity/SolidEdge.Community/wiki/Using-Extension-Methods
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
@@ -528,19 +529,31 @@ namespace MyAddIn
         [ComRegisterFunction]
         static void OnRegister(Type t)
         {
-            string title = "SolidEdgeCommunity.Samples.MyAddIn";
-            string summary = "Solid Edge Addin in .NET 4.0.";
-            var enabled = true; // You have the option to register the addin in a disabled state.
-
-            // List of environments that your addin supports.
-            Guid[] environments = {
-                                      SolidEdgeSDK.EnvironmentCategories.Application,
-                                      SolidEdgeSDK.EnvironmentCategories.AllDocumentEnvrionments
-                                    };
+            // See http://www.codeproject.com/Articles/839585/Solid-Edge-ST-AddIn-Architecture-Overview#Registration for registration details.
+            // The following code helps write registry entries that Solid Edge needs to identify an addin. You can omit this code and
+            // user installer logic if you'd like. This is simply here to help.
 
             try
             {
-                MyAddIn.Register(t, title, summary, enabled, environments);
+                var settings = new SolidEdgeCommunity.AddIn.RegistrationSettings(t);
+
+                settings.Enabled = true;
+                settings.Environments.Add(SolidEdgeSDK.EnvironmentCategories.Application);
+                settings.Environments.Add(SolidEdgeSDK.EnvironmentCategories.AllDocumentEnvrionments);
+
+                // See http://msdn.microsoft.com/en-us/goglobal/bb964664.aspx for LCID details.
+                var englishCulture = CultureInfo.GetCultureInfo(1033);
+
+                // Title & Summary are Locale specific. 
+                settings.Titles.Add(englishCulture, "SolidEdgeCommunity.Samples.MyAddIn");
+                settings.Summaries.Add(englishCulture, "Solid Edge Addin in .NET 4.0.");
+
+                // Optionally, you can add additional locales.
+                //var germanCultere = CultureInfo.GetCultureInfo(1031);
+                //settings.Titles.Add(germanCultere, "SolidEdge.Samples.MyAddIn");
+                //settings.Summaries.Add(germanCultere, "Solid Edge Addin in .NET 4.0.");
+
+                MyAddIn.Register(settings);
             }
             catch (System.Exception ex)
             {
