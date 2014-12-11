@@ -29,7 +29,7 @@ Namespace Assembly
 				If document IsNot Nothing Then
 					Dim propertySets = DirectCast(document.Properties, SolidEdgeFramework.PropertySets)
 
-					ApiDemos.Common.FileProperties.AddCustomProperties(propertySets)
+                    ApiDemos.Common.FileProperties.AddCustomProperties(propertySets)
 				Else
 					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
 				End If

@@ -1,4 +1,6 @@
-﻿Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
+﻿Option Strict Off
+
+Imports SolidEdgeCommunity.Extensions ' Enabled extension methods from SolidEdge.Community.dll
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
@@ -19,12 +21,12 @@ Namespace Draft
 			Dim draftDocument As SolidEdgeDraft.DraftDocument = Nothing
 			Dim partsLists As SolidEdgeDraft.PartsLists = Nothing
 			Dim partsList As SolidEdgeDraft.PartsList = Nothing
-			Dim excelApplication As Microsoft.Office.Interop.Excel.Application = Nothing
-			Dim excelWorkbooks As Microsoft.Office.Interop.Excel.Workbooks = Nothing
-			Dim excelWorkbook As Microsoft.Office.Interop.Excel.Workbook = Nothing
-			Dim excelWorksheet As Microsoft.Office.Interop.Excel.Worksheet = Nothing
-			Dim excelCells As Microsoft.Office.Interop.Excel.Range = Nothing
-			Dim excelRange As Microsoft.Office.Interop.Excel.Range = Nothing
+            Dim excelApplication As Object = Nothing
+            Dim excelWorkbooks As Object = Nothing
+            Dim excelWorkbook As Object = Nothing
+            Dim excelWorksheet As Object = Nothing
+            Dim excelCells As Object = Nothing
+            Dim excelRange As Object = Nothing
 			Dim tableColumns As SolidEdgeDraft.TableColumns = Nothing
 			Dim tableRows As SolidEdgeDraft.TableRows = Nothing
 			Dim tableCell As SolidEdgeDraft.TableCell = Nothing
@@ -49,16 +51,16 @@ Namespace Draft
 
 						' Connect to or start Excel.
 						Try
-							excelApplication = DirectCast(Marshal.GetActiveObject("Excel.Application"), Microsoft.Office.Interop.Excel.Application)
+                            excelApplication = Marshal.GetActiveObject("Excel.Application")
 						Catch
-							excelApplication = DirectCast(Activator.CreateInstance(Type.GetTypeFromProgID("Excel.Application")), Microsoft.Office.Interop.Excel.Application)
+                            excelApplication = Activator.CreateInstance(Type.GetTypeFromProgID("Excel.Application"))
 						End Try
 
 						If excelApplication IsNot Nothing Then
 							excelApplication.Visible = True
 							excelWorkbooks = excelApplication.Workbooks
 							excelWorkbook = excelWorkbooks.Add()
-							excelWorksheet = DirectCast(excelWorkbook.ActiveSheet, Microsoft.Office.Interop.Excel.Worksheet)
+                            excelWorksheet = excelWorkbook.ActiveSheet
 
 							' Get a reference to the Columns collection.
 							tableColumns = partsList.Columns
@@ -76,7 +78,7 @@ Namespace Draft
 							For Each tableColumn In tableColumns.OfType(Of SolidEdgeDraft.TableColumn)()
 								If tableColumn.Show Then
 									visibleColumnCount += 1
-									excelRange = DirectCast(excelCells.Item(1, visibleColumnCount), Microsoft.Office.Interop.Excel.Range)
+                                    excelRange = excelCells.Item(1, visibleColumnCount)
 									excelRange.Value = tableColumn.HeaderRowValue
 								End If
 							Next tableColumn
@@ -87,7 +89,7 @@ Namespace Draft
 									If tableColumn.Show Then
 										visibleRowCount += 1
 										tableCell = partsList.Cell(tableRow.Index, tableColumn.Index)
-										excelRange = DirectCast(excelCells.Item(tableRow.Index + 1, tableColumn.Index), Microsoft.Office.Interop.Excel.Range)
+                                        excelRange = excelCells.Item(tableRow.Index + 1, tableColumn.Index)
 										excelRange.Value = tableCell.value
 									End If
 								Next tableColumn

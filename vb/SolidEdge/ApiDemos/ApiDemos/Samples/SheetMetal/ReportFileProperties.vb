@@ -29,7 +29,7 @@ Namespace SheetMetal
 				If document IsNot Nothing Then
 					Dim propertySets = DirectCast(document.Properties, SolidEdgeFramework.PropertySets)
 
-					ApiDemos.Common.FileProperties.ReportAllProperties(propertySets)
+                    ApiDemos.Common.FileProperties.ReportAllProperties(propertySets)
 				Else
 					Throw New System.Exception(Resources.NoActiveSheetMetalDocument)
 				End If

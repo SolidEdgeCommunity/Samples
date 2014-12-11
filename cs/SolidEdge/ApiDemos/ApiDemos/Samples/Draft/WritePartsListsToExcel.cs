@@ -20,12 +20,12 @@ namespace ApiDemos.Draft
             SolidEdgeDraft.DraftDocument draftDocument = null;
             SolidEdgeDraft.PartsLists partsLists = null;
             SolidEdgeDraft.PartsList partsList = null;
-            Microsoft.Office.Interop.Excel.Application excelApplication = null;
-            Microsoft.Office.Interop.Excel.Workbooks excelWorkbooks = null;
-            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = null;
-            Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = null;
-            Microsoft.Office.Interop.Excel.Range excelCells = null;
-            Microsoft.Office.Interop.Excel.Range excelRange = null;
+            dynamic excelApplication = null;
+            dynamic excelWorkbooks = null;
+            dynamic excelWorkbook = null;
+            dynamic excelWorksheet = null;
+            dynamic excelCells = null;
+            dynamic excelRange = null;
             SolidEdgeDraft.TableColumns tableColumns = null;
             SolidEdgeDraft.TableRows tableRows = null;
             SolidEdgeDraft.TableCell tableCell = null;
@@ -54,11 +54,11 @@ namespace ApiDemos.Draft
                         // Connect to or start Excel.
                         try
                         {
-                            excelApplication = (Microsoft.Office.Interop.Excel.Application)Marshal.GetActiveObject("Excel.Application");
+                            excelApplication = Marshal.GetActiveObject("Excel.Application");
                         }
                         catch
                         {
-                            excelApplication = (Microsoft.Office.Interop.Excel.Application)Activator.CreateInstance(Type.GetTypeFromProgID("Excel.Application"));
+                            excelApplication = Activator.CreateInstance(Type.GetTypeFromProgID("Excel.Application"));
                         }
 
                         if (excelApplication != null)
@@ -66,7 +66,7 @@ namespace ApiDemos.Draft
                             excelApplication.Visible = true;
                             excelWorkbooks = excelApplication.Workbooks;
                             excelWorkbook = excelWorkbooks.Add();
-                            excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.ActiveSheet;
+                            excelWorksheet = excelWorkbook.ActiveSheet;
 
                             // Get a reference to the Columns collection.
                             tableColumns = partsList.Columns;
@@ -86,7 +86,7 @@ namespace ApiDemos.Draft
                                 if (tableColumn.Show)
                                 {
                                     visibleColumnCount++;
-                                    excelRange = (Microsoft.Office.Interop.Excel.Range)excelCells.Item[1, visibleColumnCount];
+                                    excelRange = excelCells.Item[1, visibleColumnCount];
                                     excelRange.Value = tableColumn.HeaderRowValue;
                                 }
                             }
@@ -100,7 +100,7 @@ namespace ApiDemos.Draft
                                     {
                                         visibleRowCount++;
                                         tableCell = partsList.Cell[tableRow.Index, tableColumn.Index];
-                                        excelRange = (Microsoft.Office.Interop.Excel.Range)excelCells.Item[tableRow.Index + 1, tableColumn.Index];
+                                        excelRange = excelCells.Item[tableRow.Index + 1, tableColumn.Index];
                                         excelRange.Value = tableCell.value;
                                     }
                                 }

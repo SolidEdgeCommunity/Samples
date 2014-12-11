@@ -49,137 +49,137 @@
 		Me.splitContainerListView = New System.Windows.Forms.SplitContainer()
 		Me.outputTextBox = New System.Windows.Forms.TextBox()
 		Me.backgroundWorker = New System.ComponentModel.BackgroundWorker()
-		Me.listView = New ApiDemos.ListViewEx()
-		Me.columnHeader1 = (CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader))
-		Me.sampleRichTextBox = New ApiDemos.Forms.RichTextBoxEx()
-		Me.menuStrip.SuspendLayout()
-		Me.toolStrip.SuspendLayout()
-		DirectCast(Me.splitContainerOuter, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.splitContainerOuter.Panel1.SuspendLayout()
-		Me.splitContainerOuter.Panel2.SuspendLayout()
-		Me.splitContainerOuter.SuspendLayout()
-		DirectCast(Me.splitContainerInner, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.splitContainerInner.Panel1.SuspendLayout()
-		Me.splitContainerInner.Panel2.SuspendLayout()
-		Me.splitContainerInner.SuspendLayout()
-		DirectCast(Me.splitContainerListView, System.ComponentModel.ISupportInitialize).BeginInit()
-		Me.splitContainerListView.Panel1.SuspendLayout()
-		Me.splitContainerListView.Panel2.SuspendLayout()
-		Me.splitContainerListView.SuspendLayout()
-		Me.SuspendLayout()
-		' 
-		' menuStrip
-		' 
-		Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() { Me.fileToolStripMenuItem, Me.helpToolStripMenuItem})
-		Me.menuStrip.Location = New System.Drawing.Point(0, 0)
-		Me.menuStrip.Name = "menuStrip"
-		Me.menuStrip.Size = New System.Drawing.Size(784, 24)
-		Me.menuStrip.TabIndex = 0
-		Me.menuStrip.Text = "menuStrip1"
-		' 
-		' fileToolStripMenuItem
-		' 
-		Me.fileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() { Me.closeAllDocumentsToolStripMenuItem, Me.closeAllDocumentssilentToolStripMenuItem, Me.toolStripMenuItem1, Me.exitToolStripMenuItem})
-		Me.fileToolStripMenuItem.Name = "fileToolStripMenuItem"
-		Me.fileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
-		Me.fileToolStripMenuItem.Text = "&File"
-		' 
-		' closeAllDocumentsToolStripMenuItem
-		' 
-		Me.closeAllDocumentsToolStripMenuItem.Name = "closeAllDocumentsToolStripMenuItem"
-		Me.closeAllDocumentsToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-		Me.closeAllDocumentsToolStripMenuItem.Text = "Close all documents"
-		' 
-		' closeAllDocumentssilentToolStripMenuItem
-		' 
-		Me.closeAllDocumentssilentToolStripMenuItem.Name = "closeAllDocumentssilentToolStripMenuItem"
-		Me.closeAllDocumentssilentToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-		Me.closeAllDocumentssilentToolStripMenuItem.Text = "Close all documents (silent)"
-		' 
-		' toolStripMenuItem1
-		' 
-		Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
-		Me.toolStripMenuItem1.Size = New System.Drawing.Size(217, 6)
-		' 
-		' exitToolStripMenuItem
-		' 
-		Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
-		Me.exitToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-		Me.exitToolStripMenuItem.Text = "&Exit"
-		' 
-		' helpToolStripMenuItem
-		' 
-		Me.helpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() { Me.codePlexToolStripMenuItem, Me.toolStripMenuItem2, Me.solidEdgeST6SDKToolStripMenuItem})
-		Me.helpToolStripMenuItem.Name = "helpToolStripMenuItem"
-		Me.helpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-		Me.helpToolStripMenuItem.Text = "&Help"
-		' 
-		' codePlexToolStripMenuItem
-		' 
-		Me.codePlexToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() { Me.samplesForSolidEdgeToolStripMenuItem, Me.interopForSolidEdgeToolStripMenuItem, Me.spyForSolidEdgeToolStripMenuItem})
-		Me.codePlexToolStripMenuItem.Name = "codePlexToolStripMenuItem"
-		Me.codePlexToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
-		Me.codePlexToolStripMenuItem.Text = "&CodePlex"
-		' 
-		' samplesForSolidEdgeToolStripMenuItem
-		' 
-		Me.samplesForSolidEdgeToolStripMenuItem.Name = "samplesForSolidEdgeToolStripMenuItem"
-		Me.samplesForSolidEdgeToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
-		Me.samplesForSolidEdgeToolStripMenuItem.Text = "Samples for Solid Edge"
-		' 
-		' interopForSolidEdgeToolStripMenuItem
-		' 
-		Me.interopForSolidEdgeToolStripMenuItem.Name = "interopForSolidEdgeToolStripMenuItem"
-		Me.interopForSolidEdgeToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
-		Me.interopForSolidEdgeToolStripMenuItem.Text = "Interop for Solid Edge"
-		' 
-		' spyForSolidEdgeToolStripMenuItem
-		' 
-		Me.spyForSolidEdgeToolStripMenuItem.Name = "spyForSolidEdgeToolStripMenuItem"
-		Me.spyForSolidEdgeToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
-		Me.spyForSolidEdgeToolStripMenuItem.Text = "Spy for Solid Edge"
-		' 
-		' toolStripMenuItem2
-		' 
-		Me.toolStripMenuItem2.Name = "toolStripMenuItem2"
-		Me.toolStripMenuItem2.Size = New System.Drawing.Size(172, 6)
-		' 
-		' solidEdgeST6SDKToolStripMenuItem
-		' 
-		Me.solidEdgeST6SDKToolStripMenuItem.Name = "solidEdgeST6SDKToolStripMenuItem"
-		Me.solidEdgeST6SDKToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
-		Me.solidEdgeST6SDKToolStripMenuItem.Text = "&Solid Edge ST6 SDK"
-		' 
-		' statusStrip
-		' 
-		Me.statusStrip.Location = New System.Drawing.Point(0, 539)
-		Me.statusStrip.Name = "statusStrip"
-		Me.statusStrip.Size = New System.Drawing.Size(784, 22)
-		Me.statusStrip.TabIndex = 1
-		Me.statusStrip.Text = "statusStrip1"
-		' 
-		' toolStrip
-		' 
-		Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() { Me.buttonRun, Me.buttonBreakpoint})
-		Me.toolStrip.Location = New System.Drawing.Point(0, 24)
-		Me.toolStrip.Name = "toolStrip"
-		Me.toolStrip.Size = New System.Drawing.Size(784, 25)
-		Me.toolStrip.TabIndex = 2
-		' 
-		' buttonRun
-		' 
-		Me.buttonRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-		Me.buttonRun.Image = Global.ApiDemos.Resources.Run_16x16
-		Me.buttonRun.ImageTransparentColor = System.Drawing.Color.Magenta
-		Me.buttonRun.Name = "buttonRun"
-		Me.buttonRun.Size = New System.Drawing.Size(23, 22)
-		Me.buttonRun.Text = "Run"
-		Me.buttonRun.ToolTipText = "Run the selected sample."
-		' 
-		' buttonBreakpoint
-		' 
-		Me.buttonBreakpoint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-		Me.buttonBreakpoint.Image = Global.ApiDemos.Resources.Breakpoint_16x16
+        Me.listView = New ApiDemos.ListViewEx()
+        Me.columnHeader1 = (CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader))
+        Me.sampleRichTextBox = New ApiDemos.Forms.RichTextBoxEx()
+        Me.menuStrip.SuspendLayout()
+        Me.toolStrip.SuspendLayout()
+        DirectCast(Me.splitContainerOuter, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.splitContainerOuter.Panel1.SuspendLayout()
+        Me.splitContainerOuter.Panel2.SuspendLayout()
+        Me.splitContainerOuter.SuspendLayout()
+        DirectCast(Me.splitContainerInner, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.splitContainerInner.Panel1.SuspendLayout()
+        Me.splitContainerInner.Panel2.SuspendLayout()
+        Me.splitContainerInner.SuspendLayout()
+        DirectCast(Me.splitContainerListView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.splitContainerListView.Panel1.SuspendLayout()
+        Me.splitContainerListView.Panel2.SuspendLayout()
+        Me.splitContainerListView.SuspendLayout()
+        Me.SuspendLayout()
+        ' 
+        ' menuStrip
+        ' 
+        Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.fileToolStripMenuItem, Me.helpToolStripMenuItem})
+        Me.menuStrip.Location = New System.Drawing.Point(0, 0)
+        Me.menuStrip.Name = "menuStrip"
+        Me.menuStrip.Size = New System.Drawing.Size(784, 24)
+        Me.menuStrip.TabIndex = 0
+        Me.menuStrip.Text = "menuStrip1"
+        ' 
+        ' fileToolStripMenuItem
+        ' 
+        Me.fileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.closeAllDocumentsToolStripMenuItem, Me.closeAllDocumentssilentToolStripMenuItem, Me.toolStripMenuItem1, Me.exitToolStripMenuItem})
+        Me.fileToolStripMenuItem.Name = "fileToolStripMenuItem"
+        Me.fileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.fileToolStripMenuItem.Text = "&File"
+        ' 
+        ' closeAllDocumentsToolStripMenuItem
+        ' 
+        Me.closeAllDocumentsToolStripMenuItem.Name = "closeAllDocumentsToolStripMenuItem"
+        Me.closeAllDocumentsToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.closeAllDocumentsToolStripMenuItem.Text = "Close all documents"
+        ' 
+        ' closeAllDocumentssilentToolStripMenuItem
+        ' 
+        Me.closeAllDocumentssilentToolStripMenuItem.Name = "closeAllDocumentssilentToolStripMenuItem"
+        Me.closeAllDocumentssilentToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.closeAllDocumentssilentToolStripMenuItem.Text = "Close all documents (silent)"
+        ' 
+        ' toolStripMenuItem1
+        ' 
+        Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
+        Me.toolStripMenuItem1.Size = New System.Drawing.Size(217, 6)
+        ' 
+        ' exitToolStripMenuItem
+        ' 
+        Me.exitToolStripMenuItem.Name = "exitToolStripMenuItem"
+        Me.exitToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.exitToolStripMenuItem.Text = "&Exit"
+        ' 
+        ' helpToolStripMenuItem
+        ' 
+        Me.helpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.codePlexToolStripMenuItem, Me.toolStripMenuItem2, Me.solidEdgeST6SDKToolStripMenuItem})
+        Me.helpToolStripMenuItem.Name = "helpToolStripMenuItem"
+        Me.helpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.helpToolStripMenuItem.Text = "&Help"
+        ' 
+        ' codePlexToolStripMenuItem
+        ' 
+        Me.codePlexToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.samplesForSolidEdgeToolStripMenuItem, Me.interopForSolidEdgeToolStripMenuItem, Me.spyForSolidEdgeToolStripMenuItem})
+        Me.codePlexToolStripMenuItem.Name = "codePlexToolStripMenuItem"
+        Me.codePlexToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.codePlexToolStripMenuItem.Text = "&CodePlex"
+        ' 
+        ' samplesForSolidEdgeToolStripMenuItem
+        ' 
+        Me.samplesForSolidEdgeToolStripMenuItem.Name = "samplesForSolidEdgeToolStripMenuItem"
+        Me.samplesForSolidEdgeToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.samplesForSolidEdgeToolStripMenuItem.Text = "Samples for Solid Edge"
+        ' 
+        ' interopForSolidEdgeToolStripMenuItem
+        ' 
+        Me.interopForSolidEdgeToolStripMenuItem.Name = "interopForSolidEdgeToolStripMenuItem"
+        Me.interopForSolidEdgeToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.interopForSolidEdgeToolStripMenuItem.Text = "Interop for Solid Edge"
+        ' 
+        ' spyForSolidEdgeToolStripMenuItem
+        ' 
+        Me.spyForSolidEdgeToolStripMenuItem.Name = "spyForSolidEdgeToolStripMenuItem"
+        Me.spyForSolidEdgeToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.spyForSolidEdgeToolStripMenuItem.Text = "Spy for Solid Edge"
+        ' 
+        ' toolStripMenuItem2
+        ' 
+        Me.toolStripMenuItem2.Name = "toolStripMenuItem2"
+        Me.toolStripMenuItem2.Size = New System.Drawing.Size(172, 6)
+        ' 
+        ' solidEdgeST6SDKToolStripMenuItem
+        ' 
+        Me.solidEdgeST6SDKToolStripMenuItem.Name = "solidEdgeST6SDKToolStripMenuItem"
+        Me.solidEdgeST6SDKToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.solidEdgeST6SDKToolStripMenuItem.Text = "&Solid Edge ST6 SDK"
+        ' 
+        ' statusStrip
+        ' 
+        Me.statusStrip.Location = New System.Drawing.Point(0, 539)
+        Me.statusStrip.Name = "statusStrip"
+        Me.statusStrip.Size = New System.Drawing.Size(784, 22)
+        Me.statusStrip.TabIndex = 1
+        Me.statusStrip.Text = "statusStrip1"
+        ' 
+        ' toolStrip
+        ' 
+        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.buttonRun, Me.buttonBreakpoint})
+        Me.toolStrip.Location = New System.Drawing.Point(0, 24)
+        Me.toolStrip.Name = "toolStrip"
+        Me.toolStrip.Size = New System.Drawing.Size(784, 25)
+        Me.toolStrip.TabIndex = 2
+        ' 
+        ' buttonRun
+        ' 
+        Me.buttonRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.buttonRun.Image = Global.ApiDemos.Resources.Run_16x16
+        Me.buttonRun.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.buttonRun.Name = "buttonRun"
+        Me.buttonRun.Size = New System.Drawing.Size(23, 22)
+        Me.buttonRun.Text = "Run"
+        Me.buttonRun.ToolTipText = "Run the selected sample."
+        ' 
+        ' buttonBreakpoint
+        ' 
+        Me.buttonBreakpoint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.buttonBreakpoint.Image = Global.ApiDemos.Resources.Breakpoint_16x16
 		Me.buttonBreakpoint.ImageTransparentColor = System.Drawing.Color.Magenta
 		Me.buttonBreakpoint.Name = "buttonBreakpoint"
 		Me.buttonBreakpoint.Size = New System.Drawing.Size(23, 22)

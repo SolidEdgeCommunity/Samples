@@ -20,10 +20,10 @@ namespace ApiDemos.Draft
             SolidEdgeDraft.DraftDocument draftDocument = null;
             SolidEdgeDraft.PartsLists partsLists = null;
             SolidEdgeDraft.PartsList partsList = null;
-            Microsoft.Office.Interop.Excel.Application excelApplication = null;
-            Microsoft.Office.Interop.Excel.Workbooks excelWorkbooks = null;
-            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = null;
-            Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = null;
+            dynamic excelApplication = null;
+            dynamic excelWorkbooks = null;
+            dynamic excelWorkbook = null;
+            dynamic excelWorksheet = null;
 
             try
             {
@@ -51,11 +51,11 @@ namespace ApiDemos.Draft
 
                         try
                         {
-                            excelApplication = (Microsoft.Office.Interop.Excel.Application)Marshal.GetActiveObject("Excel.Application");
+                            excelApplication = Marshal.GetActiveObject("Excel.Application");
                         }
                         catch
                         {
-                            excelApplication = (Microsoft.Office.Interop.Excel.Application)Activator.CreateInstance(Type.GetTypeFromProgID("Excel.Application"));
+                            excelApplication = Activator.CreateInstance(Type.GetTypeFromProgID("Excel.Application"));
                         }
 
                         if (excelApplication != null)
@@ -63,7 +63,7 @@ namespace ApiDemos.Draft
                             excelApplication.Visible = true;
                             excelWorkbooks = excelApplication.Workbooks;
                             excelWorkbook = excelWorkbooks.Add();
-                            excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.ActiveSheet;
+                            excelWorksheet = excelWorkbook.ActiveSheet;
                             excelWorksheet.Paste();
                         }
                     }

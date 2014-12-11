@@ -459,7 +459,11 @@ Public Class MyAddIn ' Solid Edge Shortcut Menu Events -  Solid Edge EC Events -
             settings.Summaries.Add(englishCulture, "Solid Edge Addin in .NET 4.0.")
 
             ' Optionally, you can add additional locales.
-            'var germanCultere = CultureInfo.GetCultureInfo(1031);
+            'Dim spanishCulture = CultureInfo.GetCultureInfo(3082)
+            'settings.Titles.Add(spanishCulture, "SolidEdge.Samples.MyAddIn")
+            'settings.Summaries.Add(spanishCulture, "Solid Edge Addin in .NET 4.0.")
+
+            'Dim germanCultere = CultureInfo.GetCultureInfo(1033)
             'settings.Titles.Add(germanCultere, "SolidEdge.Samples.MyAddIn");
             'settings.Summaries.Add(germanCultere, "Solid Edge Addin in .NET 4.0.");
 

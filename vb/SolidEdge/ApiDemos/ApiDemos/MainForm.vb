@@ -34,34 +34,34 @@ Partial Friend Class MainForm
 	End Sub
 
 	Private Sub closeAllDocumentsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles closeAllDocumentsToolStripMenuItem.Click
-		Dim type As Type = GetType(ApiDemos.Application.CloseAllDocuments)
-		Dim method As MethodInfo = type.GetMethod("RunSample", BindingFlags.Static Or BindingFlags.NonPublic)
+        Dim type As Type = GetType(ApiDemos.Application.CloseAllDocuments)
+        Dim method As MethodInfo = type.GetMethod("RunSample", BindingFlags.Static Or BindingFlags.NonPublic)
 
-		Dim parameters As New List(Of Object)()
+        Dim parameters As New List(Of Object)()
 
-		' Set breakOnStart parameter.
-		parameters.Add(buttonBreakpoint.Checked)
+        ' Set breakOnStart parameter.
+        parameters.Add(buttonBreakpoint.Checked)
 
-		Dim arguments() As Object = { method, parameters.ToArray() }
-		backgroundWorker.RunWorkerAsync(arguments)
+        Dim arguments() As Object = {method, parameters.ToArray()}
+        backgroundWorker.RunWorkerAsync(arguments)
 
-		'InvokeExampleInSeparateAppDomain(method, parameters.ToArray());
-	End Sub
+        'InvokeExampleInSeparateAppDomain(method, parameters.ToArray());
+    End Sub
 
-	Private Sub closeAllDocumentssilentToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles closeAllDocumentssilentToolStripMenuItem.Click
-		Dim type As Type = GetType(ApiDemos.Application.CloseAllDocumentsSilent)
-		Dim method As MethodInfo = type.GetMethod("RunSample", BindingFlags.Static Or BindingFlags.NonPublic)
+    Private Sub closeAllDocumentssilentToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles closeAllDocumentssilentToolStripMenuItem.Click
+        Dim type As Type = GetType(ApiDemos.Application.CloseAllDocumentsSilent)
+        Dim method As MethodInfo = type.GetMethod("RunSample", BindingFlags.Static Or BindingFlags.NonPublic)
 
-		Dim parameters As New List(Of Object)()
+        Dim parameters As New List(Of Object)()
 
-		' Set breakOnStart parameter.
-		parameters.Add(buttonBreakpoint.Checked)
+        ' Set breakOnStart parameter.
+        parameters.Add(buttonBreakpoint.Checked)
 
-		Dim arguments() As Object = { method, parameters.ToArray() }
-		backgroundWorker.RunWorkerAsync(arguments)
+        Dim arguments() As Object = {method, parameters.ToArray()}
+        backgroundWorker.RunWorkerAsync(arguments)
 
-		'InvokeExampleInSeparateAppDomain(method, parameters.ToArray());
-	End Sub
+        'InvokeExampleInSeparateAppDomain(method, parameters.ToArray());
+    End Sub
 
 	Private Sub buttonRun_Click(ByVal sender As Object, ByVal e As EventArgs) Handles buttonRun.Click
 		If listView.SelectedItems.Count = 1 Then
