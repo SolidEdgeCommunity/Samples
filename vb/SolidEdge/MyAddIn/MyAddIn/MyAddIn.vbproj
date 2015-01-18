@@ -10,7 +10,7 @@
     <AssemblyName>MyAddIn</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>534ce164</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f13a7960</NuGetPackageImportStamp>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -34,8 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SolidEdge">
-      <HintPath>..\packages\Interop.SolidEdge.107.2.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+    <Reference Include="Interop.SolidEdge, Version=107.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Interop.SolidEdge.107.3.0\lib\net40\Interop.SolidEdge.dll</HintPath>
     </Reference>
     <Reference Include="SharpGL">
       <HintPath>..\packages\SharpGLCore.2.3.0.1\lib\net40\SharpGL.dll</HintPath>
@@ -43,9 +44,9 @@
     <Reference Include="SharpGL.SceneGraph">
       <HintPath>..\packages\SharpGLCore.2.3.0.1\lib\net40\SharpGL.SceneGraph.dll</HintPath>
     </Reference>
-    <Reference Include="SolidEdge.Community, Version=107.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SolidEdge.Community, Version=107.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SolidEdge.Community.107.2.1\lib\net40\SolidEdge.Community.dll</HintPath>
+      <HintPath>..\packages\SolidEdge.Community.107.3.0\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -137,12 +138,12 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\SolidEdge.Community.107.2.1\build\net40\SolidEdge.Community.targets" Condition="Exists('..\packages\SolidEdge.Community.107.2.1\build\net40\SolidEdge.Community.targets')" />
+  <Import Project="..\packages\SolidEdge.Community.107.3.0\build\net40\SolidEdge.Community.targets" Condition="Exists('..\packages\SolidEdge.Community.107.3.0\build\net40\SolidEdge.Community.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SolidEdge.Community.107.2.1\build\net40\SolidEdge.Community.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdge.Community.107.2.1\build\net40\SolidEdge.Community.targets'))" />
+    <Error Condition="!Exists('..\packages\SolidEdge.Community.107.3.0\build\net40\SolidEdge.Community.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdge.Community.107.3.0\build\net40\SolidEdge.Community.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
