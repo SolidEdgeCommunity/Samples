@@ -34,21 +34,21 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.buttonSelectFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonStart = new System.Windows.Forms.ToolStripButton();
+            this.buttonStop = new System.Windows.Forms.ToolStripButton();
             this.splitContainerInner = new System.Windows.Forms.SplitContainer();
+            this.listViewFiles = new SolidEdge.OpenSave.ListViewEx();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.smallImageList = new System.Windows.Forms.ImageList(this.components);
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.searchBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.openSaveBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.splitContainerOuter = new System.Windows.Forms.SplitContainer();
-            this.buttonSelectFolder = new System.Windows.Forms.ToolStripButton();
-            this.buttonStart = new System.Windows.Forms.ToolStripButton();
-            this.buttonStop = new System.Windows.Forms.ToolStripButton();
-            this.listViewFiles = new SolidEdge.OpenSave.ListViewEx();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerInner)).BeginInit();
@@ -107,10 +107,40 @@
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
             // 
+            // buttonSelectFolder
+            // 
+            this.buttonSelectFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonSelectFolder.Image = global::SolidEdge.OpenSave.Properties.Resources.FolderOpen_16x16;
+            this.buttonSelectFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonSelectFolder.Name = "buttonSelectFolder";
+            this.buttonSelectFolder.Size = new System.Drawing.Size(23, 22);
+            this.buttonSelectFolder.Text = "Select files";
+            this.buttonSelectFolder.Click += new System.EventHandler(this.buttonSelectFolder_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // buttonStart
+            // 
+            this.buttonStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonStart.Image = global::SolidEdge.OpenSave.Properties.Resources.Run_16x16;
+            this.buttonStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(23, 22);
+            this.buttonStart.Text = "Start";
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
+            // buttonStop
+            // 
+            this.buttonStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonStop.Image = global::SolidEdge.OpenSave.Properties.Resources.Stop_16x16;
+            this.buttonStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(23, 22);
+            this.buttonStop.Text = "Stop";
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // splitContainerInner
             // 
@@ -130,6 +160,39 @@
             this.splitContainerInner.Size = new System.Drawing.Size(509, 490);
             this.splitContainerInner.SplitterDistance = 352;
             this.splitContainerInner.TabIndex = 3;
+            // 
+            // listViewFiles
+            // 
+            this.listViewFiles.AllowDeleteKey = true;
+            this.listViewFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewFiles.FullRowSelect = true;
+            this.listViewFiles.HideSelection = false;
+            this.listViewFiles.Location = new System.Drawing.Point(0, 0);
+            this.listViewFiles.Name = "listViewFiles";
+            this.listViewFiles.Size = new System.Drawing.Size(509, 352);
+            this.listViewFiles.SmallImageList = this.smallImageList;
+            this.listViewFiles.TabIndex = 0;
+            this.listViewFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewFiles.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 153;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Last Saved Version";
+            this.columnHeader2.Width = 142;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Folder";
+            this.columnHeader3.Width = 241;
             // 
             // smallImageList
             // 
@@ -191,69 +254,6 @@
             this.splitContainerOuter.Size = new System.Drawing.Size(784, 490);
             this.splitContainerOuter.SplitterDistance = 509;
             this.splitContainerOuter.TabIndex = 4;
-            // 
-            // buttonSelectFolder
-            // 
-            this.buttonSelectFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonSelectFolder.Image = global::SolidEdge.OpenSave.Properties.Resources.FolderOpen_16x16;
-            this.buttonSelectFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.buttonSelectFolder.Name = "buttonSelectFolder";
-            this.buttonSelectFolder.Size = new System.Drawing.Size(23, 22);
-            this.buttonSelectFolder.Text = "Select files";
-            this.buttonSelectFolder.Click += new System.EventHandler(this.buttonSelectFolder_Click);
-            // 
-            // buttonStart
-            // 
-            this.buttonStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonStart.Image = global::SolidEdge.OpenSave.Properties.Resources.Run_16x16;
-            this.buttonStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(23, 22);
-            this.buttonStart.Text = "Start";
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-            // 
-            // buttonStop
-            // 
-            this.buttonStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonStop.Image = global::SolidEdge.OpenSave.Properties.Resources.Stop_16x16;
-            this.buttonStop.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(23, 22);
-            this.buttonStop.Text = "Stop";
-            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
-            // 
-            // listViewFiles
-            // 
-            this.listViewFiles.AllowDeleteKey = true;
-            this.listViewFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewFiles.FullRowSelect = true;
-            this.listViewFiles.HideSelection = false;
-            this.listViewFiles.Location = new System.Drawing.Point(0, 0);
-            this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(509, 352);
-            this.listViewFiles.SmallImageList = this.smallImageList;
-            this.listViewFiles.TabIndex = 0;
-            this.listViewFiles.UseCompatibleStateImageBehavior = false;
-            this.listViewFiles.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 153;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Last Saved Version";
-            this.columnHeader2.Width = 142;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Folder";
-            this.columnHeader3.Width = 241;
             // 
             // MainForm
             // 

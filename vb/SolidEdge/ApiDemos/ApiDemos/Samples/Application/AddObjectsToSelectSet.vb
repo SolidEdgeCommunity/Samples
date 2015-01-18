@@ -77,7 +77,7 @@ Namespace Application
 							Next i
 					End Select
 				Else
-					Throw New System.Exception(Resources.NoActiveDocument)
+                    Throw New System.Exception(My.Resources.NoActiveDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

@@ -39,7 +39,7 @@ Namespace Draft
 					' Make the new sheet the active sheet.
 					sheet.Activate()
 				Else
-					Throw New System.Exception(Resources.NoActiveDraftDocument)
+					Throw New System.Exception(My.Resources.NoActiveDraftDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

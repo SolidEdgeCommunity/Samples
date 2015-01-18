@@ -37,7 +37,7 @@ Namespace Part
 					models = partDocument.Models
 
 					If models.Count = 0 Then
-						Throw New System.Exception(Resources.NoGeometryDefined)
+                        Throw New System.Exception(My.Resources.NoGeometryDefined)
 					End If
 
 					model = models.Item(1)
@@ -56,7 +56,7 @@ Namespace Part
 
 					' We really need an explpanation from development on how to process the out variables.
 				Else
-					Throw New System.Exception(Resources.NoActivePartDocument)
+					Throw New System.Exception(My.Resources.NoActivePartDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

@@ -37,7 +37,7 @@ Namespace Assembly
 						Console.WriteLine("Configuration Name: '{0}' | Configuration Type: {1}.", configuration.Name, configuration.ConfigurationType)
 					Next configuration
 				Else
-					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
+					Throw New System.Exception(My.Resources.NoActiveAssemblyDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

@@ -31,7 +31,7 @@ Namespace Part
 				If document IsNot Nothing Then
 					VariablesHelper.ReportVariables(document)
 				Else
-					Throw New System.Exception(Resources.NoActivePartDocument)
+					Throw New System.Exception(My.Resources.NoActivePartDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

@@ -88,28 +88,28 @@ Partial Friend Class MainForm
 
 	Private Sub solidEdgeST6SDKToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles solidEdgeST6SDKToolStripMenuItem.Click
 		Try
-			Process.Start(Resources.SolidEdgeSdkUrl)
-		Catch
-		End Try
+            Process.Start(My.Resources.SolidEdgeSdkUrl)
+        Catch
+        End Try
 	End Sub
 
 	Private Sub samplesForSolidEdgeToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles samplesForSolidEdgeToolStripMenuItem.Click
 		Try
-			Process.Start(Resources.SamplesForSolidEdgeUrl)
+            Process.Start(My.Resources.SamplesForSolidEdgeUrl)
 		Catch
 		End Try
 	End Sub
 
 	Private Sub interopForSolidEdgeToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles interopForSolidEdgeToolStripMenuItem.Click
 		Try
-			Process.Start(Resources.InteropForSolidEdgeUrl)
+            Process.Start(My.Resources.InteropForSolidEdgeUrl)
 		Catch
 		End Try
 	End Sub
 
 	Private Sub spyForSolidEdgeToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles spyForSolidEdgeToolStripMenuItem.Click
 		Try
-			Process.Start(Resources.SpyForSolidEdgeUrl)
+            Process.Start(My.Resources.SpyForSolidEdgeUrl)
 		Catch
 		End Try
 	End Sub

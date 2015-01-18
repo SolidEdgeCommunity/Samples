@@ -98,10 +98,10 @@ Namespace Draft
 							Next tableRow
 						End If
 					Else
-						Throw New System.Exception(Resources.NoPartsListsInDraftDocument)
+						Throw New System.Exception(My.Resources.NoPartsListsInDraftDocument)
 					End If
 				Else
-					Throw New System.Exception(Resources.NoActiveDraftDocument)
+					Throw New System.Exception(My.Resources.NoActiveDraftDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

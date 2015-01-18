@@ -36,10 +36,10 @@ Namespace Assembly
 					If window IsNot Nothing Then
 						WindowHelper.SaveAsImage(window)
 					Else
-						Throw New System.Exception(Resources.NoActive3dWindow)
+                        Throw New System.Exception(My.Resources.NoActive3dWindow)
 					End If
 				Else
-					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
+					Throw New System.Exception(My.Resources.NoActiveAssemblyDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

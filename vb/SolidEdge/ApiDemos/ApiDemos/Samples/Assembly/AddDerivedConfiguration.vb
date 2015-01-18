@@ -49,7 +49,7 @@ Namespace Assembly
 					' Add the new configuration.
 					configuration = configurations.AddDerivedConfig(1, 0, 0, configList, missing, missing, configName)
 				Else
-					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
+					Throw New System.Exception(My.Resources.NoActiveAssemblyDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

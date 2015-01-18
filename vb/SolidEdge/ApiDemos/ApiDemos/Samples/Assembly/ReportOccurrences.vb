@@ -68,7 +68,7 @@ Namespace Assembly
 						Console.WriteLine()
 					Next occurrence
 				Else
-					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
+					Throw New System.Exception(My.Resources.NoActiveAssemblyDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

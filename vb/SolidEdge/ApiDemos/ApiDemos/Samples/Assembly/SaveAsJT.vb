@@ -30,7 +30,7 @@ Namespace Assembly
 				If document IsNot Nothing Then
 					SolidEdgeDocumentHelper.SaveAsJT(document)
 				Else
-					Throw New System.Exception(Resources.NoActiveAssemblyDocument)
+					Throw New System.Exception(My.Resources.NoActiveAssemblyDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

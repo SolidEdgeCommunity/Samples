@@ -87,7 +87,7 @@ Namespace Part
 				status = profile.End(SolidEdgePart.ProfileValidationType.igProfileClosed)
 
 				If status <> 0 Then
-					Throw New System.Exception(Resources.ProfileNotClosed)
+                    Throw New System.Exception(My.Resources.ProfileNotClosed)
 				End If
 
 				models = partDocument.Models

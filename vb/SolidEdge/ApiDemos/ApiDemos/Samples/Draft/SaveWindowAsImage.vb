@@ -41,7 +41,7 @@ Namespace Draft
 
 				' Make sure we have a document.
 				If document Is Nothing Then
-					Throw New System.Exception(Resources.NoActiveDocument)
+					Throw New System.Exception(My.Resources.NoActiveDocument)
 				End If
 
 				' 2D windows are of type SolidEdgeDraft.SheetWindow.
@@ -50,7 +50,7 @@ Namespace Draft
 				If sheetWindow IsNot Nothing Then
 					' Save each extension.
 					For Each extension As String In extensions
-						' File saved to desktop.
+                        ' File saved to desktop.My.Resources.NoPartsListsInDraftDocument
 						Dim filename As String = System.IO.Path.ChangeExtension(guid.ToString(), extension)
 						filename = System.IO.Path.Combine(folder, filename)
 
@@ -65,7 +65,7 @@ Namespace Draft
 						Console.WriteLine("Saved '{0}'.", filename)
 					Next extension
 				Else
-					Throw New System.Exception(Resources.NoActive2dWindow)
+                    Throw New System.Exception(My.Resources.NoActive2dWindow)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

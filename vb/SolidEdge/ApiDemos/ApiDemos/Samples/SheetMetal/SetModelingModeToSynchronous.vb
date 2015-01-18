@@ -33,7 +33,7 @@ Namespace SheetMetal
 				If sheetMetalDocument IsNot Nothing Then
 					sheetMetalDocument.ModelingMode = SolidEdgePart.ModelingModeConstants.seModelingModeSynchronous
 				Else
-					Throw New System.Exception(Resources.NoActiveSheetMetalDocument)
+					Throw New System.Exception(My.Resources.NoActiveSheetMetalDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

@@ -31,7 +31,7 @@ Namespace SheetMetal
 				If document IsNot Nothing Then
 					VariablesHelper.ReportVariables(document)
 				Else
-					Throw New System.Exception(Resources.NoActiveSheetMetalDocument)
+					Throw New System.Exception(My.Resources.NoActiveSheetMetalDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

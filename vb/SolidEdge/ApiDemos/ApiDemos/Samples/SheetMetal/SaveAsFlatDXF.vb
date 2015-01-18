@@ -45,7 +45,7 @@ Namespace SheetMetal
 				sheetMetalDocument = application.GetActiveDocument(Of SolidEdgePart.SheetMetalDocument)(False)
 
 				If sheetMetalDocument Is Nothing Then
-					Throw New System.Exception(Resources.NoActiveSheetMetalDocument)
+					Throw New System.Exception(My.Resources.NoActiveSheetMetalDocument)
 				End If
 
 				' Get a reference to the Models collection,
@@ -53,7 +53,7 @@ Namespace SheetMetal
 
 				' Check for geometry.
 				If models.Count = 0 Then
-					Throw New System.Exception(Resources.NoGeometryDefined)
+					Throw New System.Exception(My.Resources.NoGeometryDefined)
 				End If
 
 				' Get a reference to the one and only model.

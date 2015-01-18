@@ -52,11 +52,11 @@
             this.splitContainerInner = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainerListView = new System.Windows.Forms.SplitContainer();
-            this.outputTextBox = new System.Windows.Forms.TextBox();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.listView = new ApiDemos.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.sampleRichTextBox = new ApiDemos.Forms.RichTextBoxEx();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerOuter)).BeginInit();
@@ -290,30 +290,6 @@
             this.splitContainerListView.SplitterDistance = 267;
             this.splitContainerListView.TabIndex = 4;
             // 
-            // outputTextBox
-            // 
-            this.outputTextBox.AcceptsReturn = true;
-            this.outputTextBox.AcceptsTab = true;
-            this.outputTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.outputTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputTextBox.Location = new System.Drawing.Point(0, 0);
-            this.outputTextBox.MaxLength = 0;
-            this.outputTextBox.Multiline = true;
-            this.outputTextBox.Name = "outputTextBox";
-            this.outputTextBox.ReadOnly = true;
-            this.outputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.outputTextBox.Size = new System.Drawing.Size(784, 120);
-            this.outputTextBox.TabIndex = 2;
-            this.outputTextBox.WordWrap = false;
-            // 
-            // backgroundWorker
-            // 
-            this.backgroundWorker.WorkerReportsProgress = true;
-            this.backgroundWorker.WorkerSupportsCancellation = true;
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
-            // 
             // listView
             // 
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -347,6 +323,30 @@
             this.sampleRichTextBox.Size = new System.Drawing.Size(605, 95);
             this.sampleRichTextBox.TabIndex = 0;
             this.sampleRichTextBox.Text = "";
+            // 
+            // outputTextBox
+            // 
+            this.outputTextBox.AcceptsReturn = true;
+            this.outputTextBox.AcceptsTab = true;
+            this.outputTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.outputTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputTextBox.Location = new System.Drawing.Point(0, 0);
+            this.outputTextBox.MaxLength = 0;
+            this.outputTextBox.Multiline = true;
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.ReadOnly = true;
+            this.outputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.outputTextBox.Size = new System.Drawing.Size(784, 120);
+            this.outputTextBox.TabIndex = 2;
+            this.outputTextBox.WordWrap = false;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // MainForm
             // 

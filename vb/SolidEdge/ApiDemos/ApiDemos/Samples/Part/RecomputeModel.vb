@@ -38,7 +38,7 @@ Namespace Part
 						model.Recompute()
 					Next model
 				Else
-					Throw New System.Exception(Resources.NoActivePartDocument)
+					Throw New System.Exception(My.Resources.NoActivePartDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)

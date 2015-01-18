@@ -36,10 +36,10 @@ Namespace Part
 					If window IsNot Nothing Then
 						WindowHelper.SaveAsImageUsingBitBlt(window)
 					Else
-						Throw New System.Exception(Resources.NoActive3dWindow)
+						Throw New System.Exception(My.Resources.NoActive3dWindow)
 					End If
 				Else
-					Throw New System.Exception(Resources.NoActiveSheetMetalDocument)
+					Throw New System.Exception(My.Resources.NoActiveSheetMetalDocument)
 				End If
 			Catch ex As System.Exception
 				Console.WriteLine(ex.Message)
