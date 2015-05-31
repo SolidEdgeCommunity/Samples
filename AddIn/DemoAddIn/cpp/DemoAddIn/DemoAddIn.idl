@@ -1,0 +1,18 @@
+// DemoAddIn.idl : IDL source for DemoAddIn
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DemoAddIn.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(9444609D-8C66-4659-89F5-14451BB5F65A),
+	version(1.0)	
+]
+library DemoAddInLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+};

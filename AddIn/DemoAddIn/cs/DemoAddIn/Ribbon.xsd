@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+	Schema definition for Solid Edge Ribbon Extensibility
+
+  https://github.com/SolidEdgeCommunity/SolidEdge.Community
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://github.com/SolidEdgeCommunity/SolidEdge/Ribbon"
+           xmlns="http://github.com/SolidEdgeCommunity/SolidEdge/Ribbon"
+           elementFormDefault="qualified"
+>
+  <xs:simpleType name="ST_String">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies a string argument.
+        String length is limited to 1024 characters.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1024"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ST_ButtonSize">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies the size of the button.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="normal"/>
+      <xs:enumeration value="large"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="CT_Control">
+    <xs:attribute name="id" type="xs:int" use="required" />
+    <xs:attribute name="label" type="ST_String" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Specifies the label.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="screentip" type="ST_String" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Screentip to show when mouse is over the control.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="supertip" type="ST_String" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Large screentip to show when mouse is over the control.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="enabled" type="xs:boolean" use="optional" />
+    <xs:attribute name="imageId" type="xs:int" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="CT_Button">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies a push-type button.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CT_Control">
+        <xs:attribute name="size" type="ST_ButtonSize" use="optional" />
+        <xs:attribute name="macro" type="xs:string" use="optional" />
+        <xs:attribute name="macroParameters" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CT_CheckBox">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies a check box.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CT_Control">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CT_RadioButton">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies a radio button.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CT_Control">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="EG_Controls">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a group of control types.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="button" type="CT_Button" >
+        <xs:annotation>
+          <xs:documentation>
+            Button control.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="checkBox" type="CT_CheckBox" >
+        <xs:annotation>
+          <xs:documentation>
+            CheckBox control.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="radioButton" type="CT_RadioButton" >
+        <xs:annotation>
+          <xs:documentation>
+            CheckBox control.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="CT_Group">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies a group that contains other control types.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence>
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+          <xs:group ref="EG_Controls">
+          </xs:group>
+        </xs:choice>
+      </xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="name" type="ST_String" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CT_Tab">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies a tab that contains groups with other controls.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="group" type="CT_Group">
+          <xs:annotation>
+            <xs:documentation>
+              Group. Contains controls.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="name" type="ST_String" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CT_Ribbon">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tab" type="CT_Tab" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            A collection of tabs.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="ribbon" type="CT_Ribbon">
+    <xs:annotation>
+      <xs:documentation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:unique name="CommandId">
+      <xs:selector xpath=".//*" />
+      <xs:field xpath="@id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

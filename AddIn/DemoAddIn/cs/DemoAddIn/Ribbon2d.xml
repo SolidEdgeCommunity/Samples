@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	To enable XML intellisense, use package manager console command: Install-SolidEdgeAddInRibbonSchema
+  This command adds\updates Ribbon.xsd in your project.
+  https://github.com/SolidEdgeCommunity/SolidEdge.Community/wiki/Package-Manager-Console-Powershell-Reference#install-solidedgeaddinribbonschema
+-->
+<ribbon xmlns="http://github.com/SolidEdgeCommunity/SolidEdge/Ribbon">
+  <tab name="SolidEdgeCommunity">
+    <group name="Group1">
+      <!-- Note: imageId is defined in AssemblyInfo.[cs|vb] -->
+      <button id="0" size="normal" label="Save" screentip="Save Screentip" supertip="Save Supertip" imageId="114" />
+      <button id="1" size="normal" label="Folder" screentip="Folder Screentip" supertip="Folder Supertip" imageId="106" />
+      <button id="2" size="normal" label="Monitor" screentip="Monitor Screentip" supertip="Monitor Supertip" imageId="109" />
+      <button id="3" size="large" label="Box" screentip="Box Screentip" supertip="Box Supertip" imageId="101" />
+    </group>
+    <group name="Group2">
+      <button id="4" size="large" label="Camera" screentip="Camera Screentip" supertip="Camera Supertip" imageId="103" />
+      <button id="5" size="large" label="Photograph" screentip="Photograph Screentip" supertip="Photograph Supertip" imageId="111" enabled="false" />
+      <button id="6" size="large" label="Favorites" screentip="Favorites Screentip" supertip="Favorites Supertip" imageId="105" enabled="false" />
+      <button id="7" size="large" label="Printer" screentip="Printer Screentip" supertip="Printer Supertip" imageId="112" />
+    </group>
+    <group name="Group3">
+      <button id="8" size="large" label="Tools" screentip="Tools Screentip" supertip="Tools Supertip" imageId="116" />
+      <button id="9" size="large" label="Command Prompt" screentip="CommandPrompt Screentip" supertip="CommandPrompt Supertip" imageId="104" macro="cmd.exe"/>
+      <button id="10" size="large" label="Notepad" screentip="Notepad Screentip" supertip="Notepad Supertip" imageId="110" macro="notepad.exe"/>
+    </group>
+    <group name="Group4">
+      <button id="11" size="large" label="Help" screentip="Help Screentip" supertip="Help Supertip" imageId="108" />
+      <button id="12" size="large" label="Search" screentip="Search Screentip" supertip="Search Supertip" imageId="115" />
+    </group>
+    <group name="Group5">
+      <button id="13" size="large" label="Question" screentip="Question Screentip" supertip="Question Supertip" imageId="113" />
+    </group>
+    <group name="Group6">
+      <checkBox id="14" label="Checkbox1" screentip="Checkbox1 Screentip" supertip="Checkbox1 Supertip" />
+      <checkBox id="15" label="Checkbox2" screentip="Checkbox2 Screentip" supertip="Checkbox2 Supertip" />
+      <checkBox id="16" label="Checkbox3" screentip="Checkbox3 Screentip" supertip="Checkbox3 Supertip" />
+      <radioButton id="17" label="Radiobutton1" screentip="Radiobutton1 Screentip" supertip="Radiobutton1 Supertip" />
+      <radioButton id="18" label="Radiobutton2" screentip="Radiobutton2 Screentip" supertip="Radiobutton2 Supertip" />
+      <radioButton id="19" label="Radiobutton3" screentip="Radiobutton3 Screentip" supertip="Radiobutton3 Supertip" />
+    </group>
+  </tab>
+</ribbon>
