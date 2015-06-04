@@ -232,6 +232,9 @@ Partial Public Class MainForm
 
     Private Sub ReleaseDocument()
         If _documentEvents IsNot Nothing Then
+            RemoveHandler _documentEvents.SelectSetChanged, AddressOf _documentEvents_SelectSetChanged
+            RemoveHandler _documentEvents.BeforeClose, AddressOf _documentEvents_BeforeClose
+
             Marshal.FinalReleaseComObject(_documentEvents)
             _documentEvents = Nothing
         End If

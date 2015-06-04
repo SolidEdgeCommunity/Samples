@@ -287,6 +287,9 @@ namespace AttributeSetEditor
         {
             if (_documentEvents != null)
             {
+                _documentEvents.SelectSetChanged -= _documentEvents_SelectSetChanged;
+                _documentEvents.BeforeClose -= _documentEvents_BeforeClose;
+
                 Marshal.FinalReleaseComObject(_documentEvents);
                 _documentEvents = null;
             }
