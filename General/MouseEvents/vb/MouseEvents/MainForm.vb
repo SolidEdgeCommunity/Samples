@@ -147,6 +147,13 @@ Partial Public Class MainForm
         entries.Add(String.Format("lKeyPointType: '{0}'", lKeyPointType))
         entries.Add(String.Format("pGraphicDispatch: '{0}'", graphicDispatchType))
 
+        If TypeOf pGraphicDispatch Is SolidEdgeFramework.Reference Then
+            Dim reference = CType(pGraphicDispatch, SolidEdgeFramework.Reference)
+            Dim referenceObject = reference.Object
+            Dim referenceObjectType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(referenceObject)
+            entries.Add(String.Format("pGraphicDispatch reference: '{0}'", referenceObjectType))
+        End If
+
         Dim PointOnGraphicFlag As Integer = Nothing
         Dim PointOnGraphic_X As Double = Nothing
         Dim PointOnGraphic_Y As Double = Nothing

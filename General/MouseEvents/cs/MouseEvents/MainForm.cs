@@ -163,6 +163,14 @@ namespace SolidEdge.MouseEvents
             entries.Add(String.Format("lKeyPointType: '{0}'", lKeyPointType));
             entries.Add(String.Format("pGraphicDispatch: '{0}'", graphicDispatchType));
 
+            if (pGraphicDispatch is SolidEdgeFramework.Reference)
+            {
+                var reference = (SolidEdgeFramework.Reference)pGraphicDispatch;
+                var referenceObject = reference.Object;
+                var referenceObjectType = SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(referenceObject);
+                entries.Add(String.Format("pGraphicDispatch reference: '{0}'", referenceObjectType));
+            }
+
             int PointOnGraphicFlag;
             double PointOnGraphic_X;
             double PointOnGraphic_Y;
