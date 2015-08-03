@@ -26,8 +26,6 @@ namespace DetectSettingsChange
             // Begin snapshot 1 of application global constants.
             CaptureApplicationGlobalConstants(application, snapshot1);
 
-            Console.WriteLine("Application will now pause. Make changes to settings and press Enter.");
-
             // Force break-point. Change the Solid Edge setting in question.
             System.Diagnostics.Debugger.Break();
 
