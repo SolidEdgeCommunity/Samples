@@ -41,9 +41,6 @@ namespace DetectSettingsChange
                 var enumValue1 = enumerator.Current.Value;
                 var enumValue2 = snapshot2[enumConstant];
 
-                // We can safely ignore seApplicationGlobalSystemInfo. It's just noise for our purpose.
-                if (enumConstant.Equals(SolidEdgeFramework.ApplicationGlobalConstants.seApplicationGlobalSystemInfo)) continue;
-
                 // Check to see if the snapshot 1 and snapshot 2 value is equal.
                 if (Object.Equals(enumValue1, enumValue2) == false)
                 {
@@ -69,6 +66,12 @@ namespace DetectSettingsChange
                 var enumConstant = enumConstants[i];
                 var enumValue = enumValues[i];
                 object value = null;
+
+                if (enumValue.Equals(SolidEdgeFramework.ApplicationGlobalConstants.seApplicationGlobalOpenAsReadOnly3DFile)) continue;
+
+                // We can safely ignore seApplicationGlobalSystemInfo. It's just noise for our purpose.
+                if (enumConstant.Equals(SolidEdgeFramework.ApplicationGlobalConstants.seApplicationGlobalSystemInfo)) continue;
+
                 application.GetGlobalParameter(enumValue, ref value);
                 dictionary.Add(enumValue, value);
             }

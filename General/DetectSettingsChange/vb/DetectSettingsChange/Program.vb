@@ -63,6 +63,16 @@ Friend Class Program
             Dim enumConstant = enumConstants(i)
             Dim enumValue = enumValues(i)
             Dim value As Object = Nothing
+
+            If enumValue.Equals(SolidEdgeFramework.ApplicationGlobalConstants.seApplicationGlobalOpenAsReadOnly3DFile) Then
+                Continue For
+            End If
+
+            ' We can safely ignore seApplicationGlobalSystemInfo. It's just noise for our purpose.
+            If enumConstant.Equals(SolidEdgeFramework.ApplicationGlobalConstants.seApplicationGlobalSystemInfo) Then
+                Continue For
+            End If
+
             application.GetGlobalParameter(enumValue, value)
             dictionary.Add(enumValue, value)
         Next i
