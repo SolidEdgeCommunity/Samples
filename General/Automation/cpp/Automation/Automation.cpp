@@ -8,28 +8,30 @@ VOID DemoCreateNewDocuments(SolidEdgeFramework::ApplicationPtr pApplication);
 int _tmain(int argc, _TCHAR* argv[])
 {
     HRESULT hr = S_OK;
-    SolidEdgeFramework::ApplicationPtr pApplication = NULL;
 
     // Initialize COM.
-    ::CoInitialize(NULL);
+	::CoInitialize(NULL);
 
-    // Attempt to connect to a running instance of Solid Edge.
-    hr = pApplication.GetActiveObject(L"SolidEdge.Application");
+	// Encapsulate COM smart pointers in separate code block.
+	{
+		SolidEdgeFramework::ApplicationPtr pApplication = NULL;
 
-    if (hr == MK_E_UNAVAILABLE)
-    {
-        // Solid Edge is not running. Start a new instance.
-        hr = pApplication.CreateInstance(L"SolidEdge.Application");
-        // Show the main window.
-        pApplication->Visible = VARIANT_TRUE;
-    }
+		// Attempt to connect to a running instance of Solid Edge.
+		hr = pApplication.GetActiveObject(L"SolidEdge.Application");
 
-    if (hr == S_OK)
-    {
-        DemoCreateNewDocuments(pApplication);
-    }
+		if (hr == MK_E_UNAVAILABLE)
+		{
+			// Solid Edge is not running. Start a new instance.
+			hr = pApplication.CreateInstance(L"SolidEdge.Application");
+			// Show the main window.
+			pApplication->Visible = VARIANT_TRUE;
+		}
 
-    pApplication = NULL;
+		if (hr == S_OK)
+		{
+			DemoCreateNewDocuments(pApplication);
+		}
+	}
 
     // Uninitialize COM.
     ::CoUninitialize();

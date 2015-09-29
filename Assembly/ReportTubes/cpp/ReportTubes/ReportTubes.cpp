@@ -10,87 +10,86 @@ void PrintDoubleArray(LPCTSTR prefix, LPSAFEARRAY parray);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	HRESULT hr = S_OK;
-	SolidEdgeFramework::ApplicationPtr pApplication = NULL;
-	SolidEdgeAssembly::AssemblyDocumentPtr pAssemblyDocument = NULL;
-	SolidEdgeAssembly::OccurrencesPtr pOccurrences = NULL;
-	SolidEdgeAssembly::OccurrencePtr pOccurrence = NULL;
-	SolidEdgeAssembly::TubePtr pTube = NULL;
 
 	// Initialize COM.
 	::CoInitialize(NULL);
 
-	// Attempt to connect to a running instance of Solid Edge.
-	hr = pApplication.GetActiveObject(L"SolidEdge.Application");
-	
-	if (FAILED(hr))
+	// Encapsulate COM smart pointers in separate code block.
 	{
-		IfFailGo(pApplication.CreateInstance(L"SolidEdge.Application"));
-		pApplication->Visible = VARIANT_TRUE;
-	}
+		SolidEdgeFramework::ApplicationPtr pApplication = NULL;
+		SolidEdgeAssembly::AssemblyDocumentPtr pAssemblyDocument = NULL;
+		SolidEdgeAssembly::OccurrencesPtr pOccurrences = NULL;
+		SolidEdgeAssembly::OccurrencePtr pOccurrence = NULL;
+		SolidEdgeAssembly::TubePtr pTube = NULL;
 
-	try
-	{
-		// Get a reference to the active document.
-		pAssemblyDocument = pApplication->ActiveDocument;
-	}
-	catch (_com_error& e)
-	{
-	}
+		// Attempt to connect to a running instance of Solid Edge.
+		hr = pApplication.GetActiveObject(L"SolidEdge.Application");
 
-	if (pAssemblyDocument != NULL)
-	{
-		// Get a reference to the Occurrences collection.
-		pOccurrences = pAssemblyDocument->Occurrences;
-
-		for (LONG i = 1; i <= pOccurrences->Count; i++)
+		if (FAILED(hr))
 		{
-			pOccurrence = pOccurrences->Item(i);
+			IfFailGo(pApplication.CreateInstance(L"SolidEdge.Application"));
+			pApplication->Visible = VARIANT_TRUE;
+		}
 
-			// Check to see if the occurrence is a tube.
-			if (pOccurrence->IsTube() == VARIANT_TRUE)
+		try
+		{
+			// Get a reference to the active document.
+			pAssemblyDocument = pApplication->ActiveDocument;
+		}
+		catch (_com_error& e)
+		{
+		}
+
+		if (pAssemblyDocument != NULL)
+		{
+			// Get a reference to the Occurrences collection.
+			pOccurrences = pAssemblyDocument->Occurrences;
+
+			for (LONG i = 1; i <= pOccurrences->Count; i++)
 			{
-				wprintf(L"Occurrences[%d] is a tube.\n", pOccurrence->Index);
-				wprintf(L"PartFileName: %s\n", pOccurrence->PartFileName.GetBSTR());
+				pOccurrence = pOccurrences->Item(i);
 
-				pTube = pOccurrence->GetTube();
+				// Check to see if the occurrence is a tube.
+				if (pOccurrence->IsTube() == VARIANT_TRUE)
+				{
+					wprintf(L"Occurrences[%d] is a tube.\n", pOccurrence->Index);
+					wprintf(L"PartFileName: %s\n", pOccurrence->PartFileName.GetBSTR());
 
-				_variant_t vtCutLength = 0.0;
-				_variant_t vtNumOfBends = 0;
-				_variant_t vtFeedLength;
-				_variant_t vtRotationAngle;
-				_variant_t vtBendRadius;
-				_variant_t vtReverseBendOrder = 0;
-				_variant_t vtBendAngle;
+					pTube = pOccurrence->GetTube();
 
-				vtFeedLength.vt = VT_ARRAY | VT_R8; // double array.
-				vtRotationAngle.vt = VT_ARRAY | VT_R8; // double array.
-				vtBendRadius.vt = VT_ARRAY | VT_R8; // double array.
-				vtBendAngle.vt = VT_ARRAY | VT_R8; // double array.
+					_variant_t vtCutLength = 0.0;
+					_variant_t vtNumOfBends = 0;
+					_variant_t vtFeedLength;
+					_variant_t vtRotationAngle;
+					_variant_t vtBendRadius;
+					_variant_t vtReverseBendOrder = 0;
+					_variant_t vtBendAngle;
 
-				pTube->BendTable(&vtCutLength, &vtNumOfBends, &vtFeedLength, &vtRotationAngle, &vtBendRadius, &vtReverseBendOrder, vtMissing, &vtBendAngle);
+					vtFeedLength.vt = VT_ARRAY | VT_R8; // double array.
+					vtRotationAngle.vt = VT_ARRAY | VT_R8; // double array.
+					vtBendRadius.vt = VT_ARRAY | VT_R8; // double array.
+					vtBendAngle.vt = VT_ARRAY | VT_R8; // double array.
 
-				wprintf(L"BendTable information:\n");
-				wprintf(L"CutLength: %f\n", vtCutLength.dblVal);
-				wprintf(L"NumOfBends: %d\n", vtNumOfBends.lVal);
-				PrintDoubleArray(L"FeedLength", vtFeedLength.parray);
-				PrintDoubleArray(L"RotationAngle", vtRotationAngle.parray);
-				PrintDoubleArray(L"BendRadius", vtBendRadius.parray);
-				PrintDoubleArray(L"BendAngle", vtBendAngle.parray);
-				wprintf(L"\n");
+					pTube->BendTable(&vtCutLength, &vtNumOfBends, &vtFeedLength, &vtRotationAngle, &vtBendRadius, &vtReverseBendOrder, vtMissing, &vtBendAngle);
+
+					wprintf(L"BendTable information:\n");
+					wprintf(L"CutLength: %f\n", vtCutLength.dblVal);
+					wprintf(L"NumOfBends: %d\n", vtNumOfBends.lVal);
+					PrintDoubleArray(L"FeedLength", vtFeedLength.parray);
+					PrintDoubleArray(L"RotationAngle", vtRotationAngle.parray);
+					PrintDoubleArray(L"BendRadius", vtBendRadius.parray);
+					PrintDoubleArray(L"BendAngle", vtBendAngle.parray);
+					wprintf(L"\n");
+				}
 			}
 		}
-	}
-	else
-	{
-		wprintf(L"No active document.\n");
+		else
+		{
+			wprintf(L"No active document.\n");
+		}
 	}
 
 Error:
-	pTube = NULL;
-	pOccurrence = NULL;
-	pOccurrences = NULL;
-	pAssemblyDocument = NULL;
-	pApplication = NULL;
 
 	// Uninitialize COM.
 	::CoUninitialize();

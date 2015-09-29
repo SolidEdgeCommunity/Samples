@@ -12,41 +12,43 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
     HRESULT hr = S_OK;
-    SEInstallDataLib::ISEInstallDataPtr pInstallData = NULL;
 
     // Initialize COM.
-    ::CoInitialize(NULL);
+	::CoInitialize(NULL);
 
-    // Create a new instance of 'SolidEdge.InstallData'.
-    hr = pInstallData.CreateInstance(L"SolidEdge.InstallData");
+	// Encapsulate COM smart pointers in separate code block.
+	{
+		SEInstallDataLib::ISEInstallDataPtr pInstallData = NULL;
 
-    // Solid Edge language.  i.e. 'English', 'German', etc.
-    LONG lLanguageID = pInstallData->GetLanguageID();
+		// Create a new instance of 'SolidEdge.InstallData'.
+		hr = pInstallData.CreateInstance(L"SolidEdge.InstallData");
 
-    // Solid Edge version
-    LONG lMajor = pInstallData->GetMajorVersion();
-    LONG lMinor = pInstallData->GetMinorVersion();
-    LONG lServicePack = pInstallData->GetServicePackVersion();
-    LONG lBuild = pInstallData->GetBuildNumber();
+		// Solid Edge language.  i.e. 'English', 'German', etc.
+		LONG lLanguageID = pInstallData->GetLanguageID();
 
-    // Parasolid version
-    LONG lParasolidMajor = pInstallData->GetParasolidMajorVersion();
-    LONG lParasolidMinor = pInstallData->GetParasolidMinorVersion();
+		// Solid Edge version
+		LONG lMajor = pInstallData->GetMajorVersion();
+		LONG lMinor = pInstallData->GetMinorVersion();
+		LONG lServicePack = pInstallData->GetServicePackVersion();
+		LONG lBuild = pInstallData->GetBuildNumber();
 
-    // Solid Edge version string
-    _bstr_t bstrVersion = pInstallData->GetVersion();
+		// Parasolid version
+		LONG lParasolidMajor = pInstallData->GetParasolidMajorVersion();
+		LONG lParasolidMinor = pInstallData->GetParasolidMinorVersion();
 
-    // Get path to Solid Edge installation directory.  Typically, 'C:\Program Files\Solid Edge XXX'.
-    _bstr_t bstrInstalledPtah = pInstallData->GetInstalledPath();
+		// Solid Edge version string
+		_bstr_t bstrVersion = pInstallData->GetVersion();
 
-    // Output info to screen.
-    ::wprintf(L"LanguageID: %li\n", lLanguageID);
-    ::wprintf(L"Version: %li.%li.%li.%li\n", lMajor, lMinor, lServicePack, lBuild);
-    ::wprintf(L"VersionString: %s\n", bstrVersion.GetBSTR());
-    ::wprintf(L"ParasolidVersion: %li.%li\n", lParasolidMajor, lParasolidMinor);
-    ::wprintf(L"InstalledPath: %s\n", bstrInstalledPtah.GetBSTR());
+		// Get path to Solid Edge installation directory.  Typically, 'C:\Program Files\Solid Edge XXX'.
+		_bstr_t bstrInstalledPtah = pInstallData->GetInstalledPath();
 
-    pInstallData = NULL;
+		// Output info to screen.
+		::wprintf(L"LanguageID: %li\n", lLanguageID);
+		::wprintf(L"Version: %li.%li.%li.%li\n", lMajor, lMinor, lServicePack, lBuild);
+		::wprintf(L"VersionString: %s\n", bstrVersion.GetBSTR());
+		::wprintf(L"ParasolidVersion: %li.%li\n", lParasolidMajor, lParasolidMinor);
+		::wprintf(L"InstalledPath: %s\n", bstrInstalledPtah.GetBSTR());
+	}
 
     // Uninitialize COM.
     ::CoUninitialize();
