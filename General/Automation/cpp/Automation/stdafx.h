@@ -18,8 +18,14 @@
 
 // TODO: reference additional headers your program requires here
 
-/* SolidEdgeFramework */
-#import "framewrk.tlb" rename("GetOpenFileName", "SEGetOpenFileName")
+#import "constant.tlb" /* SolidEdgeConstants */
+#import "framewrk.tlb" exclude ("UINT_PTR", "LONG_PTR") rename ("GetOpenFileName", "SEGetOpenFileName") /* SolidEdgeFramework */
+#import "geometry.tlb" /* SolidEdgeGeometry */
+#import "fwksupp.tlb" /* SolidEdgeFrameworkSupport */
+#import "part.tlb" /* SolidEdgePart */
+#import "assembly.tlb" /* SolidEdgeAssembly */
+#import "draft.tlb" /* SolidEdgeDraft */
+#import "SEInstallData.dll" /* SEInstallDataLib */
 
 #define IfFailGo(x) { hr=(x); if (FAILED(hr)) goto Error; }
 #define IfFailGoCheck(x, p) { hr=(x); if (FAILED(hr)) goto Error; if(!p) {hr = E_FAIL; goto Error; } }
