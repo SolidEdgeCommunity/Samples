@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CreateThickenFeatures", "CreateThickenFeatures\CreateThickenFeatures.vbproj", "{12E60BE0-C5F9-409A-B8B1-C98BB7834335}"
 EndProject

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateExtrudedSurfaceByCircles2d", "CreateExtrudedSurfaceByCircles2d\CreateExtrudedSurfaceByCircles2d.csproj", "{79976EE4-744F-42D5-92D0-6474F56CA5CB}"
 EndProject

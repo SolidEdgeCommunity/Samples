@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CreateBsplineCurves2dByPoints", "CreateBsplineCurves2dByPoints\CreateBsplineCurves2dByPoints.vbproj", "{7C82725F-8E64-452C-A0AA-959515502687}"
 EndProject

@@ -1,0 +1,1015 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolidEdge.Community</name>
+    </assembly>
+    <members>
+        <member name="T:SolidEdgeCommunity.ConnectionPointController">
+            <summary>
+            Default controller that handles connecting\disconnecting to COM events via IConnectionPointContainer and IConnectionPoint interfaces.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.ConnectionPointController.AdviseSink``1(System.Object)">
+            <summary>
+            Establishes a connection between a connection point object and the client's sink.
+            </summary>
+            <typeparam name="TInterface">Interface type of the outgoing interface whose connection point object is being requested.</typeparam>
+            <param name="container">An object that implements the IConnectionPointContainer inferface.</param>
+        </member>
+        <member name="M:SolidEdgeCommunity.ConnectionPointController.IsSinkAdvised``1(System.Object)">
+            <summary>
+            Determines if a connection between a connection point object and the client's sink is established.
+            </summary>
+            <param name="container">An object that implements the IConnectionPointContainer inferface.</param>
+        </member>
+        <member name="M:SolidEdgeCommunity.ConnectionPointController.UnadviseSink``1(System.Object)">
+            <summary>
+            Terminates an advisory connection previously established between a connection point object and a client's sink.
+            </summary>
+            <typeparam name="TInterface">Interface type of the interface whose connection point object is being requested to be removed.</typeparam>
+            <param name="container">An object that implements the IConnectionPointContainer inferface.</param>
+        </member>
+        <member name="M:SolidEdgeCommunity.ConnectionPointController.UnadviseAllSinks">
+            <summary>
+            Terminates all advisory connections previously established.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.EventSink`1.#ctor(System.Object)">
+            <summary>
+            Establishes a connection between a connection point object and the client's sink.
+            </summary>
+            <param name="source">An event source that implements IConnectionPointContainer.</param>
+        </member>
+        <member name="M:SolidEdgeCommunity.EventSink`1.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.EventSink`1.Connect(System.Object)">
+            <summary>
+            Establishes a connection between a connection point object and the client's sink.
+            </summary>
+            <param name="source">An event source that implements IConnectionPointContainer.</param>
+        </member>
+        <member name="M:SolidEdgeCommunity.EventSink`1.Disconnect">
+            <summary>
+            Terminates the advisory connection between a connection point and a client's sink.
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.AssemblyDocumentExtensions">
+            <summary>
+            SolidEdgeAssembly.AssemblyDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.AssemblyDocumentExtensions.GetCreatedVersion(SolidEdgeAssembly.AssemblyDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used to create the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.AssemblyDocumentExtensions.GetLastSavedVersion(SolidEdgeAssembly.AssemblyDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used the last time the referenced document was saved.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.AssemblyDocumentExtensions.GetProperties(SolidEdgeAssembly.AssemblyDocument)">
+            <summary>
+            Returns the properties for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.AssemblyDocumentExtensions.GetSummaryInfo(SolidEdgeAssembly.AssemblyDocument)">
+            <summary>
+            Returns the summary information property set for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.AssemblyDocumentExtensions.GetVariables(SolidEdgeAssembly.AssemblyDocument)">
+            <summary>
+            Returns a collection of variables for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.DraftDocumentExtensions">
+            <summary>
+            SolidEdgeDraft.DraftDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DraftDocumentExtensions.GetCreatedVersion(SolidEdgeDraft.DraftDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used to create the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DraftDocumentExtensions.GetLastSavedVersion(SolidEdgeDraft.DraftDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used the last time the referenced document was saved.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DraftDocumentExtensions.GetProperties(SolidEdgeDraft.DraftDocument)">
+            <summary>
+            Returns the properties for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DraftDocumentExtensions.GetSummaryInfo(SolidEdgeDraft.DraftDocument)">
+            <summary>
+            Returns the summary information property set for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DraftDocumentExtensions.GetVariables(SolidEdgeDraft.DraftDocument)">
+            <summary>
+            Returns a collection of variables for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.OccurrenceExtensions">
+            <summary>
+            SolidEdgePart.WeldmentDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.OccurrenceExtensions.GetOccurrenceDocument(SolidEdgeAssembly.Occurrence)">
+            <summary>
+            Returns the version of Solid Edge that was used to create the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.OccurrenceExtensions.GetOccurrenceDocument``1(SolidEdgeAssembly.Occurrence)">
+            <summary>
+            Returns a strongly typed occurrence document.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.OccurrenceExtensions.GetOccurrenceDocument``1(SolidEdgeAssembly.Occurrence,System.Boolean)">
+            <summary>
+            Returns a strongly typed occurrence document.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.PartDocumentExtensions">
+            <summary>
+            SolidEdgePart.PartDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PartDocumentExtensions.GetCreatedVersion(SolidEdgePart.PartDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used to create the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PartDocumentExtensions.GetLastSavedVersion(SolidEdgePart.PartDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used the last time the referenced document was saved.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PartDocumentExtensions.GetProperties(SolidEdgePart.PartDocument)">
+            <summary>
+            Returns the properties for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PartDocumentExtensions.GetSummaryInfo(SolidEdgePart.PartDocument)">
+            <summary>
+            Returns the summary information property set for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PartDocumentExtensions.GetVariables(SolidEdgePart.PartDocument)">
+            <summary>
+            Returns a collection of variables for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.SheetMetalDocumentExtensions">
+            <summary>
+            SolidEdgePart.SheetMetalDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SheetMetalDocumentExtensions.GetCreatedVersion(SolidEdgePart.SheetMetalDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used to create the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SheetMetalDocumentExtensions.GetLastSavedVersion(SolidEdgePart.SheetMetalDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used the last time the referenced document was saved.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SheetMetalDocumentExtensions.GetProperties(SolidEdgePart.SheetMetalDocument)">
+            <summary>
+            Returns the properties for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SheetMetalDocumentExtensions.GetSummaryInfo(SolidEdgePart.SheetMetalDocument)">
+            <summary>
+            Returns the summary information property set for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SheetMetalDocumentExtensions.GetVariables(SolidEdgePart.SheetMetalDocument)">
+            <summary>
+            Returns a collection of variables for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.SolidEdgeDocumentExtensions">
+            <summary>
+            SolidEdgeFramework.SolidEdgeDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SolidEdgeDocumentExtensions.GetCreatedVersion(SolidEdgeFramework.SolidEdgeDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used to create the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SolidEdgeDocumentExtensions.GetLastSavedVersion(SolidEdgeFramework.SolidEdgeDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used the last time the referenced document was saved.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SolidEdgeDocumentExtensions.GetProperties(SolidEdgeFramework.SolidEdgeDocument)">
+            <summary>
+            Returns the properties for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SolidEdgeDocumentExtensions.GetSummaryInfo(SolidEdgeFramework.SolidEdgeDocument)">
+            <summary>
+            Returns the summary information property set for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.SolidEdgeDocumentExtensions.GetVariables(SolidEdgeFramework.SolidEdgeDocument)">
+            <summary>
+            Returns a collection of variables for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.WeldmentDocumentExtensions">
+            <summary>
+            SolidEdgePart.WeldmentDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.WeldmentDocumentExtensions.GetCreatedVersion(SolidEdgePart.WeldmentDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used to create the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.WeldmentDocumentExtensions.GetLastSavedVersion(SolidEdgePart.WeldmentDocument)">
+            <summary>
+            Returns the version of Solid Edge that was used the last time the referenced document was saved.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.WeldmentDocumentExtensions.GetProperties(SolidEdgePart.WeldmentDocument)">
+            <summary>
+            Returns the properties for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.WeldmentDocumentExtensions.GetSummaryInfo(SolidEdgePart.WeldmentDocument)">
+            <summary>
+            Returns the summary information property set for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.WeldmentDocumentExtensions.GetVariables(SolidEdgePart.WeldmentDocument)">
+            <summary>
+            Returns a collection of variables for the referenced document.
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.IsolatedTask`1">
+            <summary>
+            Generic class used to execute an IsolatedTaskProxy implementation.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTask`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.IsolatedTaskProxy">
+            <summary>
+            Abstract base class to be used with IsolatedTask&lt;T&gt;.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InitializeLifetimeService">
+            <summary>
+            Lifetime services as disabled by default.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread(System.Action)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``1(System.Action{``0},``0)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``2(System.Action{``0,``1},``0,``1)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <typeparam name="TArg2">The type of arg2.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``3(System.Action{``0,``1,``2},``0,``1,``2)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <typeparam name="TArg2">The type of arg2.</typeparam>
+            <typeparam name="TArg3">The type of arg3.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+            <param name="arg3"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <typeparam name="TArg2">The type of arg2.</typeparam>
+            <typeparam name="TArg3">The type of arg3.</typeparam>
+            <typeparam name="TArg4">The type of arg4.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+            <param name="arg3"></param>
+            <param name="arg4"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``1(System.Func{``0})">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TResult">The type of the return value.</typeparam>
+            <param name="target"></param>
+            <returns>An instance of TResult.</returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``2(System.Func{``0,``1},``0)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <typeparam name="TResult">The type of the return value.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+            <returns>An instance of TResult.</returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``3(System.Func{``0,``1,``2},``0,``1)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <typeparam name="TArg2">The type of arg2.</typeparam>
+            <typeparam name="TResult">The type of the return value.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+            <returns>An instance of TResult.</returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``4(System.Func{``0,``1,``2,``3},``0,``1,``2)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <typeparam name="TArg2">The type of arg2.</typeparam>
+            <typeparam name="TArg3">The type of arg3.</typeparam>
+            <typeparam name="TResult">The type of the return value.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+            <param name="arg3"></param>
+            <returns>An instance of TResult.</returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.InvokeSTAThread``5(System.Func{``0,``1,``2,``3,``4},``0,``1,``2,``3)">
+            <summary>
+            Invokes a method in a STA thread.
+            </summary>
+            <typeparam name="TArg1">The type of arg1.</typeparam>
+            <typeparam name="TArg2">The type of arg2.</typeparam>
+            <typeparam name="TArg3">The type of arg3.</typeparam>
+            <typeparam name="TArg4">The type of arg4.</typeparam>
+            <typeparam name="TResult">The type of the return value.</typeparam>
+            <param name="target"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+            <param name="arg3"></param>
+            <param name="arg4"></param>
+            <returns>An instance of TResult.</returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.IsolatedTaskProxy.UnwrapRuntimeCallableWrapper``1(System.Object)">
+            <summary>
+            Unwraps a runtime callable wrapper (RCW) that is passed across AppDomains.
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <param name="rcw"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SolidEdgeCommunity.IsolatedTaskProxy.Application">
+            <summary>
+            Solid Edge Application property.
+            </summary>
+        </member>
+        <member name="P:SolidEdgeCommunity.IsolatedTaskProxy.Document">
+            <summary>
+            Solid Edge Application property.
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.Runtime.InteropServices.ComObject">
+            <summary>
+            COM object wrapper class.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetITypeInfo(System.Object)">
+            <summary>
+            Using IDispatch, returns the ITypeInfo of the specified object.
+            </summary>
+            <param name="comObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue``1(System.Object,System.String)">
+            <summary>
+            Returns a strongly typed property by name using the specified COM object.
+            </summary>
+            <typeparam name="T">The type of the property to return.</typeparam>
+            <param name="comObject"></param>
+            <param name="name">The name of the property to retrieve.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetPropertyValue``1(System.Object,System.String,``0)">
+            <summary>
+            Returns a strongly typed property by name using the specified COM object.
+            </summary>
+            <typeparam name="T">The type of the property to return.</typeparam>
+            <param name="comObject"></param>
+            <param name="name">The name of the property to retrieve.</param>
+            <param name="defaultValue">The value to return if the property does not exist.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Runtime.InteropServices.ComObject.GetType(System.Object)">
+            <summary>
+            Using IDispatch, determine the managed type of the specified object.
+            </summary>
+            <param name="comObject"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.OleMessageFilter">
+            <summary>
+            Class that implements the OLE IMessageFilter interface.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.OleMessageFilter.#ctor">
+            <summary>
+            Private constructor.
+            </summary>
+            <remarks>
+            Instance of this class is only created by Register().
+            </remarks>
+        </member>
+        <member name="M:SolidEdgeCommunity.OleMessageFilter.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.OleMessageFilter.Register">
+            <summary>
+            Registers this instance of IMessageFilter with OLE to handle concurrency issues on the current thread. 
+            </summary>
+            <remarks>
+            Only one message filter can be registered for each thread.
+            Threads in multithreaded apartments cannot have message filters.
+            Thread.CurrentThread.GetApartmentState() must equal ApartmentState.STA. In console applications, this can
+            be achieved by applying the STAThreadAttribute to the Main() method. In WinForm applications, it is default.
+            </remarks>
+        </member>
+        <member name="M:SolidEdgeCommunity.OleMessageFilter.Unregister">
+            <summary>
+            Unregisters a previous instance of IMessageFilter with OLE on the current thread. 
+            </summary>
+            <remarks>
+            It is not necessary to call Unregister() unless you need to explicitly do so as it is handled
+            in the destructor.
+            </remarks>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.PropertySetsExtensions">
+            <summary>
+            SolidEdgeFileProperties.PropertySets extensions.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PropertySetsExtensions.Close(SolidEdgeFileProperties.PropertySets,System.Boolean)">
+            <summary>
+            Closes an open document with the option to save changes.
+            </summary>
+            <param name="propertySets"></param>
+            <param name="saveChanges"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PropertySetsExtensions.InternalUpdateCustomProperty(SolidEdgeFileProperties.PropertySets,System.String,System.Object)">
+            <summary>
+            Adds or modifies a custom property.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PropertySetsExtensions.UpdateCustomProperty(SolidEdgeFileProperties.PropertySets,System.String,System.Boolean)">
+            <summary>
+            Adds or modifies a custom property.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PropertySetsExtensions.UpdateCustomProperty(SolidEdgeFileProperties.PropertySets,System.String,System.DateTime)">
+            <summary>
+            Adds or modifies a custom property.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PropertySetsExtensions.UpdateCustomProperty(SolidEdgeFileProperties.PropertySets,System.String,System.Double)">
+            <summary>
+            Adds or modifies a custom property.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PropertySetsExtensions.UpdateCustomProperty(SolidEdgeFileProperties.PropertySets,System.String,System.Int32)">
+            <summary>
+            Adds or modifies a custom property.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.PropertySetsExtensions.UpdateCustomProperty(SolidEdgeFileProperties.PropertySets,System.String,System.String)">
+            <summary>
+            Adds or modifies a custom property.
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.MouseExtensions">
+            <summary>
+            SolidEdgeFramework.Mouse extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.MouseExtensions.AddToLocateFilter(SolidEdgeFramework.Mouse,SolidEdgeConstants.seLocateFilterConstants)">
+            <summary>
+            Specifies what types of objects the Mouse can locate.
+            </summary>
+            <param name="mouse"></param>
+            <param name="filter"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.MouseExtensions.SetLocateMode(SolidEdgeFramework.Mouse,SolidEdgeConstants.seLocateModes)">
+            <summary>
+            Sets the locate mode for the referenced object.
+            </summary>
+            <param name="mouse"></param>
+            <param name="mode"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.MouseExtensions.GetLocateMode(SolidEdgeFramework.Mouse,SolidEdgeConstants.seLocateModes)">
+            <summary>
+            Returns the locate mode for the referenced object.
+            </summary>
+            <param name="mouse"></param>
+            <param name="mode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.SolidEdgeUtils">
+            <summary>
+            Helper class for interaction with Solid Edge.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.Connect">
+            <summary>
+            Connects to a running instance of Solid Edge.
+            </summary>
+            <returns>
+            An object of type SolidEdgeFramework.Application.
+            </returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.Connect(System.Boolean)">
+            <summary>
+            Connects to or starts a new instance of Solid Edge.
+            </summary>
+            <param name="startIfNotRunning"></param>
+            <returns>
+            An object of type SolidEdgeFramework.Application.
+            </returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.Connect(System.Boolean,System.Boolean)">
+            <summary>
+            Connects to or starts a new instance of Solid Edge.
+            </summary>
+            <param name="startIfNotRunning"></param>
+            <param name="ensureVisible"></param>
+            <returns>
+            An object of type SolidEdgeFramework.Application.
+            </returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.GetInstalledPath">
+            <summary>
+            Returns the path to the Solid Edge installation folder.
+            </summary>
+            <remarks>
+            Typically 'C:\Program Files\Solid Edge XXX'.
+            </remarks>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.GetProgramFolderPath">
+            <summary>
+            Returns the path to the Solid Edge program folder.
+            </summary>
+            <remarks>
+            Typically 'C:\Program Files\Solid Edge XXX\Program'.
+            </remarks>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.GetTrainingFolderPath">
+            <summary>
+            Returns the path to the Solid Edge training folder.
+            </summary>
+            <remarks>
+            Typically 'C:\Program Files\Solid Edge XXX\Training'.
+            </remarks>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.GetVersion">
+            <summary>
+            Returns a Version object representing the installed version of Solid Edge.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.SolidEdgeUtils.Start">
+            <summary>
+            Creates and returns a new instance of Solid Edge.
+            </summary>
+            <returns>
+            An object of type SolidEdgeFramework.Application.
+            </returns>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.ApplicationExtensions">
+            <summary>
+            SolidEdgeFramework.Application extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.CreateCommand(SolidEdgeFramework.Application,SolidEdgeConstants.seCmdFlag)">
+            <summary>
+            Creates a Solid Edge command control.
+            </summary>
+            <param name="application"></param>
+            <param name="CmdFlags"></param>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetActiveDocument(SolidEdgeFramework.Application)">
+            <summary>
+            Returns the currently active document.
+            </summary>
+            <remarks>An exception will be thrown if there is no active document.</remarks>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetActiveDocument(SolidEdgeFramework.Application,System.Boolean)">
+            <summary>
+            Returns the currently active document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetActiveDocument``1(SolidEdgeFramework.Application)">
+            <summary>
+            Returns the currently active document.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+            /// <remarks>An exception will be thrown if there is no active document or if the cast fails.</remarks>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetActiveDocument``1(SolidEdgeFramework.Application,System.Boolean)">
+            <summary>
+            Returns the currently active document.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetActiveEnvironment(SolidEdgeFramework.Application)">
+            <summary>
+            Returns the environment that belongs to the current active window of the document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetEnvironment(SolidEdgeFramework.Application,System.String)">
+            <summary>
+            Returns an environment specified by CATID.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetGlobalParameter(SolidEdgeFramework.Application,SolidEdgeFramework.ApplicationGlobalConstants)">
+            <summary>
+            Returns the value of a specified global constant.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetGlobalParameter``1(SolidEdgeFramework.Application,SolidEdgeFramework.ApplicationGlobalConstants)">
+            <summary>
+            Returns the value of a specified global constant.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetNativeWindow(SolidEdgeFramework.Application)">
+            <summary>
+            Returns a NativeWindow object that represents the main application window.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetProcess(SolidEdgeFramework.Application)">
+            <summary>
+            Returns a Process object that represents the application prcoess.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetVersion(SolidEdgeFramework.Application)">
+            <summary>
+            Returns a Version object that represents the application version.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.GetWindowHandle(SolidEdgeFramework.Application)">
+            <summary>
+            Returns a point object to the application main window.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.AssemblyCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.CuttingPlaneLineCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.DetailCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.DrawingViewEditCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.ExplodeCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.LayoutCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.LayoutInPartCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.MotionCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.PartCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.ProfileCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.ProfileHoleCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.ProfilePatternCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.ProfileRevolvedCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.SheetMetalCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.SimplifyCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.SolidEdgeCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.StudioCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.TubingCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeConstants.WeldmentCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.StartCommand(SolidEdgeFramework.Application,SolidEdgeFramework.SolidEdgeCommandConstants)">
+            <summary>
+            Activates a specified Solid Edge command.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.Show(SolidEdgeFramework.Application,System.Windows.Forms.Form)">
+            <summary>
+            Shows the form with the application main window as the owner.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.ShowDialog(SolidEdgeFramework.Application,System.Windows.Forms.Form)">
+            <summary>
+            Shows the form as a modal dialog box with the application main window as the owner.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.ApplicationExtensions.ShowDialog(SolidEdgeFramework.Application,System.Windows.Forms.CommonDialog)">
+            <summary>
+            Shows the form as a modal dialog box with the application main window as the owner.
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.DocumentsExtensions">
+            <summary>
+            SolidEdgeFramework.Documents extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.Add``1(SolidEdgeFramework.Documents,System.String)">
+            <summary>
+            Creates a new document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.Add``1(SolidEdgeFramework.Documents,System.String,System.Object)">
+            <summary>
+            Creates a new document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.Add``1(SolidEdgeFramework.Documents)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <typeparam name="TDocumentType">SolidEdgeAssembly.AssemblyDocument, SolidEdgeDraft.DraftDocument, SolidEdgePart.PartDocument or SolidEdgePart.SheetMetalDocument.</typeparam>
+            <param name="documents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddAssemblyDocument(SolidEdgeFramework.Documents)">
+            <summary>
+            Creates a new assembly document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddAssemblyDocument(SolidEdgeFramework.Documents,System.Object)">
+            <summary>
+            Creates a new assembly document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddDraftDocument(SolidEdgeFramework.Documents)">
+            <summary>
+            Creates a new draft document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddDraftDocument(SolidEdgeFramework.Documents,System.Object)">
+            <summary>
+            Creates a new draft document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddPartDocument(SolidEdgeFramework.Documents)">
+            <summary>
+            Creates a new part document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddPartDocument(SolidEdgeFramework.Documents,System.Object)">
+            <summary>
+            Creates a new part document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddSheetMetalDocument(SolidEdgeFramework.Documents)">
+            <summary>
+            Creates a new sheetmetal document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.AddSheetMetalDocument(SolidEdgeFramework.Documents,System.Object)">
+            <summary>
+            Creates a new sheetmetal document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.Open``1(SolidEdgeFramework.Documents,System.String)">
+            <summary>
+            Opens an existing Solid Edge document.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.DocumentsExtensions.Open``1(SolidEdgeFramework.Documents,System.String,System.Object,System.Object,System.Object,System.Object,System.Object)">
+            <summary>
+            Opens an existing Solid Edge document.
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.EnvironmentExtensions">
+            <summary>
+            SolidEdgeFramework.Environment extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.EnvironmentExtensions.GetCategoryId(SolidEdgeFramework.Environment)">
+            <summary>
+            Returns a Guid representing the environment category.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.EnvironmentExtensions.GetCommandConstantType(SolidEdgeFramework.Environment)">
+            <summary>
+            Returns a Type representing the corresponding command constants for a particular environment.
+            </summary>
+            <param name="environment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.EnvironmentExtensions.LookupByName(SolidEdgeFramework.Environments,System.String)">
+            <summary>
+            Returns a SolidEdgeFramework.Environment by name.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.EnvironmentExtensions.LookupByCategoryId(SolidEdgeFramework.Environments,System.Guid)">
+            <summary>
+            Returns a SolidEdgeFramework.Environment by category id..
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.RefPlanesExtensions">
+            <summary>
+            SolidEdgePart.RefPlanes extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.RefPlanesExtensions.GetTopPlane(SolidEdgePart.RefPlanes)">
+            <summary>
+            Returns a SolidEdgePart.RefPlane representing the default top plane.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.RefPlanesExtensions.GetRightPlane(SolidEdgePart.RefPlanes)">
+            <summary>
+            Returns a SolidEdgePart.RefPlane representing the default right plane.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.RefPlanesExtensions.GetFrontPlane(SolidEdgePart.RefPlanes)">
+            <summary>
+            Returns a SolidEdgePart.RefPlane representing the default front plane.
+            </summary>
+        </member>
+        <member name="T:SolidEdgeCommunity.Extensions.WindowExtensions">
+            <summary>
+            SolidEdgeFramework.Window extension methods.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.WindowExtensions.GetDrawHandle(SolidEdgeFramework.Window)">
+            <summary>
+            Returns an IntPtr representing the window handle.
+            </summary>
+        </member>
+        <member name="M:SolidEdgeCommunity.Extensions.WindowExtensions.GetHandle(SolidEdgeFramework.Window)">
+            <summary>
+            Returns an IntPtr representing the window handle.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateCircle2dByCenterRadius", "CreateCircle2dByCenterRadius\CreateCircle2dByCenterRadius.csproj", "{271B2CC8-0ECA-4890-A3FB-CFAC77EA0A83}"
 EndProject
