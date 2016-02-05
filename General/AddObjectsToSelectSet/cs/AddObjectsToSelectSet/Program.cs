@@ -32,7 +32,16 @@ namespace AddObjectsToSelectSet
                 SolidEdgeCommunity.OleMessageFilter.Register();
 
                 // Connect to or start Solid Edge.
-                application = SolidEdgeCommunity.SolidEdgeUtils.Start();
+                application = SolidEdgeCommunity.SolidEdgeUtils.Connect();
+
+                // Get a reference to the active selectset.
+                selectSet = application.ActiveSelectSet;
+
+                // Temporarily suspend selectset UI updates.
+                selectSet.SuspendDisplay();
+
+                // Clear the selectset.
+                selectSet.RemoveAll();
 
                 // Get a reference to the active document.
                 document = application.GetActiveDocument<SolidEdgeFramework.SolidEdgeDocument>(false);
@@ -45,7 +54,6 @@ namespace AddObjectsToSelectSet
                         case SolidEdgeFramework.DocumentTypeConstants.igAssemblyDocument:
                             assemblyDocument = (SolidEdgeAssembly.AssemblyDocument)document;
                             asmRefPlanes = assemblyDocument.AsmRefPlanes;
-                            selectSet = assemblyDocument.SelectSet;
 
                             for (int i = 1; i <= asmRefPlanes.Count; i++)
                             {
@@ -57,7 +65,6 @@ namespace AddObjectsToSelectSet
                             draftDocument = (SolidEdgeDraft.DraftDocument)document;
                             sheet = draftDocument.ActiveSheet;
                             drawingViews = sheet.DrawingViews;
-                            selectSet = draftDocument.SelectSet;
 
                             for (int i = 1; i <= drawingViews.Count; i++)
                             {
@@ -68,7 +75,6 @@ namespace AddObjectsToSelectSet
                         case SolidEdgeFramework.DocumentTypeConstants.igPartDocument:
                             partDocument = (SolidEdgePart.PartDocument)document;
                             edgeBarFeatures = partDocument.DesignEdgebarFeatures;
-                            selectSet = partDocument.SelectSet;
 
                             for (int i = 1; i <= edgeBarFeatures.Count; i++)
                             {
@@ -79,7 +85,6 @@ namespace AddObjectsToSelectSet
                         case SolidEdgeFramework.DocumentTypeConstants.igSheetMetalDocument:
                             sheetMetalDocument = (SolidEdgePart.SheetMetalDocument)document;
                             edgeBarFeatures = sheetMetalDocument.DesignEdgebarFeatures;
-                            selectSet = sheetMetalDocument.SelectSet;
 
                             for (int i = 1; i <= edgeBarFeatures.Count; i++)
                             {
@@ -92,6 +97,12 @@ namespace AddObjectsToSelectSet
                 {
                     throw new System.Exception("No active document");
                 }
+
+                // Re-enable selectset UI display.
+                selectSet.ResumeDisplay();
+
+                // Manually refresh the selectset UI display.
+                selectSet.RefreshDisplay();
             }
             catch (System.Exception ex)
             {
