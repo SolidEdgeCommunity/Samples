@@ -39,13 +39,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.SolidEdge, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\Interop.SolidEdge.108.1.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <HintPath>..\packages\Interop.SolidEdge.108.4.0\lib\net40\Interop.SolidEdge.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SolidEdge.Community, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\SolidEdge.Community.108.0.0\lib\net40\SolidEdge.Community.dll</HintPath>
+      <HintPath>..\packages\SolidEdge.Community.108.2.0\lib\net40\SolidEdge.Community.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

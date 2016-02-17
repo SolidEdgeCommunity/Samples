@@ -6,7 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3E7B1B03-1236-406C-B01B-9139FBF52E84}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>CreateFaceRotateByPoints</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,13 +36,13 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SolidEdge, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\Interop.SolidEdge.107.6.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+    <Reference Include="Interop.SolidEdge, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interop.SolidEdge.108.4.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SolidEdge.Community, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\SolidEdge.Community.107.6.0\lib\net40\SolidEdge.Community.dll</HintPath>
+    <Reference Include="SolidEdge.Community, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolidEdge.Community.108.2.0\lib\net40\SolidEdge.Community.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

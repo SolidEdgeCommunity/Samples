@@ -36,20 +36,21 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommandLine">
-      <HintPath>..\..\..\..\.packages\CommandLineParser.1.9.71\lib\net40\CommandLine.dll</HintPath>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net40\CommandLine.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Interop.SolidEdge, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\Interop.SolidEdge.107.6.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+    <Reference Include="Interop.SolidEdge, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interop.SolidEdge.108.4.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SolidEdge.Community, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\SolidEdge.Community.107.6.0\lib\net40\SolidEdge.Community.dll</HintPath>
+    <Reference Include="SolidEdge.Community, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolidEdge.Community.108.2.0\lib\net40\SolidEdge.Community.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SolidEdge.Community.Reader, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\SolidEdge.Community.Reader.1.5.0\lib\net40\SolidEdge.Community.Reader.dll</HintPath>
+    <Reference Include="SolidEdge.Community.Reader, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolidEdge.Community.Reader.2.0.0\lib\net40\SolidEdge.Community.Reader.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

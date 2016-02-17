@@ -35,13 +35,13 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SolidEdge, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\Interop.SolidEdge.107.6.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+    <Reference Include="Interop.SolidEdge, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interop.SolidEdge.108.4.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SolidEdge.Community, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\SolidEdge.Community.107.6.0\lib\net40\SolidEdge.Community.dll</HintPath>
+    <Reference Include="SolidEdge.Community, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolidEdge.Community.108.2.0\lib\net40\SolidEdge.Community.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,10 +71,10 @@
     <Compile Include="WindowHelper.vb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

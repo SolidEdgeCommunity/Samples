@@ -38,19 +38,21 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SolidEdge, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\Interop.SolidEdge.107.6.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+    <Reference Include="Interop.SolidEdge, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interop.SolidEdge.108.4.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\..\.packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SolidEdge.Community, Version=107.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\.packages\SolidEdge.Community.107.6.0\lib\net40\SolidEdge.Community.dll</HintPath>
+    <Reference Include="SolidEdge.Community, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolidEdge.Community.108.2.0\lib\net40\SolidEdge.Community.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SolidEdge.Community.Reader">
-      <HintPath>..\..\..\..\.packages\SolidEdge.Community.Reader.1.7.0\lib\net40\SolidEdge.Community.Reader.dll</HintPath>
+    <Reference Include="SolidEdge.Community.Reader, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolidEdge.Community.Reader.2.0.0\lib\net40\SolidEdge.Community.Reader.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -117,7 +119,6 @@
       <DependentUpon>SearchOptionsDialog.vb</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -127,6 +128,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Media\FolderOpen_16x16.png" />

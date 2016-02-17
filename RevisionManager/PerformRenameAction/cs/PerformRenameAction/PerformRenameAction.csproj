@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.SolidEdge, Version=108.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\.packages\Interop.SolidEdge.108.0.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <HintPath>..\packages\Interop.SolidEdge.108.4.0\lib\net40\Interop.SolidEdge.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

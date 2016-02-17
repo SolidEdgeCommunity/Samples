@@ -17,15 +17,15 @@ Partial Public Class MainForm
     Private _applicationEvents As SolidEdgeFramework.ISEApplicationEvents_Event
     Private _documentEvents As SolidEdgeFramework.ISEDocumentEvents_Event
 
-    #Region "Assembly document events"
+#Region "Assembly document events"
 
     Private _assemblyChangeEvents As SolidEdgeFramework.ISEAssemblyChangeEvents_Event
     Private _assemblyFamilyEvents As SolidEdgeFramework.ISEAssemblyFamilyEvents_Event
     Private _assemblyRecomputeEvents As SolidEdgeFramework.ISEAssemblyRecomputeEvents_Event
 
-    #End Region
+#End Region
 
-    #Region "Draft document events"
+#Region "Draft document events"
 
     Private _blockTableEvents As SolidEdgeFramework.ISEBlockTableEvents_Event
     Private _connectorTableEvents As SolidEdgeFramework.ISEConnectorTableEvents_Event
@@ -33,15 +33,15 @@ Partial Public Class MainForm
     Private _drawingViewEvents As SolidEdgeFramework.ISEDrawingViewEvents_Event
     Private _partsListEvents As SolidEdgeFramework.ISEPartsListEvents_Event
 
-    #End Region
+#End Region
 
-    #Region "Part \ SheetMetal document events"
+#Region "Part \ SheetMetal document events"
 
     Private _dividePartEvents As SolidEdgeFramework.ISEDividePartEvents_Event
     Private _familyOfPartsEvents As SolidEdgeFramework.ISEFamilyOfPartsEvents_Event
     Private _familyOfPartsExEvents As SolidEdgeFramework.ISEFamilyOfPartsExEvents_Event
 
-    #End Region
+#End Region
 
     Public Sub New()
         InitializeComponent()
@@ -104,18 +104,18 @@ Partial Public Class MainForm
         lvEvents.Items.Clear()
     End Sub
 
-    #Region "SolidEdgeFramework.ISEApplicationEvents"
+#Region "SolidEdgeFramework.ISEApplicationEvents"
 
     Private Sub ISEApplicationEvents_AfterActiveDocumentChange(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
     End Sub
 
     Private Sub ISEApplicationEvents_AfterCommandRun(ByVal theCommandID As Integer)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theCommandID })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theCommandID})
     End Sub
 
     Private Sub ISEApplicationEvents_AfterDocumentOpen(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
 
         ' Since a document was opened, we need to connect to the document events.
         Dim documents = _application.Documents
@@ -131,20 +131,20 @@ Partial Public Class MainForm
     End Sub
 
     Private Sub ISEApplicationEvents_AfterDocumentPrint(ByVal theDocument As Object, ByVal hDC As Integer, ByRef ModelToDC As Double, ByRef Rect As Integer)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, hDC, ModelToDC, Rect })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, hDC, ModelToDC, Rect})
     End Sub
 
     Private Sub ISEApplicationEvents_AfterDocumentSave(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
     End Sub
 
     Private Sub ISEApplicationEvents_AfterEnvironmentActivate(ByVal theEnvironment As Object)
 
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theEnvironment })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theEnvironment})
     End Sub
 
     Private Sub ISEApplicationEvents_AfterNewDocumentOpen(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
 
         ' Since a new document was created, we need to connect to the document events.
         Dim document = DirectCast(theDocument, SolidEdgeFramework.SolidEdgeDocument)
@@ -152,31 +152,31 @@ Partial Public Class MainForm
     End Sub
 
     Private Sub ISEApplicationEvents_AfterNewWindow(ByVal theWindow As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theWindow })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theWindow})
     End Sub
 
     Private Sub ISEApplicationEvents_AfterWindowActivate(ByVal theWindow As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theWindow })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theWindow})
     End Sub
 
     Private Sub ISEApplicationEvents_BeforeCommandRun(ByVal theCommandID As Integer)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theCommandID })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theCommandID})
     End Sub
 
     Private Sub ISEApplicationEvents_BeforeDocumentClose(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
     End Sub
 
     Private Sub ISEApplicationEvents_BeforeDocumentPrint(ByVal theDocument As Object, ByVal hDC As Integer, ByRef ModelToDC As Double, ByRef Rect As Integer)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, hDC, ModelToDC, Rect })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, hDC, ModelToDC, Rect})
     End Sub
 
     Private Sub ISEApplicationEvents_BeforeDocumentSave(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
     End Sub
 
     Private Sub ISEApplicationEvents_BeforeEnvironmentDeactivate(ByVal theEnvironment As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theEnvironment })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theEnvironment})
     End Sub
 
     Private Sub ISEApplicationEvents_BeforeQuit()
@@ -185,7 +185,7 @@ Partial Public Class MainForm
             ' Dispatch an synchronous message to the UI thread.
             _uiContext.Send(New SendOrPostCallback(Sub(x) ISEApplicationEvents_BeforeQuit()), Nothing)
         Else
-            LogEvent(MethodInfo.GetCurrentMethod(), New Object() { })
+            LogEvent(MethodInfo.GetCurrentMethod(), New Object() {})
 
             eventButton.Checked = False
 
@@ -193,186 +193,186 @@ Partial Public Class MainForm
     End Sub
 
     Private Sub ISEApplicationEvents_BeforeWindowDeactivate(ByVal theWindow As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theWindow })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theWindow})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEDocumentEvents"
+#Region "SolidEdgeFramework.ISEDocumentEvents"
 
     Private Sub ISEDocumentEvents_AfterSave()
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {})
     End Sub
 
     Private Sub ISEDocumentEvents_BeforeClose()
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {})
 
         DisconnectDocumentEvents()
     End Sub
 
     Private Sub ISEDocumentEvents_BeforeSave()
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {})
     End Sub
 
     Private Sub ISEDocumentEvents_SelectSetChanged(ByVal SelectSet As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { SelectSet })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {SelectSet})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEAssemblyChangeEvents"
+#Region "SolidEdgeFramework.ISEAssemblyChangeEvents"
 
-    Private Sub ISEAssemblyChangeEvents_AfterChange(ByVal theDocument As Object, ByVal Object As Object, ByVal Type As SolidEdgeFramework.ObjectType, ByVal ChangeType As SolidEdgeFramework.seAssemblyChangeEventsConstants)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, Object, Type, ChangeType })
+    Private Sub ISEAssemblyChangeEvents_AfterChange(ByVal theDocument As Object, ByVal TheObject As Object, ByVal Type As SolidEdgeFramework.ObjectType, ByVal ChangeType As SolidEdgeFramework.seAssemblyChangeEventsConstants)
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, TheObject, Type, ChangeType})
     End Sub
 
-    Private Sub ISEAssemblyChangeEvents_BeforeChange(ByVal theDocument As Object, ByVal Object As Object, ByVal Type As SolidEdgeFramework.ObjectType, ByVal ChangeType As SolidEdgeFramework.seAssemblyChangeEventsConstants)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, Object, Type, ChangeType })
+    Private Sub ISEAssemblyChangeEvents_BeforeChange(ByVal theDocument As Object, ByVal TheObject As Object, ByVal Type As SolidEdgeFramework.ObjectType, ByVal ChangeType As SolidEdgeFramework.seAssemblyChangeEventsConstants)
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, TheObject, Type, ChangeType})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEAssemblyFamilyEvents"
+#Region "SolidEdgeFramework.ISEAssemblyFamilyEvents"
 
     Private Sub ISEAssemblyFamilyEvents_AfterMemberActivate(ByVal theDocument As Object, ByVal memberName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, memberName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, memberName})
     End Sub
 
     Private Sub ISEAssemblyFamilyEvents_AfterMemberCreate(ByVal theDocument As Object, ByVal memberName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, memberName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, memberName})
     End Sub
 
     Private Sub ISEAssemblyFamilyEvents_AfterMemberDelete(ByVal theDocument As Object, ByVal memberName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, memberName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, memberName})
     End Sub
 
     Private Sub ISEAssemblyFamilyEvents_BeforeMemberActivate(ByVal theDocument As Object, ByVal memberName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, memberName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, memberName})
     End Sub
 
     Private Sub ISEAssemblyFamilyEvents_BeforeMemberCreate(ByVal theDocument As Object, ByVal memberName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, memberName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, memberName})
     End Sub
 
     Private Sub ISEAssemblyFamilyEvents_BeforeMemberDelete(ByVal theDocument As Object, ByVal memberName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, memberName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, memberName})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEAssemblyRecomputeEvents"
+#Region "SolidEdgeFramework.ISEAssemblyRecomputeEvents"
 
-    Private Sub ISEAssemblyRecomputeEvents_AfterAdd(ByVal theDocument As Object, ByVal Object As Object, ByVal Type As SolidEdgeFramework.ObjectType)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, Object, Type })
+    Private Sub ISEAssemblyRecomputeEvents_AfterAdd(ByVal theDocument As Object, ByVal TheObject As Object, ByVal Type As SolidEdgeFramework.ObjectType)
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, TheObject, Type})
     End Sub
 
-    Private Sub ISEAssemblyRecomputeEvents_AfterModify(ByVal theDocument As Object, ByVal Object As Object, ByVal Type As SolidEdgeFramework.ObjectType, ByVal ModifyType As SolidEdgeFramework.seAssemblyEventConstants)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, Object, Type, ModifyType })
+    Private Sub ISEAssemblyRecomputeEvents_AfterModify(ByVal theDocument As Object, ByVal TheObject As Object, ByVal Type As SolidEdgeFramework.ObjectType, ByVal ModifyType As SolidEdgeFramework.seAssemblyEventConstants)
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, TheObject, Type, ModifyType})
     End Sub
 
     Private Sub ISEAssemblyRecomputeEvents_AfterRecompute(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
     End Sub
 
-    Private Sub ISEAssemblyRecomputeEvents_BeforeDelete(ByVal theDocument As Object, ByVal Object As Object, ByVal Type As SolidEdgeFramework.ObjectType)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument, Object, Type, Type })
+    Private Sub ISEAssemblyRecomputeEvents_BeforeDelete(ByVal theDocument As Object, ByVal TheObject As Object, ByVal Type As SolidEdgeFramework.ObjectType)
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument, TheObject, Type, Type})
     End Sub
 
     Private Sub ISEAssemblyRecomputeEvents_BeforeRecompute(ByVal theDocument As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theDocument })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theDocument})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEBlockTableEvents"
+#Region "SolidEdgeFramework.ISEBlockTableEvents"
 
     Private Sub ISEBlockTableEvents_AfterUpdate(ByVal BlockTable As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { BlockTable })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {BlockTable})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEConnectorTableEvents"
+#Region "SolidEdgeFramework.ISEConnectorTableEvents"
 
     Private Sub ISEConnectorTableEvents_AfterUpdate(ByVal ConnectorTable As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { ConnectorTable })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {ConnectorTable})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEDraftBendTableEvents"
+#Region "SolidEdgeFramework.ISEDraftBendTableEvents"
 
     Private Sub ISEDraftBendTableEvents_AfterUpdate(ByVal DraftBendTable As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { DraftBendTable })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {DraftBendTable})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEDrawingViewEvents"
+#Region "SolidEdgeFramework.ISEDrawingViewEvents"
 
     Private Sub ISEDrawingViewEvents_AfterUpdate(ByVal DrawingView As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { DrawingView })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {DrawingView})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEPartsListEvents"
+#Region "SolidEdgeFramework.ISEPartsListEvents"
 
     Private Sub ISEPartsListEvents_AfterUpdate(ByVal PartsList As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { PartsList })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {PartsList})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEDividePartEvents"
+#Region "SolidEdgeFramework.ISEDividePartEvents"
 
     Private Sub ISEDividePartEvents_AfterDividePartDocumentCreated(ByVal theMember As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember})
     End Sub
 
     Private Sub ISEDividePartEvents_AfterDividePartDocumentRenamed(ByVal theMember As Object, ByVal OldName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember, OldName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember, OldName})
     End Sub
 
     Private Sub ISEDividePartEvents_BeforeDividePartDocumentDeleted(ByVal theMember As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEFamilyOfPartsEvents"
+#Region "SolidEdgeFramework.ISEFamilyOfPartsEvents"
 
     Private Sub ISEFamilyOfPartsEvents_AfterMemberDocumentCreated(ByVal theMember As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember})
     End Sub
 
     Private Sub ISEFamilyOfPartsEvents_AfterMemberDocumentRenamed(ByVal theMember As Object, ByVal OldName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember, OldName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember, OldName})
     End Sub
 
     Private Sub ISEFamilyOfPartsEvents_BeforeMemberDocumentDeleted(ByVal theMember As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember})
     End Sub
 
-    #End Region
+#End Region
 
-    #Region "SolidEdgeFramework.ISEFamilyOfPartsExEvents"
+#Region "SolidEdgeFramework.ISEFamilyOfPartsExEvents"
 
     Private Sub ISEFamilyOfPartsExEvents_AfterMemberDocumentCreated(ByVal theMember As Object, ByVal DocumentExists As Boolean)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember, DocumentExists })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember, DocumentExists})
     End Sub
 
     Private Sub ISEFamilyOfPartsExEvents_AfterMemberDocumentRenamed(ByVal theMember As Object, ByVal OldName As String)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember, OldName })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember, OldName})
     End Sub
 
     Private Sub ISEFamilyOfPartsExEvents_BeforeMemberDocumentDeleted(ByVal theMember As Object)
-        LogEvent(MethodInfo.GetCurrentMethod(), New Object() { theMember })
+        LogEvent(MethodInfo.GetCurrentMethod(), New Object() {theMember})
     End Sub
 
-    #End Region
+#End Region
 
-    #region "Application events connect\disconnect"
+#Region "Application events connect\disconnect"
 
     Private Sub ConnectApplicationEvents()
         If _application IsNot Nothing Then
@@ -420,9 +420,9 @@ Partial Public Class MainForm
         End If
     End Sub
 
-    #End Region
+#End Region
 
-    #region "Document events connect\disconnect"
+#Region "Document events connect\disconnect"
 
     Private Sub ConnectDocumentEvents(ByVal document As SolidEdgeFramework.SolidEdgeDocument)
         _documentEvents = DirectCast(document.DocumentEvents, SolidEdgeFramework.ISEDocumentEvents_Event)
@@ -601,7 +601,7 @@ Partial Public Class MainForm
         End If
     End Sub
 
-    #End Region
+#End Region
 
     ''' <summary>
     ''' Synchronously updates the UI. This will block the UI thread until the event is complete.
