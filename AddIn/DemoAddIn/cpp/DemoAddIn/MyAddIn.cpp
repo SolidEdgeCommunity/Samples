@@ -420,6 +420,12 @@ HRESULT CMyAddIn::raw_BeforeQuit(void)
 
 HRESULT CMyAddIn::raw_BeforeDocumentSave(LPDISPATCH theDocument)
 {
+	SolidEdgeFramework::SolidEdgeDocumentPtr pDocument = theDocument;
+ 	IStoragePtr pStorage = pDocument->GetAddInsStorage(L"MyAddInStorage", 0);
+
+	pStorage = NULL;
+	pDocument = NULL;
+
 	return S_OK;
 }
 
