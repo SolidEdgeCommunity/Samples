@@ -244,6 +244,7 @@
     <ClInclude Include="EdgeBarDocument.h" />
     <ClInclude Include="MyAddIn.h" />
     <ClInclude Include="MyCommands.h" />
+    <ClInclude Include="MyStorage.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SolidEdgeCommunity.h" />
     <ClInclude Include="stdafx.h" />

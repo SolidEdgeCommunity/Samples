@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "MyAddIn.h"
 #include "MyCommands.h"
+#include "MyStorage.h"
 
 #pragma region Registration (regsvr32.exe)
 
@@ -322,6 +323,14 @@ HRESULT CMyAddIn::raw_AfterActiveDocumentChange(LPDISPATCH theDocument)
 
 HRESULT CMyAddIn::raw_AfterDocumentOpen(LPDISPATCH theDocument)
 {
+	MY_STORAGE_INFO storageInfo;
+	memset(&storageInfo, 0, sizeof(storageInfo));
+
+	// Attempt to read previously saved addin storage data.
+	if (ReadAddInStorageInfo(theDocument, &storageInfo) == S_OK)
+	{
+	}
+
 	return S_OK;
 }
 
@@ -420,11 +429,7 @@ HRESULT CMyAddIn::raw_BeforeQuit(void)
 
 HRESULT CMyAddIn::raw_BeforeDocumentSave(LPDISPATCH theDocument)
 {
-	SolidEdgeFramework::SolidEdgeDocumentPtr pDocument = theDocument;
- 	IStoragePtr pStorage = pDocument->GetAddInsStorage(L"MyAddInStorage", 0);
-
-	pStorage = NULL;
-	pDocument = NULL;
+	SaveAddInStorageInfo(theDocument);
 
 	return S_OK;
 }
