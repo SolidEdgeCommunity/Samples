@@ -36,8 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.SolidEdge">
-      <HintPath>..\packages\Interop.SolidEdge.108.4.0\lib\net40\Interop.SolidEdge.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Interop.SolidEdge.109.1.0\lib\net40\Interop.SolidEdge.dll</HintPath>
     </Reference>
     <Reference Include="SharpGL, Version=2.4.0.0, Culture=neutral, PublicKeyToken=27fc851303210b27, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpGL.2.4.0.0\lib\net40\SharpGL.dll</HintPath>
@@ -48,8 +47,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="SolidEdge.Community">
-      <HintPath>..\packages\SolidEdge.Community.108.2.0\lib\net40\SolidEdge.Community.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\SolidEdge.Community.109.0.0\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
     <Reference Include="SolidEdge.Community.AddIn">
       <HintPath>..\packages\SolidEdge.Community.AddIn.108.0.0\lib\net40\SolidEdge.Community.AddIn.dll</HintPath>
