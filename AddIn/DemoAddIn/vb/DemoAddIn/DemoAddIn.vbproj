@@ -35,8 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SolidEdge">
-      <HintPath>..\packages\Interop.SolidEdge.109.1.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+    <Reference Include="Interop.SolidEdge, Version=109.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interop.SolidEdge.109.2.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SharpGL, Version=2.4.0.0, Culture=neutral, PublicKeyToken=27fc851303210b27, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpGL.2.4.0.0\lib\net40\SharpGL.dll</HintPath>
@@ -49,8 +50,8 @@
     <Reference Include="SolidEdge.Community">
       <HintPath>..\packages\SolidEdge.Community.109.0.0\lib\net40\SolidEdge.Community.dll</HintPath>
     </Reference>
-    <Reference Include="SolidEdge.Community.AddIn">
-      <HintPath>..\packages\SolidEdge.Community.AddIn.108.0.0\lib\net40\SolidEdge.Community.AddIn.dll</HintPath>
+    <Reference Include="SolidEdge.Community.AddIn, Version=109.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolidEdge.Community.AddIn.109.0.0\lib\net40\SolidEdge.Community.AddIn.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -143,13 +144,13 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\SolidEdge.Community.AddIn.109.0.0\build\net40\SolidEdge.Community.AddIn.targets" Condition="Exists('..\packages\SolidEdge.Community.AddIn.109.0.0\build\net40\SolidEdge.Community.AddIn.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SolidEdge.Community.AddIn.108.0.0\build\net40\SolidEdge.Community.AddIn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdge.Community.AddIn.108.0.0\build\net40\SolidEdge.Community.AddIn.targets'))" />
+    <Error Condition="!Exists('..\packages\SolidEdge.Community.AddIn.109.0.0\build\net40\SolidEdge.Community.AddIn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolidEdge.Community.AddIn.109.0.0\build\net40\SolidEdge.Community.AddIn.targets'))" />
   </Target>
-  <Import Project="..\packages\SolidEdge.Community.AddIn.108.0.0\build\net40\SolidEdge.Community.AddIn.targets" Condition="Exists('..\packages\SolidEdge.Community.AddIn.108.0.0\build\net40\SolidEdge.Community.AddIn.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

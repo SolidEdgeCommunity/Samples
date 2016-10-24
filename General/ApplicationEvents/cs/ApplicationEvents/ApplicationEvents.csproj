@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.SolidEdge">
-      <HintPath>..\packages\Interop.SolidEdge.109.1.0\lib\net40\Interop.SolidEdge.dll</HintPath>
+      <HintPath>..\packages\Interop.SolidEdge.109.2.0\lib\net40\Interop.SolidEdge.dll</HintPath>
     </Reference>
     <Reference Include="SolidEdge.Community">
       <HintPath>..\packages\SolidEdge.Community.109.0.0\lib\net40\SolidEdge.Community.dll</HintPath>
